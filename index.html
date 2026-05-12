@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="el" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Κατασκευή Ιστοσελίδων στην Ελλάδα | Web Design & SEO - Advon Media</title>
+    <meta name="description" content="Κορυφαία κατασκευή ιστοσελίδων στην Ελλάδα. Επαγγελματικό Web Design, ταχύτατη φόρτωση, Mobile Responsive και πλήρης SEO βελτιστοποίηση. Ανεβείτε στην 1η σελίδα της Google.">
+    <link rel="icon" href="https://assets.cdn.filesafe.space/NkFUgZER3rrdnofCwAIl/media/648dd017a1f733fa5b51e5e9.png" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ['Playfair Display', 'serif'],
+              body: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              'electric-cyan': '#47c8f5',
+              'deep-void': '#050a0e',
+              'space-black': '#0a1418',
+            },
+            animation: {
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'float': 'float 6s ease-in-out infinite',
+              'shimmer': 'shimmer 3s linear infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              shimmer: {
+                '0%': { backgroundPosition: '-200% 0' },
+                '100%': { backgroundPosition: '200% 0' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+
+    <style>
+      /* --- GLOBAL MOBILE FIXES --- */
+      html, body { 
+        max-width: 100vw; 
+        overflow-x: hidden; 
+        background-color: #050a0e; 
+        color: white; 
+        margin: 0; 
+        padding: 0; 
+      }
+      
+      img, section, div, main { max-width: 100%; }
+
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: #050a0e; }
+      ::-webkit-scrollbar-thumb { background: rgba(71, 200, 245, 0.4); border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: #47c8f5; }
+
+      .cyber-grid {
+        position: absolute; bottom: 0; left: -50%; width: 200%; height: 100vh;
+        background-image: linear-gradient(to right, rgba(71, 200, 245, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(71, 200, 245, 0.05) 1px, transparent 1px);
+        background-size: 60px 60px;
+        transform: perspective(600px) rotateX(60deg) translateY(0) translateZ(-200px);
+        animation: grid-scroll 20s linear infinite;
+        mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0) 80%);
+        -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0) 80%);
+        z-index: 1; pointer-events: none;
+      }
+      @keyframes grid-scroll {
+        0% { transform: perspective(600px) rotateX(70deg) translateY(0) translateZ(-200px); }
+        100% { transform: perspective(600px) rotateX(70deg) translateY(60px) translateZ(-200px); }
+      }
+
+      .laser-beam-main {
+        position: absolute; left: 50%; top: 0; transform: translateX(-50%);
+        width: 80px; height: 100%;
+        background: linear-gradient(180deg, rgba(71, 200, 245, 0.1) 0%, rgba(71, 200, 245, 0.4) 10%, rgba(71, 200, 245, 0.9) 30%, rgba(71, 200, 245, 1) 50%, rgba(71, 200, 245, 0.9) 70%, rgba(71, 200, 245, 0.4) 90%, rgba(71, 200, 245, 0.1) 100%);
+        box-shadow: 0 0 30px rgba(71, 200, 245, 0.9), 0 0 60px rgba(71, 200, 245, 0.7);
+        animation: laser-pour 1.5s ease-in-out infinite; border-radius: 10px; z-index: 2;
+      }
+      @keyframes laser-pour {
+        0%, 100% { opacity: 0.8; transform: translateX(-50%) scaleY(1); }
+        25% { opacity: 1; transform: translateX(-50%) scaleY(1.02); }
+        50% { opacity: 0.9; transform: translateX(-50%) scaleY(0.98); }
+        75% { opacity: 1; transform: translateX(-50%) scaleY(1.01); }
+      }
+
+      .glass-panel { 
+        background: rgba(8, 18, 25, 0.5); backdrop-filter: blur(16px); 
+        -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(71, 200, 245, 0.15); 
+        box-shadow: inset 0 0 20px rgba(71,200,245,0.05), 0 8px 32px rgba(0, 0, 0, 0.5); 
+      }
+      .glass-panel:hover { border-color: rgba(71, 200, 245, 0.5); }
+      
+      .text-shimmer { background: linear-gradient(to right, #47c8f5 20%, #ffffff 50%, #47c8f5 80%); background-size: 200% auto; color: transparent; -webkit-background-clip: text; background-clip: text; animation: shimmer 4s linear infinite; }
+      
+      .btn-shine-effect {
+        position: absolute; top: 0; left: 0; width: 50%; height: 100%;
+        background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+        transform: translateX(-150%) skewX(-20deg); animation: btn-shine 3s infinite;
+      }
+      @keyframes btn-shine { 0% { transform: translateX(-150%) skewX(-20deg); } 100% { transform: translateX(150%) skewX(-20deg); } }
+      
+      .page-section { display: none; opacity: 0; transition: opacity 0.4s ease; }
+      .page-section.active { display: block; opacity: 1; }
+
+      /* Dropdown CSS */
+      .dropdown-content { display: none; position: absolute; background-color: #0a1418; min-width: 260px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5); z-index: 100; border-radius: 8px; border: 1px solid rgba(71, 200, 245, 0.2); top: 100%; left: 0; }
+      .dropdown:hover .dropdown-content { display: block; }
+      .dropdown-content a { color: #d1d5db; padding: 12px 16px; text-decoration: none; display: block; border-bottom: 1px solid rgba(255,255,255,0.05); }
+      .dropdown-content a:hover { background-color: rgba(71, 200, 245, 0.1); color: #47c8f5; }
+      .dropdown-content a:last-child { border-bottom: none; }
+      
+      .legal-content h1 { font-size: 2.5rem; color: white; margin-bottom: 1.5rem; font-family: 'Playfair Display', serif; font-weight: 900; }
+      .legal-content h2 { font-size: 1.75rem; color: #47c8f5; margin-top: 2.5rem; margin-bottom: 1rem; font-weight: 700; }
+      .legal-content p { color: #d1d5db; margin-bottom: 1rem; line-height: 1.8; }
+      .legal-content ul { list-style-type: disc; margin-left: 1.5rem; color: #d1d5db; margin-bottom: 1rem; }
+      .legal-content li { margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body class="font-body antialiased">
+
+    <!-- Global Background Elements -->
+    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#050a0e]">
+      <div class="absolute inset-0 bg-gradient-to-b from-[#050a0e] via-[#0a1418] to-[#0d1a20]"></div>
+      <canvas id="star-canvas" class="absolute inset-0"></canvas>
+      <div class="cyber-grid"></div>
+      <div class="laser-beam-main"></div>
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[900px] h-[60vh] bg-[rgba(71,200,245,0.08)] blur-[120px]"></div>
+    </div>
+
+    <!-- GLOBAL HEADER NAVIGATION -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#050a0e]/90 backdrop-blur-xl border-b border-electric-cyan/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative z-10">
+            <a href="#/" class="flex items-center gap-3 group">
+                <img src="https://assets.cdn.filesafe.space/NkFUgZER3rrdnofCwAIl/media/648dd017a1f733fa5b51e5e9.png" alt="Advon Media Logo" width="40" height="40" class="h-10 w-auto filter drop-shadow-[0_0_10px_rgba(71,200,245,0.5)]">
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-electric-cyan tracking-wide">
+                <a href="#/" class="hover:text-white transition-colors">Αρχική</a>
+                <div class="dropdown relative py-2">
+                    <button class="flex items-center gap-1 hover:text-white transition-colors">Υπηρεσίες <i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <div class="dropdown-content">
+                        <a href="#/kataskevi-istoselidas">Κατασκευή Ιστοσελίδας</a>
+                        <a href="#/google-reviews-nfc">Ανέπαφες Αξιολογήσεις</a>
+                        <a href="#/diaxeirisi-social-media">Διαχείριση Social Media</a>
+                    </div>
+                </div>
+                <a href="#/kataskevi-istoselidas#portfolio" class="hover:text-white transition-colors">Πορτφόλιο</a>
+                <a href="#/#reviews" class="hover:text-white transition-colors">Αξιολογήσεις</a>
+                <a href="#/faq" class="hover:text-white transition-colors">FAQ</a>
+                <a href="#/blog" class="hover:text-white transition-colors">Blog</a>
+                <a href="#contact" class="hover:text-white transition-colors px-4 py-2 bg-electric-cyan/10 border border-electric-cyan/40 rounded-full">Επικοινωνία</a>
+            </nav>
+
+            <!-- Mobile Nav Toggle -->
+            <button class="md:hidden text-electric-cyan p-2" id="mobile-menu-btn">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div class="md:hidden bg-[#050a0e]/95 backdrop-blur-xl border-b border-electric-cyan/20 overflow-hidden transition-all duration-300 max-h-0" id="mobile-menu">
+            <nav class="flex flex-col p-6 gap-4 text-lg font-medium text-electric-cyan">
+                <a href="#/" class="mobile-link">Αρχική</a>
+                <div class="pl-4 border-l border-electric-cyan/20 flex flex-col gap-3 my-2">
+                    <span class="text-sm text-gray-500 uppercase">Υπηρεσιες</span>
+                    <a href="#/kataskevi-istoselidas" class="mobile-link text-white text-base">Κατασκευή Ιστοσελίδας</a>
+                    <a href="#/google-reviews-nfc" class="mobile-link text-white text-base">Ανέπαφες Αξιολογήσεις</a>
+                    <a href="#/diaxeirisi-social-media" class="mobile-link text-white text-base">Διαχείριση Social Media</a>
+                </div>
+                <a href="#/kataskevi-istoselidas#portfolio" class="mobile-link">Πορτφόλιο</a>
+                <a href="#/#reviews" class="mobile-link">Αξιολογήσεις</a>
+                <a href="#/faq" class="mobile-link">FAQ</a>
+                <a href="#/blog" class="mobile-link">Blog</a>
+                <a href="#contact" class="mobile-link text-white font-bold">Επικοινωνία</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN ROUTER CONTAINER -->
+    <main class="relative z-10 pt-20" id="router-view-container">
+
+        <!-- ============================================== -->
+        <!-- VIEW 1: HOMEPAGE -->
+        <!-- ============================================== -->
+        <div id="page-home" class="page-section active">
+            <!-- Hero -->
+            <section class="relative min-h-[90vh] flex items-center justify-center py-20">
+                <div class="container max-w-7xl mx-auto px-6 text-center z-10">
+                    <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-electric-cyan/50 bg-electric-cyan/10 mb-8 shadow-[0_0_30px_rgba(71,200,245,0.4)] backdrop-blur-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-electric-cyan animate-pulse"></span>
+                        <span class="text-xs font-black tracking-[0.25em] text-white uppercase">ADVON MEDIA</span>
+                    </div>
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-black font-display mb-8 leading-[1.05] tracking-tight">
+                        Επαγγελματική<br/>
+                        <span class="bg-clip-text text-transparent bg-gradient-to-br from-white via-gray-100 to-gray-400">Κατασκευή</span> Ιστοσελίδων στην <span class="text-shimmer drop-shadow-[0_0_50px_rgba(71,200,245,0.9)]">Ελλάδα</span>
+                    </h1>
+                    <p class="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed font-medium">
+                        Αυξήστε τις πωλήσεις σας με premium Web Design και στοχευμένες στρατηγικές Digital Marketing. Δημιουργούμε ταχύτατα, ασφαλή και SEO-βελτιστοποιημένα websites.
+                    </p>
+                    <div class="flex flex-wrap items-center justify-center gap-6">
+                        <a href="#/kataskevi-istoselidas" class="group relative overflow-hidden px-10 py-5 bg-electric-cyan text-[#050a0e] font-black text-lg uppercase tracking-[0.1em] rounded-xl shadow-[0_0_30px_rgba(71,200,245,0.5)] transition-all flex items-center gap-3">
+                            <div class="btn-shine-effect"></div>
+                            <span class="relative z-10 flex items-center gap-3">ΥΠΗΡΕΣΙΕΣ <i data-lucide="arrow-right"></i></span>
+                        </a>
+                        <a href="#/kataskevi-istoselidas#portfolio" class="group px-10 py-5 bg-transparent border-2 border-electric-cyan text-electric-cyan font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-electric-cyan hover:text-[#050a0e] transition-all flex items-center gap-3">
+                            <i data-lucide="play" class="fill-current"></i> ΠΟΡΤΦΟΛΙΟ
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats -->
+            <section class="py-16 border-y border-electric-cyan/20 bg-[#0a1418]/60 backdrop-blur-md">
+                <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div><div class="text-5xl md:text-7xl font-black font-display text-electric-cyan drop-shadow-[0_0_20px_rgba(71,200,245,0.3)]">3+</div><div class="text-xs font-bold tracking-[0.2em] text-gray-400">ΧΡΟΝΙΑ ΕΜΠΕΙΡΙΑΣ</div></div>
+                    <div><div class="text-5xl md:text-7xl font-black font-display text-electric-cyan drop-shadow-[0_0_20px_rgba(71,200,245,0.3)]">120+</div><div class="text-xs font-bold tracking-[0.2em] text-gray-400">ΠΕΛΑΤΕΣ</div></div>
+                    <div><div class="text-5xl md:text-7xl font-black font-display text-electric-cyan drop-shadow-[0_0_20px_rgba(71,200,245,0.3)]">100%</div><div class="text-xs font-bold tracking-[0.2em] text-gray-400">ΕΠΙΤΥΧΙΑ</div></div>
+                    <div><div class="text-5xl md:text-7xl font-black font-display text-electric-cyan drop-shadow-[0_0_20px_rgba(71,200,245,0.3)]">75+</div><div class="text-xs font-bold tracking-[0.2em] text-gray-400">5-STAR REVIEWS</div></div>
+                </div>
+            </section>
+
+            <!-- Services Summary -->
+            <section class="py-32">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="text-center mb-20">
+                        <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block">ΥΠΗΡΕΣΙΕΣ</span>
+                        <h2 class="text-4xl md:text-6xl font-black font-display mb-4 text-white">Λύσεις που Αποδίδουν</h2>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <!-- Service 1 -->
+                        <div class="glass-panel rounded-3xl p-8 flex flex-col h-full hover:-translate-y-2 transition-transform">
+                            <div class="w-16 h-16 rounded-2xl bg-electric-cyan/10 flex items-center justify-center mb-6 text-electric-cyan"><i data-lucide="globe" class="w-8 h-8"></i></div>
+                            <div class="flex items-baseline gap-2 mb-4"><span class="text-4xl font-black text-white">ΔΩΡΕΑΝ</span><span class="text-sm text-electric-cyan/80">(μόνο 10.83€/μήνα hosting)</span></div>
+                            <h3 class="text-2xl font-black mb-4 font-display">Κατασκευή Ιστοσελίδας</h3>
+                            <p class="text-gray-400 mb-8 flex-grow">Επαγγελματική ιστοσελίδα που κατακτά υψηλές θέσεις στη Google.</p>
+                            <ul class="space-y-3 mb-8 text-sm text-gray-300">
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="text-electric-cyan w-4 h-4"></i> Custom Σχεδιασμός UI/UX</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="text-electric-cyan w-4 h-4"></i> On-Page SEO Βελτιστοποίηση</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="text-electric-cyan w-4 h-4"></i> 100% Mobile Responsive</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="text-electric-cyan w-4 h-4"></i> Παράδοση σε 5-10 ημέρες</li>
+                            </ul>
+                            <a href="#/kataskevi-istoselidas" class="w-full py-4 text-center bg-white/5 border border-white/10 text-white font-bold rounded-xl hover:bg-electric-cyan hover:text-black transition-colors uppercase tracking-widest text-sm">Περισσοτερες Πληροφοριες</a>
+                        </div>
+                        <!-- Service 2 -->
+                        <div class="glass-panel rounded-3xl p-8 flex flex-col h-full hover:-translate-y-2 transition-transform">
+                            <div class="w-16 h-16 rounded-2xl bg-electric-cyan/10 flex items-center justify-center mb-6 text-electric-cyan"><i data-lucide="star" class="w-8 h-8"></i></div>
+                            <div class="flex items-baseline gap-2 mb-4"><span class="text-4xl font-black text-white">25€</span><span class="text-sm text-electric-cyan/80">εφάπαξ</span></div>
+                            <h3 class="text-2xl font-black mb-4 font-display">Ανέπαφη Βάση Αξιολογήσεων</h3>
+                            <p class="text-gray-400 mb-8 flex-grow">50+ νέες αξιολογήσεις κάθε μήνα. Ανεβείτε στην κορυφή της Google σε 3 μήνες.</p>
+                            <ul class="space-y-3 mb-8 text-sm text-gray-300">
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="text-electric-cyan w-4 h-4"></i> Αύξηση κριτικών Google</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="text-electric-cyan w-4 h-4"></i> Βελτίωση τοπικού SEO</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="text-electric-cyan w-4 h-4"></i> Εύκολη χρήση (NFC)</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="text-electric-cyan w-4 h-4"></i> Χωρίς μηνιαία συνδρομή</li>
+                            </ul>
+                            <a href="#/google-reviews-nfc" class="w-full py-4 text-center bg-white/5 border border-white/10 text-white font-bold rounded-xl hover:bg-electric-cyan hover:text-black transition-colors uppercase tracking-widest text-sm">Περισσοτερες Πληροφοριες</a>
+                        </div>
+                        <!-- Service 3 -->
+                        <div class="glass-panel rounded-3xl p-8 flex flex-col h-full hover:-translate-y-2 transition-transform">
+                            <div class="w-16 h-16 rounded-2xl bg-electric-cyan/10 flex items-center justify-center mb-6 text-electric-cyan"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></div>
+                            <div class="flex items-baseline gap-2 mb-4"><span class="text-4xl font-black text-white">87€</span><span class="text-sm text-electric-cyan/80">/μήνα</span></div>
+                            <h3 class="text-2xl font-black mb-4 font-display">Διαχείριση Social Media</h3>
+                            <p class="text-gray-400 mb-8 flex-grow">Επαγγελματικά posts, hashtag research, copywriting. 7 ημέρες δωρεάν δοκιμή.</p>
+                            <ul class="space-y-3 mb-8 text-sm text-gray-300">
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="text-electric-cyan w-4 h-4"></i> 3 posts/εβδομάδα</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="text-electric-cyan w-4 h-4"></i> Hashtag research</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="text-electric-cyan w-4 h-4"></i> Copywriting</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="text-electric-cyan w-4 h-4"></i> Μηνιαία αναφορά</li>
+                            </ul>
+                            <a href="#/diaxeirisi-social-media" class="w-full py-4 text-center bg-white/5 border border-white/10 text-white font-bold rounded-xl hover:bg-electric-cyan hover:text-black transition-colors uppercase tracking-widest text-sm">Περισσοτερες Πληροφοριες</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reviews (Only on Home) -->
+            <section id="reviews" class="py-32 relative overflow-hidden bg-[#050a0e]/50 border-y border-electric-cyan/10">
+                <div class="max-w-7xl mx-auto px-6 relative z-10">
+                    <div class="grid lg:grid-cols-12 gap-12 items-start">
+                        <div class="lg:col-span-5 lg:sticky lg:top-32">
+                            <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block">ΑΞΙΟΛΟΓΗΣΕΙΣ</span>
+                            <h2 class="text-4xl md:text-6xl font-black font-display mb-6 text-white">Τι λένε οι πελάτες μας</h2>
+                            <div class="flex items-center gap-2 mb-8">
+                                <div class="flex gap-1 text-yellow-400"><i data-lucide="star" class="fill-current w-6 h-6"></i><i data-lucide="star" class="fill-current w-6 h-6"></i><i data-lucide="star" class="fill-current w-6 h-6"></i><i data-lucide="star" class="fill-current w-6 h-6"></i><i data-lucide="star" class="fill-current w-6 h-6"></i></div>
+                                <span class="text-xl font-bold text-white">5.0 <span class="text-gray-400 text-sm">(75+)</span></span>
+                            </div>
+                            <p class="text-gray-400 text-lg mb-8 max-w-md">Δείτε τι λένε οι πελάτες μας για τις ψηφιακές λύσεις που προσφέρουμε. Η ικανοποίησή σας είναι η μεγαλύτερη ανταμοιβή μας.</p>
+                            <a href="https://share.google/zWUQyGTmywjaljaMW" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/40 rounded-xl hover:bg-electric-cyan hover:text-black font-bold uppercase transition-colors">Δείτε Όλες τις Αξιολογήσεις <i data-lucide="external-link" class="w-4 h-4"></i></a>
+                        </div>
+                        <div class="lg:col-span-7 h-[600px] overflow-y-auto pr-4 scroll-smooth" id="reviews-scroll">
+                            <!-- JS Will Populate Reviews Here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- VIEW 2: ΚΑΤΑΣΚΕΥΗ ΙΣΤΟΣΕΛΙΔΑΣ (/kataskevi-istoselidas) -->
+        <!-- ============================================== -->
+        <div id="page-website" class="page-section">
+            <section class="py-24">
+                <div class="max-w-5xl mx-auto px-6">
+                    <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block text-center">ΥΠΗΡΕΣΙΑ</span>
+                    <h1 class="text-4xl md:text-6xl font-black font-display mb-12 text-center text-white">Δωρεάν Κατασκευή Ιστοσελίδας</h1>
+                    
+                    <div class="glass-panel p-8 md:p-12 rounded-3xl mb-20 text-lg text-gray-300 leading-relaxed space-y-6">
+                        <div class="flex items-center gap-4 mb-6 pb-6 border-b border-white/10">
+                            <div class="text-5xl font-black text-white">ΔΩΡΕΑΝ</div>
+                            <div class="text-electric-cyan font-bold">(μόνο 10.83€/μήνα hosting)</div>
+                        </div>
+                        <p>Δεν είναι κάποιο μάρκετινγκ τρικ, όντως η κατασκευή που κοστίζει κανονικά 700-2000€+, είναι εντελώς δωρεάν.</p>
+                        <p>Το μόνο κόστος για εσάς που δεν μπορούμε να καλύψουμε έιναι η φιλοξενία της ιστοσελίδας σε σέρβερ στο διαδίκτυο (γνωστό και ως hosting) και το domain name (το www.παράδειγμα.gr). Τα αναλαμβάνουμε και τα 2 σαν διαδικασίες εμείς!</p>
+                        <p>Το κάνουμε αυτό γιατί θέλουμε να προσθέσουμε όσες περισσότερες ιστοσελίδες γίνεται στο πορτφόλιο μας για να μπορούμε στο μέλλον και εμείς να έχουμε υψηλές τιμές και κέρδη.</p>
+                        <p>Συνολικά είναι μόνο 10.83€/μήνα (που θα πληρώνατε όπως και να έχει, όπου και αν κατασκευάζατε μια ιστοσελίδα, όπως πληρώνουν και όλοι που ήδη έχουν).</p>
+                        <p>Aναβαθμίστε την επαγγελματική σας παρουσία στο διαδίκτυο και μετατρέψτε τους επισκέπτες της ιστοσελίδας σας σε αφοσιωμένους πελάτες!</p>
+                        <p>Το 2025, η κατοχή μιας επαγγελματικής ιστοσελίδας δεν είναι απλώς ένα επιπλέον εργαλείο — είναι μια αναγκαιότητα για κάθε ελεύθερο επαγγελματία και επιχείρηση που θέλει να ξεχωρίσει στον ψηφιακό κόσμο.</p>
+                        <p>Μια καλά σχεδιασμένη ιστοσελίδα σας βοηθά να κατακτήσετε υψηλότερες θέσεις στις μηχανές αναζήτησης, καθώς η Google αξιολογεί τις ιστοσελίδες ως πιο αξιόπιστες και με πιο ολοκληρωμένο προφίλ.</p>
+                        <p>Η ιστοσελίδα σας λειτουργεί ως η ψηφιακή σας βιτρίνα, ενισχύοντας την επαγγελματική σας εικόνα και προβάλλοντας την επιχείρησή σας ως σοβαρή και αξιόπιστη στους επισκέπτες. Επιπλέον, προσφέρει στους χρήστες εύκολη πρόσβαση σε όλες τις απαραίτητες πληροφορίες, καθιστώντας την εμπειρία τους πιο άνετη και άμεση.</p>
+                        <hr class="border-white/10 my-8">
+                        <h3 class="text-2xl font-bold text-white mb-4">Πανεύκολη Διαδικασία Κατασκευής:</h3>
+                        <p>Για να μειώσουμε τον χρόνο επένδυσης σας στην κατασκευή χρειαζόμαστε από εσάς μόνο:</p>
+                        <ul class="list-disc pl-6 space-y-2 text-white">
+                            <li>1) Τις φωτογραφίες που θέλετε να περιλαμβάνει η ιστοσελίδα σας (δική σας επαγγελματική, του χώρου ή/και του προσωπικού)</li>
+                            <li>2) Κάποια βασικά κείμενα για εσάς ή την επιχείρηση σας (μπορεί να είναι και πολύ μικρά, αναλμβάνουμε εμείς την κειμενογραφία)</li>
+                            <li>3) Τις υπηρεσίες σας μονολεκτικά</li>
+                            <li>4) Τα στοιχεία επικοινωνίας σας (τηλέφωνο, email, διεύθυνση, ωράριο λειτουργίας)</li>
+                            <li>5) Ένα λογότυπο αν έχετε, αλλιώς σας φτιάχνουμε ένα εμείς</li>
+                        </ul>
+                        <p>Όλα τα υπόλοιπα τα αναλαμβάνουμε εμείς (χρώματα design,κείμενα κλπ) και εννοείται μετά κάνουμε όσες αλλαγές επιθυμείτε.</p>
+                        <p>Εννοείται πως μπορείτε να μας στείλετε οτιδήποτε θα θέλατε να υπάρχει στην ιστοσελίδα σας. Τα παραπάνω είναι απλώς τα βασικά που χρειαζόμαστε και αρκούν για ένα εξαιρετικό και επαγγελματικό αποτέλεσμα.</p>
+                        <p class="text-electric-cyan font-semibold">Διασφαλίστε ότι η επιχείρησή σας παραμένει μπροστά από τον ανταγωνισμό με μια ισχυρή, επαγγελματική παρουσία στο διαδίκτυο που κερδίζει την εμπιστοσύνη τόσο των επισκεπτών σας όσο και των μηχανών αναζήτησης.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Portfolio (Moved from Homepage to here) -->
+            <section id="portfolio" class="py-24 bg-[#050a0e]/80 border-t border-electric-cyan/20">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block">ΠΟΡΤΦΟΛΙΟ</span>
+                        <h2 class="text-4xl md:text-5xl font-black font-display text-white mb-4">Δείτε μερικές από τις Δουλειές μας</h2>
+                    </div>
+                    <div id="portfolio-grid-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- JS injects portfolio here -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- VIEW 3: ΑΝΕΠΑΦΕΣ ΑΞΙΟΛΟΓΗΣΕΙΣ (/google-reviews-nfc) -->
+        <!-- ============================================== -->
+        <div id="page-nfc" class="page-section">
+            <section class="py-24">
+                <div class="max-w-4xl mx-auto px-6">
+                    <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block text-center">ΥΠΗΡΕΣΙΑ</span>
+                    <h1 class="text-4xl md:text-6xl font-black font-display mb-12 text-center text-white">Ανέπαφη Βάση Αξιολογήσεων</h1>
+                    
+                    <div class="glass-panel p-8 md:p-12 rounded-3xl text-lg text-gray-300 leading-relaxed space-y-6">
+                        <div class="flex items-center gap-4 mb-6 pb-6 border-b border-white/10">
+                            <div class="text-5xl font-black text-white">25€</div>
+                            <div class="text-electric-cyan font-bold">εφάπαξ</div>
+                        </div>
+                        <img src="https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6724bf7a4eb48eb705a7b389.gif" alt="NFC Tech" class="w-full md:w-1/2 mx-auto rounded-xl border border-electric-cyan/30 mb-8" />
+                        <p class="text-xl font-semibold text-white">Ανεβείτε στη κορυφή της Google και αποκτήστε 150 νέες αξιολογήσεις σε λιγότερο απο 3 μήνες.</p>
+                        <p>Το πρώτο που κάνει κάποιος όταν αναζητεί μια επιχείρηση είναι να δει τις κριτικές της.</p>
+                        <p>Αν έχετε ελάχιστες είναι πολύ πιθανό να χάσετε πελάτες από τον ανταγωνισμό.</p>
+                        <p>Αλλά δεν είναι μόνο οι πελάτες που επηρεάζονται!</p>
+                        <p>Η Google, ως μηχανή αναζήτησης, θέλει να παρέχει τα πιο στοχευμένα αλλά και έγκυρα αποτελέσματα δίνοντας έτσι κύρια σημασία στις αξιολογήσεις.</p>
+                        <p>Όταν το ζητάτε από τους πελάτες σας συνήθως το ξεχνάνε ή δεν επενδύουν τον χρόνο να ψάξουν.</p>
+                        <p class="text-electric-cyan font-bold">Με την ανέπαφη βάση αξιολογήσεων μας μπορείτε να αποκτάτε τούλαχιστον 50 νέες κριτικές κάθε μήνα έυκολα και γρήγορα!</p>
+                        <p>Υπολογίστε και μόνοι σας (πχ 8 πελάτες ανά ημέρα, 20 εργάσιμες = 160 πελάτες τον μήνα. Αν λιγότεροι από τους μισόυς, οι 50, σας αφήσουν μια αξιολόγηση, έχετε 150 νέες σε 3 μήνες).</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- VIEW 4: ΔΙΑΧΕΙΡΙΣΗ SOCIAL MEDIA (/diaxeirisi-social-media) -->
+        <!-- ============================================== -->
+        <div id="page-social" class="page-section">
+            <section class="py-24">
+                <div class="max-w-4xl mx-auto px-6">
+                    <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block text-center">ΥΠΗΡΕΣΙΑ</span>
+                    <h1 class="text-4xl md:text-6xl font-black font-display mb-12 text-center text-white">Διαχείριση Social Media</h1>
+                    
+                    <div class="glass-panel p-8 md:p-12 rounded-3xl text-lg text-gray-300 leading-relaxed space-y-6">
+                        <div class="flex items-center gap-4 mb-6 pb-6 border-b border-white/10">
+                            <div class="text-5xl font-black text-white">87€</div>
+                            <div class="text-electric-cyan font-bold">/μήνα</div>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3"><span class="text-electric-cyan mt-1">•</span> <strong>Επαγγελματικά Επεξεργασμένα Posts ανά ημέρα:</strong> Δημοσιεύουμε αναρτήσεις που τραβούν την προσοχή των πελατών σας, χρησιμοποιώντας προγράμματα επεξεργασίας συνδυαστικής αξίας 300+ευρώ τον μήνα, όπως Adscreative.io, Photoroom, Photoshop, Adobe Premium, Canvas Pro, Picsart Pro και άλλα.</li>
+                            <li class="flex items-start gap-3"><span class="text-electric-cyan mt-1">•</span> <strong>Έρευνα Hashtags:</strong> Χρησιμοποιούμε τα καλύτερα hashtags ανάλογα με την επιχείρηση, τις υπηρεσίες, το κοινό και την τοποθεσία για να ενισχύσουμε την απήχησή σας και να σας φέρουμε μπροστά σε νέο κοινό.</li>
+                            <li class="flex items-start gap-3"><span class="text-electric-cyan mt-1">•</span> <strong>Επαγγελματική Κειμενογραφία</strong> για κάθε ανάρτηση που οδηγούν τον αναγνώστη σε μια επιθυμητή ενέργεια (πχ να κλείσει ραντεβού κλπ).</li>
+                            <li class="flex items-start gap-3"><span class="text-electric-cyan mt-1">•</span> <strong>Επεξεργασία - Δημιουργία</strong> επαγγελματικού βιογραφικού για το προφιλ σας.</li>
+                            <li class="flex items-start gap-3"><span class="text-electric-cyan mt-1">•</span> <strong>Αναφορές Προόδου:</strong> Παρέχουμε μηνιαία ανάλυση της ανάπτυξης των ακολούθων και της αλληλεπίδρασης με τις δημοσιεύσεις σας.</li>
+                            <li class="flex items-start gap-3"><span class="text-electric-cyan mt-1">•</span> <strong>Ευκολία & Άνεση:</strong> Το μόνο που χρειάζεται να κάνετε είναι να μας στείλετε φωτογραφίες της επιχείρησής σας μέσω WeTransfer, και εμείς θα αναλάβουμε τα υπόλοιπα. Αν δεν έχετε μπορούμε να δημιουργούμε εμείς δικά μας designs, χωρίς καμία επένδυση χρόνου από εσάς!</li>
+                        </ul>
+                        <div class="my-6 flex gap-4 text-white font-bold">
+                            <span class="bg-electric-cyan/20 text-electric-cyan px-4 py-2 rounded-lg">Δωρεάν Δοκιμή</span>
+                            <span class="bg-electric-cyan/20 text-electric-cyan px-4 py-2 rounded-lg">No contracts - cancel anytime</span>
+                        </div>
+                        <hr class="border-white/10 my-8">
+                        <h3 class="text-2xl font-bold text-white mb-4">Γιατί να Μας Επιλέξετε:</h3>
+                        <p><strong>Οικονομικό πακέτο & Χωρίς Ρίσκο:</strong> Με μόνο 87 ευρώ τον μήνα και εγγύηση επιστροφής χρημάτων, αφαιρούμε κάθε ρίσκο από την απόφασή σας. Αν δεν είστε απόλυτα ικανοποιημένοι, σας επιστρέφουμε τα χρήματά σας – χωρίς ερωτήσεις.</p>
+                        <p><strong>Προσωποποιημένη Υπηρεσία:</strong> Προσαρμόζουμε το περιεχόμενο σύμφωνα με τις ανάγκες της επιχείρησής σας, ώστε να αντανακλά την ταυτότητα και το στυλ σας.</p>
+                        <p><strong>Άμεση Έναρξη:</strong> Κλείστε τη θέση σας τώρα – διαθέτουμε μόνο λίγες θέσεις για νέους πελάτες κάθε μήνα, ώστε να διατηρήσουμε την ποιότητα της υπηρεσίας μας.</p>
+                        <p><strong>Καμία Δέσμευση:</strong> Μπορείτε να σταματήσετε οποιαδήποτε στιγμή χωρίς μακροχρόνια συμβόλαια.</p>
+                        <br>
+                        <h3 class="text-xl font-bold text-white">Αποτέλεσμα: Περισσότεροι Πελάτες & Επαγγελματική Παρουσία</h3>
+                        <p>Με τη σωστή διαχείριση του Instagram, θα δείτε αυξημένη αλληλεπίδραση, μεγαλύτερη βάση πελατών, και ένα προφίλ που προσελκύει την προσοχή και δημιουργεί εμπιστοσύνη.</p>
+                        <p class="text-electric-cyan font-bold mt-4">Εγγραφείτε σήμερα και εξασφαλίστε την ειδική τιμή των 87€ μήνα. Στείλτε μας email στο angelos@advonmedia.com για περαιτέρω επικοινωνία. (το ελέγχουμε καθημερινά)</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- VIEW 5: FAQ (/faq) -->
+        <!-- ============================================== -->
+        <div id="page-faq" class="page-section">
+            <section class="py-24">
+                <div class="max-w-3xl mx-auto px-6">
+                    <h1 class="text-4xl md:text-6xl font-black font-display mb-16 text-center text-white">Συχνές Ερωτήσεις (FAQ)</h1>
+                    <div class="space-y-4">
+                        <!-- FAQ 1 -->
+                        <div class="glass-panel rounded-2xl overflow-hidden group border border-white/5">
+                            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-lg text-white">
+                                Τι είναι η Advon Media;
+                                <i data-lucide="chevron-down" class="w-5 h-5 transition-transform text-electric-cyan"></i>
+                            </button>
+                            <div class="max-h-0 overflow-hidden transition-all duration-300 px-6 text-gray-400">
+                                <div class="pb-6">Είμαστε ένα ψηφιακό marketing agency που ειδικεύεται σε στρατηγική, social media και περιεχόμενο. Δουλεύουμε κυρίως με τοπικές επιχειρήσεις και ελεύθερους επαγγελματίες — ψυχολόγους, θεραπευτές, οδοντίατρους, παιδίατρους, φυσικοθεραπευτές, coaches και κάθε επαγγελματία που θέλει να χτίσει αξιόπιστη ψηφιακή παρουσία και να προσελκύσει νέους πελάτες online.</div>
+                            </div>
+                        </div>
+                        <!-- FAQ 2 -->
+                        <div class="glass-panel rounded-2xl overflow-hidden group border border-white/5">
+                            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-lg text-white">
+                                Ποιες υπηρεσίες προσφέρετε;
+                                <i data-lucide="chevron-down" class="w-5 h-5 transition-transform text-electric-cyan"></i>
+                            </button>
+                            <div class="max-h-0 overflow-hidden transition-all duration-300 px-6 text-gray-400">
+                                <div class="pb-6">Προσφέρουμε τρεις βασικές υπηρεσίες:<br><br>1. Κατασκευή Ιστοσελίδας — Επαγγελματική, SEO-βελτιστοποιημένη, mobile-first ιστοσελίδα που σε βοηθά να κατακτήσεις υψηλές θέσεις στη Google.<br>2. Ανέπαφη Βάση Αξιολογήσεων (NFC) — Ένα φυσικό σύστημα που βοηθά την επιχείρησή σου να συλλέγει 50+ νέες αξιολογήσεις Google κάθε μήνα.<br>3. Διαχείριση Social Media — Επαγγελματικά posts, έρευνα hashtag, copywriting και μηνιαίες αναφορές απόδοσης.</div>
+                            </div>
+                        </div>
+                        <!-- FAQ 3 -->
+                        <div class="glass-panel rounded-2xl overflow-hidden group border border-white/5">
+                            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-lg text-white">
+                                Γιατί η κατασκευή ιστοσελίδας είναι δωρεάν; Ποιο είναι το catch;
+                                <i data-lucide="chevron-down" class="w-5 h-5 transition-transform text-electric-cyan"></i>
+                            </button>
+                            <div class="max-h-0 overflow-hidden transition-all duration-300 px-6 text-gray-400">
+                                <div class="pb-6">Δεν υπάρχει catch. Πιστεύουμε ότι κάθε επαγγελματίας και κάθε τοπική επιχείρηση αξίζει να έχει αξιόπιστη online παρουσία — ανεξάρτητα από προϋπολογισμό. Ο στόχος μας είναι να βοηθήσουμε όσο το δυνατόν περισσότερους επαγγελματίες να είναι ορατοί στο διαδίκτυο, χωρίς να χρειαστεί να επενδύσουν χιλιάδες ευρώ σε κατασκευή site.<br><br>Χτίζουμε την ιστοσελίδα χωρίς κόστος κατασκευής. Το μόνο που χρειάζεται να πληρώσεις είναι το hosting — €10,83 τον μήνα. Δεν υπάρχουν κρυφές χρεώσεις, δεν υπάρχει lock-in σύμβαση.</div>
+                            </div>
+                        </div>
+                        <!-- FAQ 4 -->
+                        <div class="glass-panel rounded-2xl overflow-hidden group border border-white/5">
+                            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-lg text-white">
+                                Τι σημαίνει «hosting» και γιατί κοστίζει €10,83/μήνα;
+                                <i data-lucide="chevron-down" class="w-5 h-5 transition-transform text-electric-cyan"></i>
+                            </button>
+                            <div class="max-h-0 overflow-hidden transition-all duration-300 px-6 text-gray-400">
+                                <div class="pb-6">Το hosting είναι ο «ενοίκιος» που πληρώνεις για τον χώρο στον server όπου φιλοξενείται η ιστοσελίδα σου. Χωρίς hosting, η σελίδα δεν μπορεί να είναι ορατή στο διαδίκτυο. Τα €10,83/μήνα καλύπτουν αυτό ακριβώς: τον server χώρο, την ασφάλεια, τα backups και τη συνεχή λειτουργία της σελίδας σου. Μπορείς να σταματήσεις οποιαδήποτε στιγμή θέλεις.</div>
+                            </div>
+                        </div>
+                        <!-- FAQ 5 -->
+                        <div class="glass-panel rounded-2xl overflow-hidden group border border-white/5">
+                            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-lg text-white">
+                                Πόσο διαρκεί η παράδοση μιας ιστοσελίδας;
+                                <i data-lucide="chevron-down" class="w-5 h-5 transition-transform text-electric-cyan"></i>
+                            </button>
+                            <div class="max-h-0 overflow-hidden transition-all duration-300 px-6 text-gray-400">
+                                <div class="pb-6">Από τη στιγμή που έχουμε λάβει όλο το υλικό — φωτογραφίες, κείμενα, λογότυπο, και ό,τι άλλο χρειαστεί — μπορούμε να ολοκληρώσουμε την κατασκευή σε 5–10 εργάσιμες ημέρες. Αν δεν έχεις έτοιμο υλικό, μπορούμε να σε βοηθήσουμε να το ετοιμάσεις.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- VIEW 6: BLOG (/blog) -->
+        <!-- ============================================== -->
+        <div id="page-blog" class="page-section">
+            <section class="py-24">
+                <div class="max-w-7xl mx-auto px-6">
+                    <h1 class="text-4xl md:text-6xl font-black font-display mb-16 text-center text-white">Blog της Advon Media</h1>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid">
+                        <!-- Blog Post 1 -->
+                        <div class="glass-panel rounded-3xl p-8 flex flex-col h-full cursor-pointer hover:border-electric-cyan transition-colors" onclick="openBlogModal('blog1')">
+                            <span class="text-electric-cyan text-sm mb-3">14 Φεβρουαρίου 2025</span>
+                            <h3 class="text-2xl font-bold text-white mb-4 line-clamp-3">Η Ιστοσελίδα σου Κερδίζει Πελάτες — ή τους Χάνει; Η Αλήθεια που Κανείς δεν σου Λέει</h3>
+                            <p class="text-gray-400 line-clamp-3 flex-grow">Κάθε μέρα, υποψήφιοι πελάτες ψάχνουν ακριβώς αυτό που προσφέρεις. Αν η επιχείρησή σου δεν έχει επαγγελματική ιστοσελίδα, αυτοί οι πελάτες πάνε στον ανταγωνιστή σου.</p>
+                            <span class="text-electric-cyan font-bold mt-6 inline-flex items-center gap-2">Διαβάστε Περισσότερα <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                        </div>
+                        <!-- Blog Post 2 -->
+                        <div class="glass-panel rounded-3xl p-8 flex flex-col h-full cursor-pointer hover:border-electric-cyan transition-colors" onclick="openBlogModal('blog2')">
+                            <span class="text-electric-cyan text-sm mb-3">3 Απριλίου 2025</span>
+                            <h3 class="text-2xl font-bold text-white mb-4 line-clamp-3">Google Reviews το 2025: Το Νόμισμα της Τοπικής Επιχείρησης που Δεν Μπορείς να Αγνοείς</h3>
+                            <p class="text-gray-400 line-clamp-3 flex-grow">Οι αξιολογήσεις σου στη Google είναι η φήμη σου. Μάθε πώς να συλλέγεις 50+ αξιολογήσεις κάθε μήνα και να κυριαρχήσεις στην τοπική αγορά.</p>
+                            <span class="text-electric-cyan font-bold mt-6 inline-flex items-center gap-2">Διαβάστε Περισσότερα <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                        </div>
+                        <!-- Blog Post 3 -->
+                        <div class="glass-panel rounded-3xl p-8 flex flex-col h-full cursor-pointer hover:border-electric-cyan transition-colors" onclick="openBlogModal('blog3')">
+                            <span class="text-electric-cyan text-sm mb-3">19 Ιουνίου 2025</span>
+                            <h3 class="text-2xl font-bold text-white mb-4 line-clamp-3">Social Media για Τοπικές Επιχειρήσεις: Τι Λειτουργεί Πραγματικά (και Τι Χάνει τον Χρόνο σου)</h3>
+                            <p class="text-gray-400 line-clamp-3 flex-grow">Υπάρχει ουσιαστική διαφορά μεταξύ του να έχεις social media και του να τα χρησιμοποιείς στρατηγικά. Δες τι φέρνει πελάτες.</p>
+                            <span class="text-electric-cyan font-bold mt-6 inline-flex items-center gap-2">Διαβάστε Περισσότερα <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                        </div>
+                        <!-- Blog Post 4 -->
+                        <div class="glass-panel rounded-3xl p-8 flex flex-col h-full cursor-pointer hover:border-electric-cyan transition-colors" onclick="openBlogModal('blog4')">
+                            <span class="text-electric-cyan text-sm mb-3">8 Σεπτεμβρίου 2025</span>
+                            <h3 class="text-2xl font-bold text-white mb-4 line-clamp-3">Ο Κανόνας των 5 Δευτερολέπτων: Γιατί η Πρώτη Εντύπωση της Ιστοσελίδας σου Καθορίζει Τα Πάντα</h3>
+                            <p class="text-gray-400 line-clamp-3 flex-grow">Αν ένας επισκέπτης δεν καταλάβει τι προσφέρεις μέσα σε 5 δευτερόλεπτα, χάνεις τον πελάτη. Μάθε πώς να περάσεις το τεστ.</p>
+                            <span class="text-electric-cyan font-bold mt-6 inline-flex items-center gap-2">Διαβάστε Περισσότερα <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                        </div>
+                        <!-- Blog Post 5 -->
+                        <div class="glass-panel rounded-3xl p-8 flex flex-col h-full cursor-pointer hover:border-electric-cyan transition-colors" onclick="openBlogModal('blog5')">
+                            <span class="text-electric-cyan text-sm mb-3">27 Νοεμβρίου 2025</span>
+                            <h3 class="text-2xl font-bold text-white mb-4 line-clamp-3">Πώς να Ανέβεις στην Κορυφή της Google (Χωρίς να Ξοδέψεις Μια Περιουσία σε Διαφημίσεις)</h3>
+                            <p class="text-gray-400 line-clamp-3 flex-grow">Ο οργανικός τρόπος να νικήσεις το Google Ads μέσω έξυπνου Local SEO και ενός βελτιστοποιημένου Google Business Profile.</p>
+                            <span class="text-electric-cyan font-bold mt-6 inline-flex items-center gap-2">Διαβάστε Περισσότερα <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                        </div>
+                        <!-- Blog Post 6 -->
+                        <div class="glass-panel rounded-3xl p-8 flex flex-col h-full cursor-pointer hover:border-electric-cyan transition-colors" onclick="openBlogModal('blog6')">
+                            <span class="text-electric-cyan text-sm mb-3">12 Μαρτίου 2026</span>
+                            <h3 class="text-2xl font-bold text-white mb-4 line-clamp-3">Το Ψηφιακό Marketing Stack που Χρειάζεται Κάθε Ελεύθερος Επαγγελματίας το 2026</h3>
+                            <p class="text-gray-400 line-clamp-3 flex-grow">Το ακριβές σύστημα (Ιστοσελίδα + NFC + Social Media) που φέρνει σταθερή ροή νέων πελατών με λιγότερο από €100 τον μήνα.</p>
+                            <span class="text-electric-cyan font-bold mt-6 inline-flex items-center gap-2">Διαβάστε Περισσότερα <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- LEGAL PAGES -->
+        <!-- ============================================== -->
+        <div id="page-privacy" class="page-section">
+            <section class="py-24 max-w-4xl mx-auto px-6 legal-content glass-panel mt-10 rounded-3xl">
+                <h1>Πολιτική Απορρήτου & Προστασίας Προσωπικών Δεδομένων</h1>
+                <h2>Εισαγωγή</h2>
+                <p>Η Advon Media (εφεξής η "Εταιρεία", "εμείς", "μας") σέβεται απόλυτα το απόρρητό σας και δεσμεύεται να προστατεύει τα προσωπικά σας δεδομένα. Η παρούσα Πολιτική Απορρήτου σας ενημερώνει για το πώς συλλέγουμε, χρησιμοποιούμε και προστατεύουμε τα δεδομένα σας όταν επισκέπτεστε την ιστοσελίδα μας ή χρησιμοποιείτε τις υπηρεσίες μας, σύμφωνα με τον Γενικό Κανονισμό Προστασίας Δεδομένων (GDPR).</p>
+                <h2>Ποια δεδομένα συλλέγουμε</h2>
+                <p>Συλλέγουμε μόνο τα απαραίτητα δεδομένα για την παροχή των υπηρεσιών μας:</p>
+                <ul>
+                    <li>Στοιχεία Επικοινωνίας: Όνομα/Επωνυμία, Email, Τηλέφωνο, καθώς και οποιαδήποτε πληροφορία μοιράζεστε μαζί μας μέσω της φόρμας επικοινωνίας.</li>
+                    <li>Τεχνικά Δεδομένα: Διεύθυνση IP, τύπος περιηγητή (browser), συσκευή, και δεδομένα πλοήγησης (βλ. Πολιτική Cookies).</li>
+                </ul>
+                <h2>Πώς χρησιμοποιούμε τα δεδομένα σας</h2>
+                <p>Τα δεδομένα σας χρησιμοποιούνται αποκλειστικά για:</p>
+                <ul>
+                    <li>Την επικοινωνία μαζί σας και την απάντηση στα αιτήματά σας (π.χ. ραντεβού, εκδήλωση ενδιαφέροντος).</li>
+                    <li>Την παροχή των υπηρεσιών Web Design, SEO, και διαχείρισης Social Media που έχετε ζητήσει.</li>
+                    <li>Τη βελτίωση της εμπειρίας χρήστη στην ιστοσελίδα μας.</li>
+                    <li>Την αποστολή ενημερώσεων ή προσφορών, μόνο εφόσον έχετε δώσει τη ρητή συγκατάθεσή σας.</li>
+                </ul>
+                <h2>Πώς προστατεύουμε τα δεδομένα σας</h2>
+                <p>Λαμβάνουμε όλα τα απαραίτητα τεχνικά και οργανωτικά μέτρα (π.χ. κρυπτογράφηση SSL, ασφαλείς servers) για να διασφαλίσουμε ότι τα προσωπικά σας δεδομένα είναι ασφαλή έναντι μη εξουσιοδοτημένης πρόσβασης, αλλοίωσης ή απώλειας.</p>
+                <h2>Τα δικαιώματά σας</h2>
+                <p>Βάσει του GDPR, έχετε τα εξής δικαιώματα:</p>
+                <ul>
+                    <li>Δικαίωμα πρόσβασης: Να ζητήσετε αντίγραφο των δεδομένων που διατηρούμε για εσάς.</li>
+                    <li>Δικαίωμα διόρθωσης: Να ζητήσετε τη διόρθωση ανακριβών στοιχείων.</li>
+                    <li>Δικαίωμα διαγραφής (δικαίωμα στη λήθη): Να ζητήσετε τη διαγραφή των δεδομένων σας, εφόσον δεν υπάρχει νομική υποχρέωση διατήρησής τους.</li>
+                    <li>Δικαίωμα ανάκλησης συγκατάθεσης: Να ανακαλέσετε οποιαδήποτε στιγμή τη συγκατάθεσή σας.</li>
+                </ul>
+                <p>Για να ασκήσετε οποιοδήποτε από τα παραπάνω δικαιώματα, επικοινωνήστε μαζί μας στο: angelos@advonmedia.com</p>
+                <h2>Χρόνος διατήρησης</h2>
+                <p>Διατηρούμε τα δεδομένα σας μόνο για όσο χρονικό διάστημα είναι απαραίτητο για την εκπλήρωση των σκοπών για τους οποίους συλλέχθηκαν ή μέχρι να μας ζητήσετε τη διαγραφή τους.</p>
+                <h2>Αλλαγές στην Πολιτική</h2>
+                <p>Ενδέχεται να ανανεώνουμε την παρούσα πολιτική περιστασιακά. Σας προτείνουμε να την ελέγχετε τακτικά.</p>
+            </section>
+        </div>
+
+        <div id="page-cookies" class="page-section">
+            <section class="py-24 max-w-4xl mx-auto px-6 legal-content glass-panel mt-10 rounded-3xl">
+                <h1>Πολιτική Cookies</h1>
+                <h2>Τι είναι τα Cookies;</h2>
+                <p>Τα cookies είναι μικρά αρχεία κειμένου που αποθηκεύονται στη συσκευή σας (υπολογιστής, tablet, κινητό) όταν επισκέπτεστε την ιστοσελίδα της Advon Media. Μας βοηθούν να κάνουμε την ιστοσελίδα μας πιο λειτουργική και φιλική προς τον χρήστη.</p>
+                <h2>Ποια Cookies χρησιμοποιούμε;</h2>
+                <ul>
+                    <li><strong>Απολύτως Απαραίτητα Cookies:</strong> Αυτά τα cookies είναι αναγκαία για τη σωστή λειτουργία της ιστοσελίδας. Χωρίς αυτά, κάποιες βασικές λειτουργίες δεν μπορούν να προσφερθούν. Δεν απαιτούν τη συγκατάθεσή σας.</li>
+                    <li><strong>Cookies Επιδόσεων / Αναλυτικά:</strong> Αυτά τα cookies συλλέγουν ανώνυμες πληροφορίες για το πώς οι επισκέπτες χρησιμοποιούν την ιστοσελίδα. Μας βοηθούν να βελτιώσουμε την απόδοση του site. (π.χ. Google Analytics).</li>
+                    <li><strong>Cookies Λειτουργικότητας:</strong> Επιτρέπουν στην ιστοσελίδα να θυμάται τις επιλογές σας (π.χ. γλώσσα) για να σας προσφέρει μια πιο εξατομικευμένη εμπειρία.</li>
+                    <li><strong>Cookies Στόχευσης / Διαφήμισης:</strong> Μπορεί να χρησιμοποιηθούν για την παροχή διαφημίσεων πιο σχετικών με τα ενδιαφέροντά σας.</li>
+                </ul>
+                <h2>Πώς να διαχειριστείτε τα Cookies</h2>
+                <p>Όταν μπαίνετε στην ιστοσελίδα μας για πρώτη φορά, εμφανίζεται ένα αναδυόμενο παράθυρο (cookie banner) που σας ζητά να επιλέξετε ποια cookies αποδέχεστε. Επιπλέον, μπορείτε να αλλάξετε τις ρυθμίσεις του περιηγητή (browser) σας για να απορρίψετε ή να διαγράψετε τα cookies οποιαδήποτε στιγμή.</p>
+                <p>Σημείωση: Η απενεργοποίηση ορισμένων cookies ενδέχεται να επηρεάσει τη λειτουργικότητα της ιστοσελίδας μας. Για περισσότερες πληροφορίες σχετικά με τα δεδομένα σας, παρακαλούμε δείτε την Πολιτική Απορρήτου.</p>
+            </section>
+        </div>
+
+        <div id="page-terms" class="page-section">
+            <section class="py-24 max-w-4xl mx-auto px-6 legal-content glass-panel mt-10 rounded-3xl">
+                <h1>Όροι Χρήσης</h1>
+                <h2>Αποδοχή των Όρων</h2>
+                <p>Η χρήση της ιστοσελίδας της Advon Media συνεπάγεται την πλήρη και ανεπιφύλακτη αποδοχή των παρακάτω όρων χρήσης. Εάν δεν συμφωνείτε με αυτούς τους όρους, παρακαλούμε να μην χρησιμοποιείτε την ιστοσελίδα μας. Η επιχείρηση με την επωνυμία "Advon Media" εδρεύει στo [Συμπληρώστε Διεύθυνση / Πόλη] με ΑΦΜ [Συμπληρώστε ΑΦΜ] / ΔΟΥ [Συμπληρώστε ΔΟΥ].</p>
+                <h2>Παρεχόμενες Υπηρεσίες & Πληροφορίες</h2>
+                <p>Οι πληροφορίες που παρουσιάζονται στην ιστοσελίδα σχετικά με τις υπηρεσίες μας είναι ακριβείς και ενημερωμένες. Ωστόσο, η Advon Media διατηρεί το δικαίωμα να τροποποιεί τις υπηρεσίες και τις τιμές (όπου αναγράφονται) χωρίς προειδοποίηση.</p>
+                <h2>Πνευματική Ιδιοκτησία</h2>
+                <p>Όλο το περιεχόμενο της ιστοσελίδας, συμπεριλαμβανομένων κειμένων, γραφικών, λογοτύπων, φωτογραφιών (και του παρουσιαζόμενου Πορτφόλιο) αποτελεί πνευματική ιδιοκτησία της Advon Media και προστατεύεται από την ελληνική και διεθνή νομοθεσία περί πνευματικών δικαιωμάτων. Απαγορεύεται η αντιγραφή, αναπαραγωγή ή αναδημοσίευση χωρίς την έγγραφη άδειά μας.</p>
+                <h2>Περιορισμός Ευθύνης</h2>
+                <p>Η Advon Media δεν ευθύνεται για τυχόν τεχνικά προβλήματα που μπορεί να προκύψουν κατά την πρόσβαση των χρηστών στον ιστότοπο. Επίσης, δεν φέρουμε ευθύνη για το περιεχόμενο εξωτερικών συνδέσμων (links) που ενδέχεται να υπάρχουν στην ιστοσελίδα μας (π.χ. links προς τα websites των πελατών μας στο Πορτφόλιο).</p>
+                <h2>Υποχρεώσεις Χρηστών</h2>
+                <p>Οι χρήστες της ιστοσελίδας οφείλουν να τη χρησιμοποιούν σύμφωνα με τον νόμο και τα χρηστά ήθη. Απαγορεύεται η χρήση της ιστοσελίδας για την αποστολή κακόβουλου λογισμικού, ανεπιθύμητης αλληλογραφίας (spam) ή περιεχομένου που είναι παράνομο ή προσβλητικό.</p>
+                <h2>Επικοινωνία</h2>
+                <p>Για οποιαδήποτε απορία σχετικά με τους Όρους Χρήσης ή τις υπηρεσίες μας, μπορείτε να επικοινωνήσετε μαζί μας: Email: angelos@advonmedia.com | Instagram: @advon_media</p>
+            </section>
+        </div>
+    </main>
+
+    <!-- GLOBAL CONTACT SECTION (Shows on all pages at bottom) -->
+    <section id="contact" class="py-32 relative border-t border-electric-cyan/10 bg-gradient-to-b from-[#050a0e] to-[#0a1418] z-20">
+        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+            <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">ΕΠΙΚΟΙΝΩΝΙΑ</span>
+            <h2 class="text-5xl md:text-7xl font-black font-display mb-16 text-white">Ας Συνεργαστούμε</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <!-- Contact Form -->
+                <div class="glass-panel p-10 rounded-3xl text-left">
+                    <h3 class="text-3xl font-black mb-6 text-white">Εκδήλωση Ενδιαφέροντος</h3>
+                    <p class="text-gray-400 mb-8">Συμπληρώστε τη φόρμα και ένας εκπρόσωπός μας θα επικοινωνήσει μαζί σας μέσω email ή τηλεφώνου εντός της ίδιας ημέρας.</p>
+                    <form id="my-form" action="https://formspree.io/f/xkopgoaj" method="POST" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-bold text-electric-cyan mb-2 uppercase tracking-wider">Όνομα / Επωνυμία</label>
+                            <input type="text" name="name" required class="w-full bg-[#050a0e]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-electric-cyan transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-electric-cyan mb-2 uppercase tracking-wider">Email</label>
+                            <input type="email" name="email" required class="w-full bg-[#050a0e]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-electric-cyan transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-electric-cyan mb-2 uppercase tracking-wider">Τηλέφωνο</label>
+                            <input type="tel" name="phone" required class="w-full bg-[#050a0e]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-electric-cyan transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-electric-cyan mb-2 uppercase tracking-wider">Μήνυμα / Υπηρεσία που σας ενδιαφέρει</label>
+                            <textarea name="message" rows="4" required class="w-full bg-[#050a0e]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-electric-cyan transition-colors resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-4 bg-electric-cyan text-[#050a0e] font-black uppercase tracking-widest rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(71,200,245,0.3)]">
+                            Αποστολή
+                        </button>
+                        <p id="my-form-status" class="mt-4 text-center"></p>
+                    </form>
+                </div>
+                
+                <!-- Calendar -->
+                <div class="glass-panel p-10 rounded-3xl text-left flex flex-col justify-center">
+                     <h3 class="text-3xl font-black mb-6 text-white">Κλείστε Ραντεβού</h3>
+                     <p class="text-gray-400 mb-8">Επιλέξτε την ημέρα και ώρα που σας εξυπηρετεί για μια δωρεάν συμβουλευτική κλήση.</p>
+                     <div class="embedded-booking" data-url="https://advonmedia.trafft.com" data-query="&t=s&uuid=1003c403-d56e-439b-876a-c563b3127470" data-employee="aggelos-metrides" data-lang="el" data-autoresize="0" data-showsidebar="1" data-showservices="0" style="min-width: 320px; height: 768px; border-radius: 1rem; overflow: hidden; background: #fff;"></div>
+                </div>
+            </div>
+
+            <!-- Contact Tiles -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <a href="mailto:angelos@advonmedia.com" class="group glass-panel p-10 rounded-3xl transition-all duration-300 hover:bg-electric-cyan/5">
+                    <div class="w-20 h-20 bg-electric-cyan/10 rounded-2xl flex items-center justify-center mx-auto mb-8 text-electric-cyan group-hover:bg-electric-cyan group-hover:text-[#050a0e] transition-all">
+                        <i data-lucide="mail" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-2xl font-black mb-3 text-white">Email</h3>
+                    <p class="text-electric-cyan flex items-center justify-center gap-2 font-bold tracking-wide">angelos@advonmedia.com</p>
+                </a>
+                <a href="https://www.instagram.com/advon_media" target="_blank" class="group glass-panel p-10 rounded-3xl transition-all duration-300 hover:bg-electric-cyan/5">
+                    <div class="w-20 h-20 bg-electric-cyan/10 rounded-2xl flex items-center justify-center mx-auto mb-8 text-electric-cyan group-hover:bg-electric-cyan group-hover:text-[#050a0e] transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-black mb-3 text-white">Instagram</h3>
+                    <p class="text-electric-cyan flex items-center justify-center gap-2 font-bold tracking-wide">@advon_media</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- GLOBAL FOOTER -->
+    <footer class="py-10 bg-[#050a0e] border-t border-electric-cyan/30 text-gray-400 relative z-20">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-4">
+                <img src="https://assets.cdn.filesafe.space/NkFUgZER3rrdnofCwAIl/media/648dd017a1f733fa5b51e5e9.png" alt="Advon Media" width="32" height="32" class="h-8 w-auto opacity-50">
+                <p class="text-sm font-semibold">© 2026 Advon Media. Με επιφύλαξη παντός δικαιώματος.</p>
+            </div>
+            <div class="flex gap-6 text-sm font-bold uppercase flex-wrap justify-center">
+                <a href="#/privacy-policy" class="hover:text-electric-cyan transition-colors">Πολιτική Απορρήτου</a>
+                <a href="#/cookies-policy" class="hover:text-electric-cyan transition-colors">Πολιτική Cookies</a>
+                <a href="#/terms-of-use" class="hover:text-electric-cyan transition-colors">Όροι Χρήσης</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BLOG MODAL -->
+    <div id="blog-modal-overlay" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+        <div class="absolute inset-0 bg-[#050a0e]/90 backdrop-blur-md" onclick="closeBlogModal()"></div>
+        <div id="blog-modal-content" class="relative bg-[#0a1418]/95 backdrop-blur-xl border border-electric-cyan/50 w-full max-w-3xl max-h-[85vh] overflow-y-auto rounded-3xl shadow-[0_0_60px_rgba(71,200,245,0.2)]">
+            <div class="sticky top-0 right-0 p-4 flex justify-end bg-gradient-to-b from-[#0a1418] to-transparent z-10">
+                <button onclick="closeBlogModal()" class="p-2 rounded-full bg-electric-cyan/10 hover:bg-electric-cyan hover:text-[#050a0e] text-electric-cyan transition-all">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div class="px-8 pb-10 pt-2 legal-content" id="blog-modal-body"></div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        // --- 1. SPA Hash Routing Logic ---
+        function handleRoute() {
+            const hash = window.location.hash || '#/';
+            const views = document.querySelectorAll('.page-section');
+            views.forEach(v => v.classList.remove('active'));
+
+            let viewId = 'page-home';
+            if (hash.startsWith('#/kataskevi-istoselidas')) viewId = 'page-website';
+            else if (hash.startsWith('#/google-reviews-nfc')) viewId = 'page-nfc';
+            else if (hash.startsWith('#/diaxeirisi-social-media')) viewId = 'page-social';
+            else if (hash.startsWith('#/faq')) viewId = 'page-faq';
+            else if (hash.startsWith('#/blog')) viewId = 'page-blog';
+            else if (hash.startsWith('#/privacy-policy')) viewId = 'page-privacy';
+            else if (hash.startsWith('#/cookies-policy')) viewId = 'page-cookies';
+            else if (hash.startsWith('#/terms-of-use')) viewId = 'page-terms';
+            
+            document.getElementById(viewId).classList.add('active');
+            window.scrollTo(0, 0);
+            
+            // Close mobile menu
+            document.getElementById('mobile-menu').style.maxHeight = '0px';
+
+            // Scroll to hash anchor logic
+            setTimeout(() => {
+                if (hash.includes('#portfolio') && document.getElementById('portfolio')) {
+                    document.getElementById('portfolio').scrollIntoView({behavior: 'smooth'});
+                } else if (hash.includes('#reviews') && document.getElementById('reviews')) {
+                    document.getElementById('reviews').scrollIntoView({behavior: 'smooth'});
+                } else if (hash.includes('#contact') || hash === '#contact') {
+                    document.getElementById('contact').scrollIntoView({behavior: 'smooth'});
+                }
+            }, 100);
+        }
+        window.addEventListener('hashchange', handleRoute);
+        window.addEventListener('load', handleRoute);
+
+        // --- 2. Mobile Menu Toggle ---
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.style.maxHeight && menu.style.maxHeight !== '0px') {
+                menu.style.maxHeight = '0px';
+            } else {
+                menu.style.maxHeight = '500px';
+            }
+        });
+
+        // --- 3. FAQ Logic ---
+        window.toggleFaq = function(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+                content.style.maxHeight = '0px';
+                icon.style.transform = 'rotate(0deg)';
+                button.classList.remove('text-electric-cyan');
+            } else {
+                content.style.maxHeight = content.scrollHeight + 'px';
+                icon.style.transform = 'rotate(180deg)';
+                button.classList.add('text-electric-cyan');
+            }
+        }
+
+        // --- 4. Portfolio Data & Rendering ---
+        const portfolioItems = [
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/gerou.jpg', url: 'https://mairagerou-psychologist.gr', name: 'Μάιρα Γέρου, Ψυχολόγος' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/polymerop.jpg', url: 'https://polymeropoulou-psychologos.gr', name: 'Λαμπρινή Πολυμεροπούλου, Ψυχολόγος' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/sorokina.jpg', url: 'https://sorokina-psychologist.gr', name: 'ΜΑΡΙΝΑ ΣΟΡΟΚΙΝΑ Ψυχολόγος' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/papazog.jpg', url: 'https://papazoglou-psychologist.gr', name: 'Σάκης Παπάζογλου, Ψυχολόγος' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/demeroutis.jpg', url: 'http://demeroutis-psychverse.gr', name: 'Θοδωρής Δεμερούτης Ψυχολόγος' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/dilana.jpg', url: 'https://dilana-psychologos.gr', name: 'Ελένη Δηλανά Ψυχολόγος' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/keletseki.jpg', url: 'https://keletseki-psychotherapy.gr', name: 'Κατερίνα Κελετσέκη Ψυχολόγος' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/mixalop.jpg', url: 'https://michalopoulou-ioulia-psychotherapy.gr', name: 'Ιουλία Μιχαλοπούλου Ψυχολόγος' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/alatsi.jpg', url: 'https://christinaalatsi.gr', name: 'Χριστίνα Αλάτση' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/mixa.jpg', url: 'https://elenimicha-psychologist.gr', name: 'Ελένη Μίχα Ψυχολόγος' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/sarlaki.jpg', url: 'https://mairasarlaki.gr', name: 'Μάιρα Σαρλάκη Ψυχολόγος' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/vetta.jpg', url: 'https://marietavetta-psychotherapy.gr', name: 'Μαριέτα Βέττα Ψυχοθεραπεύτρια' }
+        ];
+
+        document.getElementById('portfolio-grid-container').innerHTML = portfolioItems.map(item => `
+            <a href="${item.url}" target="_blank" class="group relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-white/10 block">
+                <img src="${item.image}" loading="lazy" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050a0e] via-[#050a0e]/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">
+                    <h3 class="text-xl font-black text-white mb-3">${item.name}</h3>
+                    <span class="inline-flex items-center gap-2 px-4 py-2 bg-electric-cyan/20 border border-electric-cyan/50 rounded-full text-xs font-bold text-electric-cyan uppercase">
+                        Προβολή Ιστοσελίδας <i data-lucide="external-link" class="w-3 h-3"></i>
+                    </span>
+                </div>
+            </a>
+        `).join('');
+
+        // --- 5. Reviews Data & Rendering ---
+        const reviews = [
+            { name: 'Χριστόφορος Παπ', text: 'Άμεση ανταπόκριση σε αυτά που ήθελα να γίνουν για την ιστοσελίδα μου, είμαι πολύ ευχαριστημένος με τη δουλειά τους' },
+            { name: 'Constantina Skourla', text: 'Εξαιρετική συνεργασία.' },
+            { name: 'Ariadne Ntinopoulou', text: 'Εξαιρετική συνεργασία από την αρχή μέχρι το τέλος! Η ομάδα έδειξε πραγματικό επαγγελματισμό, συνέπεια και δημιουργικότητα σε κάθε στάδιο της κατασκευής του site μου.' },
+            { name: 'Ελένη Μίχα', text: 'Πολύ ευχάριστη συνεργασία. Προθυμία και όρεξη για customized δουλειά.' },
+            { name: 'Σαββινα Εμιρζα', text: 'Ο Άγγελος πάντα παρών σε ο,τιδηποτε χρειάστηκε , άμεσος και εξυπηρετικότατος! Πολύ καλή και γρήγορη δουλειά !' },
+            { name: 'Katerina Keletseki', text: 'Ανταποκρίθηκαν άμεσα σε κάθε μου ανάγκη, με ταχύτητα και επαγγελματισμό. Το τελικό αποτέλεσμα ανταποκρίνεται πλήρως σε αυτό που είχα φανταστεί. Τους συστήνω ανεπιφύλακτα!' },
+            { name: 'Thodoris Demeroutis', text: 'Η εμπειρία μου με την ομάδα της Advon Media ήταν εξαιρετική! Επαγγελματίες, άμεσοι, ευγενικοί και το αποτέλεσμα ήταν υπέροχο.' },
+            { name: 'Εύα Λα', text: 'Εξαιρετική εμπειρία συνεργασίας. Η ομάδα που ανέλαβε την κατασκευή της ιστοσελίδας μου έκανε πραγματικά άψογη δουλειά.' },
+            { name: 'Alex Parthenis', text: 'Πολύ εξυπηρετικοί! Άψογη συνεργασία για την ιστοσελίδα μου ως Ψυχολόγος και είμαι πολύ ικανοποιημένος με το αποτέλεσμα!' },
+            { name: 'Maira Gerou', text: 'Έμεινα πολύ ευχαριστημένη απο τη συνεργασία μας. Η Advon Media χαρακτηρίζεται απο ευγένεια και συνέπεια!' }
+        ];
+
+        document.getElementById('reviews-scroll').innerHTML = `
+            <div class="flex flex-col gap-6 py-4">
+                ${[...reviews, ...reviews].map(r => `
+                    <div class="glass-panel p-6 rounded-2xl flex flex-col gap-4 border border-white/5">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-electric-cyan/20 border border-electric-cyan/50 flex items-center justify-center text-xl font-bold text-electric-cyan uppercase">${r.name.charAt(0)}</div>
+                            <div>
+                                <h4 class="font-bold text-white tracking-wide">${r.name}</h4>
+                                <div class="flex gap-1 text-[#FBBC05] mt-1"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 text-sm font-medium leading-relaxed">"${r.text}"</p>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+
+        // --- 6. Blog Posts Data & Modals ---
+        const blogs = {
+            'blog1': `<h1>Η Ιστοσελίδα σου Κερδίζει Πελάτες — ή τους Χάνει; Η Αλήθεια που Κανείς δεν σου Λέει</h1><p>Κάθε μέρα, υποψήφιοι πελάτες ψάχνουν ακριβώς αυτό που προσφέρεις. Γράφουν στη Google, βλέπουν τα αποτελέσματα, και κλικάρουν στα πρώτα που φαίνονται αξιόπιστα. Αν η επιχείρησή σου δεν έχει επαγγελματική ιστοσελίδα — ή αν αυτή που έχεις φαίνεται σαν να φτιάχτηκε το 2012 — αυτοί οι πελάτες πάνε κατευθείαν στον ανταγωνιστή σου. Δεν είναι υπερβολή. Είναι η πραγματικότητα του ψηφιακού marketing για τοπικές επιχειρήσεις το 2025.</p><h2>Η Πρώτη Εντύπωση Γίνεται Πλέον Online</h2><p>Λέμε εδώ και χρόνια ότι έχεις μία μόνο ευκαιρία να κάνεις μια καλή πρώτη εντύπωση. Σήμερα γίνεται σε μια οθόνη — συνήθως σε κινητό, συνήθως μέσα σε τρία δευτερόλεπτα. Μια επαγγελματική ιστοσελίδα, αντίθετα, εκπέμπει αξιοπιστία πριν διαβαστεί έστω και μια λέξη.</p><h2>Το Τοπικό SEO που Χάνεις Κάθε Μέρα</h2><p>Η Google αγαπά τις μικρές, εξειδικευμένες επιχειρήσεις — εφόσον έχουν καλά βελτιστοποιημένες ιστοσελίδες. Χωρίς σωστά χτισμένη ιστοσελίδα, ουσιαστικά δεν υπάρχεις στα αποτελέσματα.</p><h2>Το Κρυφό Κόστος της Απουσίας</h2><p>Αν μια βελτιστοποιημένη ιστοσελίδα αυξήσει τους μηνιαίους πελάτες σου έστω και κατά 3–4 — κάτι συντηρητικό — παράγεις εκατοντάδες ευρώ επιπλέον κάθε μήνα. Στην Advon Media κατασκευάζουμε ιστοσελίδες δωρεάν. Πληρώνεις μόνο για το hosting — €10,83/μήνα.</p>`,
+            'blog2': `<h1>Google Reviews το 2025: Το Νόμισμα της Τοπικής Επιχείρησης</h1><p>Οι αξιολογήσεις σου στη Google είναι η φήμη σου. Και η φήμη σου τώρα ζει δημόσια, στο διαδίκτυο. Μια επιχείρηση με 80 αξιολογήσεις και μέσο όρο 4,8 αστέρια θα ξεπεράσει σταθερά στις κατατάξεις έναν ανταγωνιστή με 15 αξιολογήσεις.</p><h2>Η Λύση NFC: Αξιολογήσεις Χωρίς Τριβή</h2><p>Η πιο αποτελεσματική μέθοδος συλλογής αξιολογήσεων το 2025 είναι μια φυσική κάρτα με ενσωματωμένο chip NFC. Κατευθύνει αμέσως τον πελάτη στη σελίδα Google αξιολόγησής σου με ένα απλό άγγιγμα. Με 25€ εφάπαξ μπορείς να το αποκτήσεις από εμάς.</p>`,
+            'blog3': `<h1>Social Media για Τοπικές Επιχειρήσεις: Τι Λειτουργεί Πραγματικά</h1><p>Υπάρχει ουσιαστική διαφορά μεταξύ του να «έχεις» social media και του να τα «χρησιμοποιείς» στρατηγικά. Οι περισσότερες επιχειρήσεις ποστάρουν όταν θυμηθούν. Μια στρατηγική social media, αντίθετα, είναι σκόπιμη. Να εμφανίζεσαι τρεις φορές την εβδομάδα, κάθε εβδομάδα, για μήνες. Αυτό ακριβώς προσφέρουμε με 87€/μήνα.</p>`,
+            'blog4': `<h1>Ο Κανόνας των 5 Δευτερολέπτων</h1><p>Αν ένας επισκέπτης δεν καταλάβει τι προσφέρεις μέσα σε 5 δευτερόλεπτα, χάνεις τον πελάτη. Η αρχική σελίδα σου πρέπει να περιέχει σαφή επικεφαλίδα, μία πρόσκληση σε δράση και δείκτες εμπιστοσύνης. Στην Advon Media χτίζουμε ιστοσελίδες που περνούν το τεστ.</p>`,
+            'blog5': `<h1>Πώς να Ανέβεις στην Κορυφή της Google</h1><p>Οργανικό SEO vs Πληρωμένες Διαφημίσεις. Επένδυσε σε μια βελτιστοποιημένη ιστοσελίδα και Google Business Profile αντί να πληρώνεις εκατοντάδες ευρώ σε διαφημίσεις. Κάθε ιστοσελίδα που χτίζουμε περιλαμβάνει πλήρη βελτιστοποίηση τοπικού SEO.</p>`,
+            'blog6': `<h1>Το Ψηφιακό Marketing Stack του 2026</h1><p>Το ακριβές σύστημα: Επαγγελματική Ιστοσελίδα (Δωρεάν + Hosting 10.83/m), Google Profile (Δωρεάν), NFC Κάρτα (25€), Διαχείριση Social (87€/m). Με κάτω από €100 τον μήνα έχεις πλήρη επαγγελματική παρουσία.</p>`
+        };
+
+        window.openBlogModal = function(id) {
+            document.getElementById('blog-modal-body').innerHTML = blogs[id];
+            document.getElementById('blog-modal-overlay').classList.remove('hidden');
+            document.getElementById('blog-modal-overlay').classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+        window.closeBlogModal = function() {
+            document.getElementById('blog-modal-overlay').classList.add('hidden');
+            document.getElementById('blog-modal-overlay').classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // --- 7. Initialize Canvas & Icons & Form ---
+        lucide.createIcons();
+
+        const canvas = document.getElementById('star-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, stars = [];
+
+        function initStars() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            stars = [];
+            for (let i = 0; Math.floor(width * height / 1200) > i; i++) {
+                stars.push({
+                    x: Math.random() * width, y: Math.random() * height,
+                    size: Math.random() * 2 + 0.5, opacity: Math.random(),
+                    speed: Math.random() * 0.05 + 0.01, twinkleSpeed: Math.random() * 0.02 + 0.005, twinkleDir: 1
+                });
+            }
+        }
+        function animateStars() {
+            ctx.clearRect(0, 0, width, height);
+            stars.forEach(star => {
+                star.opacity += star.twinkleSpeed * star.twinkleDir;
+                if (star.opacity > 1 || 0.2 > star.opacity) star.twinkleDir *= -1;
+                star.y -= star.speed;
+                if (0 > star.y) star.y = height;
+                ctx.fillStyle = `rgba(71, 200, 245, ${Math.abs(star.opacity) * 0.8})`; 
+                ctx.beginPath(); ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2); ctx.fill();
+            });
+            requestAnimationFrame(animateStars);
+        }
+        window.addEventListener('resize', initStars);
+        initStars(); animateStars();
+
+        // Load Trafft Calendar dynamically
+        if (!document.getElementById('trafft-script')) {
+            const script = document.createElement('script');
+            script.id = 'trafft-script';
+            script.src = 'https://advonmedia.trafft.com/embed.js';
+            script.async = true;
+            document.body.appendChild(script);
+        }
+
+        // Formspree Integration
+        document.getElementById('my-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var form = event.target;
+            var status = document.getElementById("my-form-status");
+            var submitBtn = form.querySelector('button[type="submit"]');
+            var originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true; submitBtn.innerHTML = 'Αποστολή...';
+
+            fetch(form.action, {
+                method: form.method,
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                submitBtn.disabled = false; submitBtn.innerHTML = originalText;
+                if (response.ok) {
+                    status.innerHTML = "Ευχαριστούμε! Θα επικοινωνήσουμε σύντομα.";
+                    status.className = "mt-4 text-green-400 font-bold";
+                    form.reset();
+                } else {
+                    status.innerHTML = "Υπήρξε πρόβλημα κατά την αποστολή.";
+                    status.className = "mt-4 text-red-400 font-bold";
+                }
+            }).catch(error => {
+                submitBtn.disabled = false; submitBtn.innerHTML = originalText;
+                status.innerHTML = "Υπήρξε πρόβλημα κατά την αποστολή.";
+                status.className = "mt-4 text-red-400 font-bold";
+            });
+        });
+
+    </script>
+</body>
+</html>

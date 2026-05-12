@@ -67,7 +67,7 @@
       ::-webkit-scrollbar-thumb:hover { background: #47c8f5; box-shadow: 0 0 10px #47c8f5; }
       
       /* --- SPA Router Classes --- */
-      .page-section { display: none; opacity: 0; animation: fadeIn 0.5s forwards; }
+      .page-section { display: none; opacity: 0; animation: fadeIn 0.4s forwards; }
       .page-section.active { display: block; opacity: 1; }
       @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -145,6 +145,21 @@
       .blog-format ul { list-style-type: disc; margin-left: 1.5rem; color: #d1d5db; margin-bottom: 1.5rem; }
       .blog-format li { margin-bottom: 0.5rem; line-height: 1.6; }
     </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Advon Media",
+  "url": "https://advonmedia.com/",
+  "logo": "https://assets.cdn.filesafe.space/NkFUgZER3rrdnofCwAIl/media/648dd017a1f733fa5b51e5e9.png",
+  "description": "Εταιρεία Digital Marketing και Κατασκευής Ιστοσελίδων στην Ελλάδα.",
+  "areaServed": {
+    "@type": "Country",
+    "name": "Greece"
+  }
+}
+</script>
 </head>
 <body class="font-body antialiased relative">
 
@@ -171,12 +186,9 @@
             </nav>
 
             <div class="flex items-center gap-2 md:gap-4">
-                <button onclick="triggerLanguageSwitch()" id="mobile-lang-btn" class="md:hidden flex items-center gap-2 px-3 py-1.5 rounded-lg border border-electric-cyan/40 bg-electric-cyan/10 text-xs font-bold text-electric-cyan hover:bg-electric-cyan hover:text-[#050a0e] transition-all duration-300 cursor-pointer">
-                    <!-- Injected via JS -->
-                </button>
-                
-                <button onclick="triggerLanguageSwitch()" id="lang-btn" class="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-electric-cyan/10 border border-electric-cyan/40 text-xs font-bold text-electric-cyan hover:bg-electric-cyan hover:text-[#050a0e] hover:shadow-[0_0_25px_rgba(71,200,245,0.6)] transition-all duration-300 cursor-pointer">
-                    <!-- Injected via JS -->
+                <!-- Language Toggle -->
+                <button onclick="toggleLang()" id="lang-btn" class="flex items-center gap-2 px-4 py-2 rounded-full bg-electric-cyan/10 border border-electric-cyan/40 text-xs font-bold text-electric-cyan hover:bg-electric-cyan hover:text-[#050a0e] hover:shadow-[0_0_25px_rgba(71,200,245,0.6)] transition-all duration-300 cursor-pointer">
+                    <span id="lang-flag">🇬🇧</span> <span id="lang-label">EN</span>
                 </button>
                 
                 <button class="md:hidden text-electric-cyan p-2 bg-electric-cyan/10 rounded-lg" onclick="toggleMobileMenu()">
@@ -330,15 +342,73 @@
     <!-- GLOBAL CONTACT SECTION (Always at bottom)      -->
     <!-- ============================================== -->
     <section id="contact" class="py-32 relative border-t border-electric-cyan/10 bg-gradient-to-b from-[#050a0e] to-[#0a1418] z-20">
-        <div class="max-w-7xl mx-auto px-6 text-center relative z-10" id="contact-container">
-            <!-- Injected via JS -->
+        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+            <span id="contact-badge" class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">ΕΠΙΚΟΙΝΩΝΙΑ</span>
+            <h2 id="contact-title" class="text-4xl md:text-6xl font-black font-display mb-16 text-white">Ας Συνεργαστούμε</h2>
+            
+            <div class="grid lg:grid-cols-2 gap-8 mb-16 items-stretch">
+                <!-- Form -->
+                <div class="glass-panel p-8 md:p-10 rounded-3xl text-left flex flex-col h-full w-full">
+                    <h3 id="contact-form-title" class="text-2xl md:text-3xl font-black mb-6 text-white font-display">Εκδήλωση Ενδιαφέροντος</h3>
+                    <p id="contact-form-sub" class="text-gray-400 mb-8">Συμπληρώστε τη φόρμα και ένας εκπρόσωπός μας θα επικοινωνήσει μαζί σας μέσω email ή τηλεφώνου εντός της ίδιας ημέρας.</p>
+                    <form id="contact-form" action="https://formspree.io/f/xkopgoaj" method="POST" class="space-y-6 flex-grow flex flex-col justify-between">
+                        <div class="space-y-6">
+                            <div><label id="lbl-name" class="block text-sm font-bold text-electric-cyan mb-2 uppercase tracking-wider">Όνομα / Επωνυμία</label><input type="text" name="name" required class="w-full bg-[#050a0e]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-electric-cyan transition-colors"></div>
+                            <div><label id="lbl-email" class="block text-sm font-bold text-electric-cyan mb-2 uppercase tracking-wider">Email</label><input type="email" name="email" required class="w-full bg-[#050a0e]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-electric-cyan transition-colors"></div>
+                            <div><label id="lbl-phone" class="block text-sm font-bold text-electric-cyan mb-2 uppercase tracking-wider">Τηλέφωνο</label><input type="tel" name="phone" required class="w-full bg-[#050a0e]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-electric-cyan transition-colors"></div>
+                            <div><label id="lbl-msg" class="block text-sm font-bold text-electric-cyan mb-2 uppercase tracking-wider">Μήνυμα / Υπηρεσία που σας ενδιαφέρει</label><textarea name="message" rows="4" required class="w-full bg-[#050a0e]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-electric-cyan transition-colors resize-none"></textarea></div>
+                        </div>
+                        <div class="mt-6">
+                            <button id="contact-submit-btn" type="submit" class="w-full py-4 bg-electric-cyan text-[#050a0e] font-black uppercase tracking-widest rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(71,200,245,0.3)] hover:shadow-[0_0_40px_rgba(255,255,255,0.5)]">Αποστολή</button>
+                            <p id="contact-form-status" class="mt-4 text-center font-bold"></p>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Booking -->
+                <div class="glass-panel p-8 md:p-10 rounded-3xl text-left flex flex-col h-full w-full">
+                     <h3 id="contact-book-title" class="text-2xl md:text-3xl font-black mb-6 text-white font-display">Κλείστε Ραντεβού</h3>
+                     <p id="contact-book-sub" class="text-gray-400 mb-8">Επιλέξτε την ημέρα και ώρα που σας εξυπηρετεί για μια δωρεάν συμβουλευτική κλήση.</p>
+                     <div class="w-full overflow-hidden rounded-xl bg-white flex-grow flex flex-col" style="min-height: 550px;">
+                        <div class="embedded-booking flex-grow" data-url="https://advonmedia.trafft.com" data-query="&t=s&uuid=1003c403-d56e-439b-876a-c563b3127470" data-employee="aggelos-metrides" data-lang="el" data-autoresize="1" data-showsidebar="0" data-showservices="0" style="width: 100%; height: 100%;"></div>
+                     </div>
+                </div>
+            </div>
+
+            <!-- Contact Tiles -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <a href="mailto:angelos@advonmedia.com" class="group glass-panel p-8 rounded-3xl transition-all duration-300 hover:bg-electric-cyan/5">
+                    <div class="w-16 h-16 bg-electric-cyan/10 rounded-2xl flex items-center justify-center mx-auto mb-6 text-electric-cyan group-hover:bg-electric-cyan group-hover:text-[#050a0e] transition-all">
+                        <i data-lucide="mail" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-2 text-white">Email</h3>
+                    <p class="text-electric-cyan font-bold tracking-wide">angelos@advonmedia.com</p>
+                </a>
+                <a href="https://www.instagram.com/advon_media" target="_blank" class="group glass-panel p-8 rounded-3xl transition-all duration-300 hover:bg-electric-cyan/5">
+                    <div class="w-16 h-16 bg-electric-cyan/10 rounded-2xl flex items-center justify-center mx-auto mb-6 text-electric-cyan group-hover:bg-electric-cyan group-hover:text-[#050a0e] transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    </div>
+                    <h3 class="text-xl font-black mb-2 text-white">Instagram</h3>
+                    <p class="text-electric-cyan font-bold tracking-wide">@advon_media</p>
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- GLOBAL FOOTER -->
     <footer class="py-8 bg-[#050a0e] border-t border-electric-cyan/20 text-gray-400 relative z-20">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left" id="footer-content">
-            <!-- Injected via JS -->
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <div class="flex flex-col md:flex-row items-center gap-4">
+                <img src="https://assets.cdn.filesafe.space/NkFUgZER3rrdnofCwAIl/media/648dd017a1f733fa5b51e5e9.png" alt="Advon Media" class="h-8 w-auto opacity-50">
+                <p class="text-sm font-semibold" id="footer-rights">© 2026 Advon Media. Με επιφύλαξη παντός δικαιώματος.</p>
+            </div>
+            <div class="flex gap-4 md:gap-6 text-sm font-bold uppercase flex-wrap justify-center text-electric-cyan/80">
+                <a href="#/privacy-policy" class="hover:text-electric-cyan transition-colors" id="footer-p1">Πολιτική Απορρήτου</a>
+                <span class="text-white/20">|</span>
+                <a href="#/cookies-policy" class="hover:text-electric-cyan transition-colors" id="footer-p2">Πολιτική Cookies</a>
+                <span class="text-white/20">|</span>
+                <a href="#/terms-of-use" class="hover:text-electric-cyan transition-colors" id="footer-p3">Όροι Χρήσης</a>
+            </div>
         </div>
     </footer>
 
@@ -403,9 +473,9 @@
                     reviews: 'Αξιολογήσεις',
                     reviewsMain: 'Τι λένε οι πελάτες μας',
                     reviewsSub: 'Δείτε τι λένε οι πελάτες μας για τις ψηφιακές λύσεις που προσφέρουμε. Η ικανοποίησή σας είναι η μεγαλύτερη ανταμοιβή μας.',
-                    viewAllReviews: 'Δείτε Όλες τις Αξιολογήσεις',
+                    viewAllReviews: 'ΔΕΙΤΕ ΟΛΕΣ ΤΙΣ ΑΞΙΟΛΟΓΗΣΕΙΣ',
                     faq: 'Συχνές Ερωτήσεις',
-                    contact: 'Επικοινωνία',
+                    contact: 'ΕΠΙΚΟΙΝΩΝΙΑ',
                     contactMain: 'Ας Συνεργαστούμε',
                     viewSite: 'Προβολή Ιστοσελίδας',
                     formTitle: 'Εκδήλωση Ενδιαφέροντος',
@@ -418,7 +488,7 @@
                     bookTitle: 'Κλείστε Ραντεβού',
                     bookSub: 'Επιλέξτε την ημέρα και ώρα που σας εξυπηρετεί για μια δωρεάν συμβουλευτική κλήση.'
                 },
-                footer: { rights: 'Με επιφύλαξη παντός δικαιώματος.', p1: 'Πολιτική Απορρήτου', p2: 'Πολιτική Cookies', p3: 'Όροι Χρήσης' }
+                footer: { rights: '© 2026 Advon Media. Με επιφύλαξη παντός δικαιώματος.', p1: 'Πολιτική Απορρήτου', p2: 'Πολιτική Cookies', p3: 'Όροι Χρήσης' }
             },
             en: {
                 title: 'Advon Media | Digital Marketing Solutions',
@@ -449,9 +519,9 @@
                     reviews: 'Reviews',
                     reviewsMain: 'What Our Clients Say',
                     reviewsSub: 'See what our clients say about the digital solutions we provide. Your satisfaction is our greatest reward.',
-                    viewAllReviews: 'See All Reviews',
+                    viewAllReviews: 'SEE ALL REVIEWS',
                     faq: 'Frequently Asked Questions',
-                    contact: 'Contact',
+                    contact: 'CONTACT',
                     contactMain: "Let's Collaborate",
                     viewSite: 'Visit Website',
                     formTitle: 'Express Interest',
@@ -464,7 +534,7 @@
                     bookTitle: 'Book Appointment',
                     bookSub: 'Choose the day and time that suits you for a free consultation call.'
                 },
-                footer: { rights: 'All rights reserved.', p1: 'Privacy Policy', p2: 'Cookies Policy', p3: 'Terms of Use' }
+                footer: { rights: '© 2026 Advon Media. All rights reserved.', p1: 'Privacy Policy', p2: 'Cookies Policy', p3: 'Terms of Use' }
             }
         };
 
@@ -502,7 +572,7 @@
                         <div class="mt-10 p-8 rounded-2xl bg-white/5 border border-white/10">
                             <h3 class="text-2xl font-bold text-white mb-6 font-display">Πανεύκολη Διαδικασία Κατασκευής:</h3>
                             <p class="mb-4">Για να μειώσουμε τον χρόνο επένδυσης σας στην κατασκευή χρειαζόμαστε από εσάς μόνο:</p>
-                            <ul class="space-y-3 mb-6">
+                            <ul class="space-y-3 mb-6 text-base">
                                 <li class="flex gap-3"><i data-lucide="check" class="text-electric-cyan w-5 h-5 shrink-0 mt-0.5"></i> 1) Τις φωτογραφίες που θέλετε να περιλαμβάνει η ιστοσελίδα σας</li>
                                 <li class="flex gap-3"><i data-lucide="check" class="text-electric-cyan w-5 h-5 shrink-0 mt-0.5"></i> 2) Κάποια βασικά κείμενα για εσάς ή την επιχείρηση σας</li>
                                 <li class="flex gap-3"><i data-lucide="check" class="text-electric-cyan w-5 h-5 shrink-0 mt-0.5"></i> 3) Τις υπηρεσίες σας μονολεκτικά</li>
@@ -564,12 +634,10 @@
                         <div class="mt-10 p-8 rounded-2xl bg-electric-cyan/5 border border-electric-cyan/30 text-center">
                             <h3 class="text-xl font-black text-white mb-4">Αποτέλεσμα: Περισσότεροι Πελάτες & Επαγγελματική Παρουσία</h3>
                             <p class="mb-6">Με τη σωστή διαχείριση του Instagram, θα δείτε αυξημένη αλληλεπίδραση, μεγαλύτερη βάση πελατών, και ένα προφίλ που προσελκύει την προσοχή και δημιουργεί εμπιστοσύνη.</p>
-                            <p class="text-electric-cyan font-bold">Εγγραφείτε σήμερα και εξασφαλίστε την ειδική τιμή των 87€ μήνα. Στείλτε μας email στο angelos@advonmedia.com για περαιτέρω επικοινωνία.</p>
+                            <p class="text-electric-cyan font-bold">Εγγραφείτε σήμερα και εξασφαλίστε την ειδική τιμή των 87€ μήνα. Στείλτε μας email στο angelos@advonmedia.com.</p>
                         </div>
                     </div>
                 </div>`,
-                faqHtml: `<div class="text-center mb-16"><span class="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block">ΠΛΗΡΟΦΟΡΙΕΣ</span><h1 class="text-4xl md:text-5xl font-black font-display mb-4">Συχνές Ερωτήσεις</h1></div><div class="space-y-4" id="faq-inner-container"></div>`,
-                blogOverviewHtml: `<div class="text-center mb-20"><span class="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block">ΑΡΘΡΑ</span><h1 class="text-4xl md:text-5xl font-black font-display mb-4">Blog της Advon Media</h1><p class="text-gray-400 text-lg max-w-2xl mx-auto">Χρήσιμες συμβουλές και insights για την ψηφιακή παρουσία τοπικών επιχειρήσεων και ελεύθερων επαγγελματιών.</p></div><div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid"></div>`,
                 privacyHtml: `<div class="max-w-4xl mx-auto px-6 legal-format glass-panel p-10 rounded-3xl">
                     <h1>Πολιτική Απορρήτου & Προστασίας Προσωπικών Δεδομένων</h1>
                     <p><strong>Εισαγωγή:</strong> Η Advon Media (εφεξής η "Εταιρεία", "εμείς", "μας") σέβεται απόλυτα το απόρρητό σας και δεσμεύεται να προστατεύει τα προσωπικά σας δεδομένα. Η παρούσα Πολιτική Απορρήτου σας ενημερώνει για το πώς συλλέγουμε, χρησιμοποιούμε και προστατεύουμε τα δεδομένα σας όταν επισκέπτεστε την ιστοσελίδα μας ή χρησιμοποιείτε τις υπηρεσίες μας, σύμφωνα με τον Γενικό Κανονισμό Προστασίας Δεδομένων (GDPR).</p>
@@ -615,7 +683,7 @@
                         <p>Your website acts as your digital storefront, enhancing your professional image.</p>
                         <div class="mt-10 p-8 rounded-2xl bg-white/5 border border-white/10">
                             <h3 class="text-2xl font-bold text-white mb-6 font-display">Easy Creation Process:</h3>
-                            <ul class="space-y-3 mb-6">
+                            <ul class="space-y-3 mb-6 text-base">
                                 <li class="flex gap-3"><i data-lucide="check" class="text-electric-cyan w-5 h-5 shrink-0 mt-0.5"></i> 1) The photos you want to include</li>
                                 <li class="flex gap-3"><i data-lucide="check" class="text-electric-cyan w-5 h-5 shrink-0 mt-0.5"></i> 2) Some basic text about you</li>
                                 <li class="flex gap-3"><i data-lucide="check" class="text-electric-cyan w-5 h-5 shrink-0 mt-0.5"></i> 3) Your services</li>
@@ -681,8 +749,6 @@
                         </div>
                     </div>
                 </div>`,
-                faqHtml: `<div class="text-center mb-16"><span class="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block">INFORMATION</span><h1 class="text-4xl md:text-5xl font-black font-display mb-4">Frequently Asked Questions</h1></div><div class="space-y-4" id="faq-inner-container"></div>`,
-                blogOverviewHtml: `<div class="text-center mb-20"><span class="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block">ARTICLES</span><h1 class="text-4xl md:text-5xl font-black font-display mb-4">Advon Media Blog</h1><p class="text-gray-400 text-lg max-w-2xl mx-auto">Useful tips and insights for the digital presence of local businesses and freelancers.</p></div><div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid"></div>`,
                 privacyHtml: `<div class="max-w-4xl mx-auto px-6 legal-format glass-panel p-10 rounded-3xl">
                     <h1>Privacy Policy & Personal Data Protection</h1>
                     <p><strong>Introduction:</strong> Advon Media (hereinafter the "Company", "we", "us") fully respects your privacy and is committed to protecting your personal data according to the GDPR.</p>
@@ -711,70 +777,15 @@
             }
         };
 
-        const faqsData = {
-            el: [
-                { q: 'Τι είναι η Advon Media;', a: 'Είμαστε ένα ψηφιακό marketing agency που ειδικεύεται σε στρατηγική, social media και περιεχόμενο. Δουλεύουμε κυρίως με τοπικές επιχειρήσεις και ελεύθερους επαγγελματίες — ψυχολόγους, θεραπευτές, οδοντίατρους, παιδίατρους, φυσικοθεραπευτές, coaches και κάθε επαγγελματία που θέλει να χτίσει αξιόπιστη ψηφιακή παρουσία και να προσελκύσει νέους πελάτες online.' },
-                { q: 'Ποιες υπηρεσίες προσφέρετε;', a: 'Προσφέρουμε τρεις βασικές υπηρεσίες:<br><br>1. <strong>Κατασκευή Ιστοσελίδας</strong> — Επαγγελματική, SEO-βελτιστοποιημένη ιστοσελίδα.<br>2. <strong>Ανέπαφη Βάση Αξιολογήσεων (NFC)</strong> — Σύστημα που βοηθά την επιχείρησή σου να συλλέγει 50+ νέες αξιολογήσεις Google κάθε μήνα.<br>3. <strong>Διαχείριση Social Media</strong> — Επαγγελματικά posts, έρευνα hashtag, copywriting και μηνιαίες αναφορές.' },
-                { q: 'Γιατί η κατασκευή ιστοσελίδας είναι δωρεάν; Ποιο είναι το catch;', a: 'Δεν υπάρχει catch. Πιστεύουμε ότι κάθε επαγγελματίας αξίζει να έχει αξιόπιστη online παρουσία — ανεξάρτητα από προϋπολογισμό. Ο στόχος μας είναι να βοηθήσουμε να είσαι ορατός στο διαδίκτυο, χωρίς να επενδύσεις χιλιάδες ευρώ στην κατασκευή.<br><br>Χτίζουμε την ιστοσελίδα χωρίς κόστος κατασκευής. Το μόνο που χρειάζεται να πληρώσεις είναι το hosting — <strong>€10,83 τον μήνα</strong>. Δεν υπάρχουν κρυφές χρεώσεις και δεν υπάρχει «δέσμευση» συμβολαίου.' },
-                { q: 'Τι σημαίνει «hosting» και γιατί κοστίζει €10,83/μήνα;', a: 'Το hosting είναι το «ενοίκιο» που πληρώνεις για τον χώρο στον server όπου φιλοξενείται η ιστοσελίδα σου. Χωρίς αυτό η σελίδα δεν είναι ορατή στο διαδίκτυο. Τα €10,83/μήνα καλύπτουν τον server, την ασφάλεια, τα backups και τη συνεχή λειτουργία της. Μπορείς να σταματήσεις οποιαδήποτε στιγμή.' },
-                { q: 'Πόσο διαρκεί η παράδοση μιας ιστοσελίδας;', a: 'Από τη στιγμή που έχουμε λάβει όλο το υλικό — φωτογραφίες, κείμενα, λογότυπο, και ό,τι άλλο χρειαστεί — μπορούμε να ολοκληρώσουμε την κατασκευή σε <strong>5–10 εργάσιμες ημέρες</strong>.' },
-                { q: 'Πώς μπορώ να επικοινωνήσω μαζί σας;', a: 'Στείλτε μας email στο <strong>angelos@advonmedia.com</strong> και θα επικοινωνήσουμε άμεσα μαζί σας. Μπορείτε επίσης να κλείσετε απευθείας ένα δωρεάν ραντεβού (μέσω της φόρμας στο τέλος της σελίδας).' }
-            ],
-            en: [
-                { q: 'What is Advon Media?', a: 'We are a digital marketing agency specializing in strategy, social media, and content for local businesses and freelancers.' },
-                { q: 'What services do you offer?', a: '1. Website Creation<br>2. Contactless Reviews (NFC)<br>3. Social Media Management' },
-                { q: 'Why is website creation free? What\'s the catch?', a: 'No catch. We build the website for free. You only pay for hosting — <strong>€10.83/month</strong>. No hidden fees, no lock-in contracts.' },
-                { q: 'What does "hosting" mean and why does it cost €10.83/mo?', a: 'Hosting is the "rent" you pay for the server space where your website lives. The fee covers server space, security, backups, and continuous operation.' },
-                { q: 'How long does website delivery take?', a: 'Once we receive all materials, we complete the construction in <strong>5–10 working days</strong>.' },
-                { q: 'How can I contact you?', a: 'Email us at <strong>angelos@advonmedia.com</strong> or book a free appointment via the form below.' }
-            ]
-        };
-
-        const blogListData = {
-            el: [
-                { id: 1, date: '14 Φεβρουαρίου 2025', title: 'Η Ιστοσελίδα σου Κερδίζει Πελάτες — ή τους Χάνει; Η Αλήθεια που Κανείς δεν σου Λέει', snippet: 'Αν η επιχείρησή σου δεν έχει επαγγελματική ιστοσελίδα, οι πελάτες πάνε στον ανταγωνιστή σου.', cta: 'ΔΙΑΒΑΣΤΕ ΤΟ ΑΡΘΡΟ' },
-                { id: 2, date: '3 Απριλίου 2025', title: 'Google Reviews το 2025: Το Νόμισμα της Τοπικής Επιχείρησης που Δεν Μπορείς να Αγνοείς', snippet: 'Οι αξιολογήσεις σου στη Google είναι η φήμη σου. Και η φήμη σου τώρα ζει δημόσια, στο διαδίκτυο.', cta: 'ΔΙΑΒΑΣΤΕ ΤΟ ΑΡΘΡΟ' },
-                { id: 3, date: '19 Ιουνίου 2025', title: 'Social Media για Τοπικές Επιχειρήσεις: Τι Λειτουργεί Πραγματικά (και Τι Χάνει τον Χρόνο σου)', snippet: 'Τα social media, σωστά διαχειρισμένα, είναι ένα από τα πιο cost-effective κανάλια marketing.', cta: 'ΔΙΑΒΑΣΤΕ ΤΟ ΑΡΘΡΟ' },
-                { id: 4, date: '8 Σεπτεμβρίου 2025', title: 'Ο Κανόνας των 5 Δευτερολέπτων: Γιατί η Πρώτη Εντύπωση της Ιστοσελίδας σου Καθορίζει Τα Πάντα', snippet: 'Αν ένας επισκέπτης δεν καταλάβει ξεκάθαρα τι προσφέρεις μέσα σε 5 δευτερόλεπτα, φεύγει.', cta: 'ΔΙΑΒΑΣΤΕ ΤΟ ΑΡΘΡΟ' },
-                { id: 5, date: '27 Νοεμβρίου 2025', title: 'Πώς να Ανέβεις στην Κορυφή της Google (Χωρίς να Ξοδέψεις Μια Περιουσία σε Διαφημίσεις)', snippet: 'Το οργανικό τοπικό SEO προσφέρει ένα πιο βιώσιμο και αποδοτικό μονοπάτι προς την κορυφή.', cta: 'ΔΙΑΒΑΣΤΕ ΤΟ ΑΡΘΡΟ' },
-                { id: 6, date: '12 Μαρτίου 2026', title: 'Το Ψηφιακό Marketing Stack που Χρειάζεται Κάθε Ελεύθερος Επαγγελματίας το 2026', snippet: 'Η ακριβής ψηφιακή υποδομή για να έχεις σταθερή ροή πελατών με λιγότερο από €100 τον μήνα.', cta: 'ΔΙΑΒΑΣΤΕ ΤΟ ΑΡΘΡΟ' }
-            ],
-            en: [
-                { id: 1, date: 'February 14, 2025', title: 'Is Your Website Winning Clients — or Losing Them? The Truth No One Tells You', snippet: 'If your business doesn\'t have a professional website, those clients are going straight to your competitor.', cta: 'READ ARTICLE' },
-                { id: 2, date: 'April 3, 2025', title: 'Google Reviews in 2025: The Local Business Currency You Can\'t Ignore', snippet: 'Your Google reviews are your reputation. And your reputation now lives publicly on the internet.', cta: 'READ ARTICLE' },
-                { id: 3, date: 'June 19, 2025', title: 'Social Media for Local Businesses: What Actually Works (and What Wastes Your Time)', snippet: 'Social media, managed correctly, is one of the most cost-effective marketing channels.', cta: 'READ ARTICLE' },
-                { id: 4, date: 'September 8, 2025', title: 'The 5-Second Rule: Why Your Website\'s First Impression Determines Everything', snippet: 'If a visitor doesn\'t clearly understand what you offer within 5 seconds, they leave.', cta: 'READ ARTICLE' },
-                { id: 5, date: 'November 27, 2025', title: 'How to Reach the Top of Google (Without Spending a Fortune on Ads)', snippet: 'Organic local SEO offers a more sustainable and efficient path to the top.', cta: 'READ ARTICLE' },
-                { id: 6, date: 'March 12, 2026', title: 'The Digital Marketing Stack Every Freelancer Needs in 2026', snippet: 'The exact digital infrastructure to have a steady flow of clients for less than €100 a month.', cta: 'READ ARTICLE' }
-            ]
-        };
-
-        const blogsContentData = {
-            el: blogsData, // the greek object defined previously
-            en: {
-                1: `<h1>Is Your Website Winning Clients — or Losing Them?</h1><p>Every day, prospective clients are searching for exactly what you offer. If your business doesn't have a professional website, they go straight to your competitor.</p><h2>First Impressions Happen Online</h2><p>Research shows users form an opinion about a website in 50 milliseconds. A professional website emits credibility.</p><h2>The Local SEO You Lose Every Day</h2><p>Without a properly built website, you practically don't exist in local search results.</p><h2>The Hidden Cost of Absence</h2><p>If a optimized website brings you 3-4 more clients a month, that's hundreds of euros in extra revenue. At Advon Media, we build websites for <strong>free</strong>. You only pay for hosting — €10.83/month.</p>`,
-                2: `<h1>Google Reviews in 2025: The Local Business Currency You Can't Ignore</h1><p>Your Google reviews are your reputation. A business with 80 reviews and a 4.8 average will consistently outrank a competitor with 15 reviews.</p><h2>The NFC Solution: Frictionless Reviews</h2><p>The most effective method to collect reviews in 2025 is a physical card with an embedded NFC chip. It directs the customer immediately to your Google review page with a simple tap. For a €25 one-time fee, you can get it from us.</p>`,
-                3: `<h1>Social Media for Local Businesses: What Actually Works</h1><p>There is an essential difference between "having" social media and "using" them strategically. Consistency is what builds an audience and leads to conversions.</p><h2>Advon Media Manages Your Social Media</h2><p>For <strong>€87/month</strong>, our service covers: 3 professional posts/week, hashtag research, professional copywriting, and monthly reports. No commitments.</p>`,
-                4: `<h1>The 5-Second Rule</h1><p>If a visitor doesn't clearly understand what you offer within 5 seconds, you lose the customer. Your homepage needs a clear headline, a call to action, and trust indicators.</p>`,
-                5: `<h1>How to Reach the Top of Google (Without Ads)</h1><p>Organic local SEO offers a more sustainable path to the top than paid Google Ads. Your website is the anchor of your strategy.</p>`,
-                6: `<h1>The Digital Marketing Stack Every Freelancer Needs</h1><p>The exact system: Professional Website (Free + Hosting €10.83/m), Google Profile (Free), NFC Card (€25), Social Media Management (€87/m). For under €100 a month, you have a complete professional presence.</p>`
-            }
-        };
-
-        // --------------------------------------------------------
-        // 2. RENDER FUNCTIONS
-        // --------------------------------------------------------
-        function triggerLanguageSwitch() {
+        // Render Functions
+        function toggleLang() {
             const mainContent = document.getElementById('router-container');
             mainContent.style.opacity = '0';
-            
             setTimeout(() => {
                 currentLang = currentLang === 'el' ? 'en' : 'el';
                 document.documentElement.lang = currentLang; 
                 document.title = translations[currentLang].title; 
-                
                 renderApp();
-                
                 mainContent.style.opacity = '1';
             }, 400); 
         }
@@ -837,17 +848,17 @@
                     ${t.hero.subtitle}
                 </p>
                 <div class="flex flex-wrap items-center justify-center gap-6">
-                    <a href="#/kataskevi-istoselidas" class="group relative overflow-hidden px-10 py-5 bg-electric-cyan text-[#050a0e] font-black text-lg uppercase tracking-[0.1em] rounded-xl shadow-[0_0_30px_rgba(71,200,245,0.5)] hover:scale-105 transition-all flex items-center gap-3">
+                    <a href="#/kataskevi-istoselidas" class="group relative overflow-hidden px-8 py-4 bg-electric-cyan text-[#050a0e] font-black text-sm md:text-lg uppercase tracking-[0.1em] rounded-xl shadow-[0_0_30px_rgba(71,200,245,0.5)] hover:scale-105 transition-all flex items-center gap-3">
                         <div class="btn-shine-effect"></div>
                         <span class="relative z-10 flex items-center gap-3">
-                            ${elUpper(t.hero.ctaPrimary)} <i data-lucide="arrow-right" class="w-6 h-6 group-hover:translate-x-2 transition-transform"></i>
+                            ${elUpper(t.hero.ctaPrimary)} <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-2 transition-transform"></i>
                         </span>
                     </a>
-                    <a href="#/kataskevi-istoselidas#portfolio" class="group px-10 py-5 bg-transparent border-2 border-electric-cyan text-electric-cyan font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-electric-cyan hover:text-[#050a0e] transition-all flex items-center gap-3 backdrop-blur-md">
-                        <i data-lucide="play" class="w-6 h-6 fill-current"></i> ${elUpper(t.hero.ctaSecondary)}
+                    <a href="#/kataskevi-istoselidas#portfolio" class="group px-8 py-4 bg-transparent border-2 border-electric-cyan text-electric-cyan font-black text-sm md:text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-electric-cyan hover:text-[#050a0e] transition-all flex items-center gap-3 backdrop-blur-md">
+                        <i data-lucide="play" class="w-5 h-5 fill-current"></i> ${elUpper(t.hero.ctaSecondary)}
                     </a>
-                    <a href="#contact" class="group px-10 py-5 bg-white text-[#050a0e] font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-gray-200 transition-all flex items-center gap-3 backdrop-blur-md shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-                        <i data-lucide="mail" class="w-6 h-6"></i> ${elUpper(t.hero.ctaTertiary)}
+                    <a href="#contact" class="group px-8 py-4 bg-white text-[#050a0e] font-black text-sm md:text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-gray-200 transition-all flex items-center gap-3 backdrop-blur-md shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                        <i data-lucide="mail" class="w-5 h-5"></i> ${elUpper(t.hero.ctaTertiary)}
                     </a>
                 </div>
             `;
@@ -866,7 +877,7 @@
                 <h2 class="text-4xl md:text-5xl font-black font-display mb-4">${t.sectionTitles.servicesMain}</h2>
             `;
             const currentServices = servicesData[currentLang];
-            document.getElementById('services-grid').innerHTML = currentServices.map((service, i) => `
+            document.getElementById('services-grid').innerHTML = currentServices.map((service) => `
                 <div class="glass-panel rounded-2xl p-8 transition-colors duration-300 flex flex-col h-full hover:border-electric-cyan/50 hover:-translate-y-2">
                     <div class="w-14 h-14 rounded-2xl bg-electric-cyan/10 flex items-center justify-center mb-6 text-electric-cyan">
                         ${service.icon === 'instagram' ? `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>` : `<i data-lucide="${service.icon}" class="w-7 h-7"></i>`}
@@ -887,25 +898,25 @@
 
             // Reviews Home
             document.getElementById('reviews-container').innerHTML = `
-                <div class="grid lg:grid-cols-12 gap-12 items-start">
-                    <div class="lg:col-span-5 lg:sticky lg:top-[25vh] flex flex-col justify-center reveal">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-5 flex flex-col justify-center reveal h-full mt-20 lg:mt-0">
                         <span class="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block text-center lg:text-left">${elUpper(t.sectionTitles.reviews)}</span>
-                        <h2 class="text-4xl md:text-5xl font-black font-display mb-4 text-center lg:text-left">${t.sectionTitles.reviewsMain}</h2>
+                        <h2 class="text-4xl md:text-6xl font-black font-display mb-8 text-center lg:text-left">${t.sectionTitles.reviewsMain}</h2>
                         
-                        <p class="text-gray-300 text-lg mb-8 leading-relaxed text-center lg:text-left max-w-md mx-auto lg:mx-0">${t.sectionTitles.reviewsSub}</p>
-                        
-                        <div class="flex items-center gap-2 mb-8 justify-center lg:justify-start">
+                        <div class="flex items-center gap-2 mb-6 justify-center lg:justify-start">
                             <div class="flex gap-1 text-[#FBBC05]">
-                                <svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                <svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                <svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                <svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                <svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                             </div>
-                            <span class="text-xl font-bold text-white flex items-center gap-2">5.0 <span class="text-gray-400 font-medium text-sm">(75+)</span></span>
+                            <span class="text-2xl font-bold text-white flex items-center gap-2">5.0 <span class="text-gray-400 font-medium text-base">(75+)</span></span>
                         </div>
+
+                        <p class="text-gray-300 text-lg mb-10 leading-relaxed text-center lg:text-left max-w-md mx-auto lg:mx-0">${t.sectionTitles.reviewsSub}</p>
                         
-                        <div class="text-center lg:text-left mt-2">
+                        <div class="text-center lg:text-left">
                             <a href="https://share.google/zWUQyGTmywjaljaMW" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 border border-electric-cyan text-electric-cyan rounded-xl hover:bg-electric-cyan hover:text-[#050a0e] transition-all font-bold uppercase tracking-wide">
                                 ${elUpper(t.sectionTitles.viewAllReviews)} <i data-lucide="external-link" class="w-5 h-5"></i>
                             </a>
@@ -918,19 +929,19 @@
             `;
             renderReviews();
 
-            // Portfolio Home Header
+            // Portfolio Header
             document.getElementById('portfolio-header').innerHTML = `
                 <span class="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block">${elUpper(t.sectionTitles.portfolio)}</span>
                 <h2 class="text-4xl md:text-5xl font-black font-display mb-4">${t.sectionTitles.portfolioMain}</h2>
             `;
             updatePortfolioPagination();
 
-            // Inner Pages
+            // Inner Pages HTML Swaps
             document.getElementById('website-content').innerHTML = pageContentData[currentLang].webHtml;
             document.getElementById('nfc-content').innerHTML = pageContentData[currentLang].nfcHtml;
             document.getElementById('social-content').innerHTML = pageContentData[currentLang].socialHtml;
-            document.getElementById('faq-header').innerHTML = `<h2 class="text-4xl md:text-5xl font-black font-display mb-4 text-white drop-shadow-lg">${t.sectionTitles.faq}</h2>`;
-            document.getElementById('faq-inner-container').innerHTML = faqsData[currentLang].map(f => `
+            document.getElementById('faq-header').innerHTML = `<span class="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block">INFO</span><h2 class="text-4xl md:text-5xl font-black font-display mb-4 text-white drop-shadow-lg">${t.sectionTitles.faq}</h2>`;
+            document.getElementById('faq-container').innerHTML = faqsData[currentLang].map(f => `
                 <div class="glass-panel rounded-2xl overflow-hidden group border border-white/5 hover:border-electric-cyan/40 transition-colors">
                     <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-lg text-white hover:text-electric-cyan transition-colors">
                         ${f.q}
@@ -944,6 +955,7 @@
                 </div>
             `).join('');
 
+            // Blog Pages
             document.getElementById('blog-overview').innerHTML = pageContentData[currentLang].blogOverviewHtml;
             document.getElementById('blog-grid').innerHTML = blogListData[currentLang].map(b => `
                 <div class="glass-panel p-8 rounded-3xl cursor-pointer hover:-translate-y-2 transition-all flex flex-col h-full hover:border-electric-cyan/50" onclick="openBlog(${b.id})">
@@ -954,108 +966,176 @@
                 </div>
             `).join('');
 
+            // Legal Pages
             document.getElementById('privacy-content').innerHTML = pageContentData[currentLang].privacyHtml;
             document.getElementById('cookies-content').innerHTML = pageContentData[currentLang].cookiesHtml;
             document.getElementById('terms-content').innerHTML = pageContentData[currentLang].termsHtml;
 
-            // Contact
-            document.getElementById('contact-container').innerHTML = `
-                <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${elUpper(t.sectionTitles.contact)}</span>
-                <h2 class="text-4xl md:text-6xl font-black font-display mb-16 text-white">${t.sectionTitles.contactMain}</h2>
-                <div class="grid md:grid-cols-2 gap-8 mb-16 items-stretch">
-                    <div class="glass-panel p-8 md:p-10 rounded-3xl text-left flex flex-col h-full w-full">
-                        <h3 class="text-2xl md:text-3xl font-black mb-6 text-white font-display">${t.sectionTitles.formTitle}</h3>
-                        <p class="text-gray-400 mb-8">${t.sectionTitles.formSub}</p>
-                        <form id="contact-form" action="https://formspree.io/f/xkopgoaj" method="POST" class="space-y-6 flex-grow flex flex-col justify-between">
-                            <div class="space-y-6">
-                                <div><label class="block text-sm font-bold text-electric-cyan mb-2 uppercase tracking-wider">${t.sectionTitles.formName}</label><input type="text" name="name" required class="w-full bg-[#050a0e]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-electric-cyan transition-colors"></div>
-                                <div><label class="block text-sm font-bold text-electric-cyan mb-2 uppercase tracking-wider">${t.sectionTitles.formEmail}</label><input type="email" name="email" required class="w-full bg-[#050a0e]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-electric-cyan transition-colors"></div>
-                                <div><label class="block text-sm font-bold text-electric-cyan mb-2 uppercase tracking-wider">${t.sectionTitles.formPhone}</label><input type="tel" name="phone" required class="w-full bg-[#050a0e]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-electric-cyan transition-colors"></div>
-                                <div><label class="block text-sm font-bold text-electric-cyan mb-2 uppercase tracking-wider">${t.sectionTitles.formMessage}</label><textarea name="message" rows="4" required class="w-full bg-[#050a0e]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-electric-cyan transition-colors resize-none"></textarea></div>
-                            </div>
-                            <div class="mt-6">
-                                <button type="submit" class="w-full py-4 bg-electric-cyan text-[#050a0e] font-black uppercase tracking-widest rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(71,200,245,0.3)]">${t.sectionTitles.formSubmit}</button>
-                                <p id="contact-form-status" class="mt-4 text-center"></p>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="glass-panel p-8 md:p-10 rounded-3xl text-left flex flex-col h-full w-full">
-                         <h3 class="text-2xl md:text-3xl font-black mb-6 text-white font-display">${t.sectionTitles.bookTitle}</h3>
-                         <p class="text-gray-400 mb-8">${t.sectionTitles.bookSub}</p>
-                         <div class="w-full overflow-hidden rounded-xl bg-white flex-grow flex flex-col" style="min-height: 500px;">
-                            <div class="embedded-booking flex-grow" data-url="https://advonmedia.trafft.com" data-query="&t=s&uuid=1003c403-d56e-439b-876a-c563b3127470" data-employee="aggelos-metrides" data-lang="${currentLang}" data-autoresize="1" data-showsidebar="0" data-showservices="0" style="width: 100%; height: 100%;"></div>
-                         </div>
-                    </div>
-                </div>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <a href="mailto:angelos@advonmedia.com" class="group glass-panel p-8 rounded-3xl transition-all duration-300 hover:bg-electric-cyan/5">
-                        <div class="w-16 h-16 bg-electric-cyan/10 rounded-2xl flex items-center justify-center mx-auto mb-6 text-electric-cyan group-hover:bg-electric-cyan group-hover:text-[#050a0e] transition-all"><i data-lucide="mail" class="w-8 h-8"></i></div>
-                        <h3 class="text-xl font-black mb-2 text-white">Email</h3><p class="text-electric-cyan font-bold tracking-wide">angelos@advonmedia.com</p>
-                    </a>
-                    <a href="https://www.instagram.com/advon_media" target="_blank" class="group glass-panel p-8 rounded-3xl transition-all duration-300 hover:bg-electric-cyan/5">
-                        <div class="w-16 h-16 bg-electric-cyan/10 rounded-2xl flex items-center justify-center mx-auto mb-6 text-electric-cyan group-hover:bg-electric-cyan group-hover:text-[#050a0e] transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></div>
-                        <h3 class="text-xl font-black mb-2 text-white">Instagram</h3><p class="text-electric-cyan font-bold tracking-wide">@advon_media</p>
-                    </a>
-                </div>
-            `;
+            // Global Contact Updates (Update text only to preserve iframe)
+            document.getElementById('contact-badge').innerText = elUpper(t.sectionTitles.contact);
+            document.getElementById('contact-title').innerText = t.sectionTitles.contactMain;
+            document.getElementById('contact-form-title').innerText = t.sectionTitles.formTitle;
+            document.getElementById('contact-form-sub').innerText = t.sectionTitles.formSub;
+            document.getElementById('lbl-name').innerText = t.sectionTitles.formName;
+            document.getElementById('lbl-email').innerText = t.sectionTitles.formEmail;
+            document.getElementById('lbl-phone').innerText = t.sectionTitles.formPhone;
+            document.getElementById('lbl-msg').innerText = t.sectionTitles.formMessage;
+            document.getElementById('contact-submit-btn').innerText = t.sectionTitles.formSubmit;
+            document.getElementById('contact-book-title').innerText = t.sectionTitles.bookTitle;
+            document.getElementById('contact-book-sub').innerText = t.sectionTitles.bookSub;
 
-            // Footer
-            document.getElementById('footer-content').innerHTML = `
-                <div class="flex flex-col md:flex-row items-center gap-4">
-                    <img src="https://assets.cdn.filesafe.space/NkFUgZER3rrdnofCwAIl/media/648dd017a1f733fa5b51e5e9.png" alt="Advon Media" class="h-8 w-auto opacity-50">
-                    <p class="text-sm font-semibold">© 2026 Advon Media. ${t.footer.rights}</p>
-                </div>
-                <div class="flex gap-4 md:gap-6 text-sm font-bold uppercase flex-wrap justify-center text-electric-cyan/80">
-                    <a href="#/privacy-policy" class="hover:text-electric-cyan transition-colors">${t.footer.p1}</a>
-                    <span class="text-white/20">|</span>
-                    <a href="#/cookies-policy" class="hover:text-electric-cyan transition-colors">${t.footer.p2}</a>
-                    <span class="text-white/20">|</span>
-                    <a href="#/terms-of-use" class="hover:text-electric-cyan transition-colors">${t.footer.p3}</a>
-                </div>
-            `;
+            // Global Footer
+            document.getElementById('footer-rights').innerText = t.footer.rights;
+            document.getElementById('footer-p1').innerText = t.footer.p1;
+            document.getElementById('footer-p2').innerText = t.footer.p2;
+            document.getElementById('footer-p3').innerText = t.footer.p3;
 
             lucide.createIcons();
-
-            // Reattach Formspree Integration for the newly rendered form
-            const newForm = document.getElementById('contact-form');
-            if(newForm) {
-                newForm.addEventListener('submit', function(event) {
-                    event.preventDefault();
-                    var form = event.target;
-                    var status = document.getElementById("contact-form-status");
-                    var submitBtn = form.querySelector('button[type="submit"]');
-                    var originalText = submitBtn.innerHTML;
-                    
-                    submitBtn.disabled = true; 
-                    submitBtn.innerHTML = currentLang === 'el' ? 'Αποστολή...' : 'Sending...';
-
-                    fetch(form.action, {
-                        method: form.method,
-                        body: new FormData(form),
-                        headers: { 'Accept': 'application/json' }
-                    }).then(response => {
-                        submitBtn.disabled = false; submitBtn.innerHTML = originalText;
-                        if (response.ok) {
-                            status.innerHTML = currentLang === 'el' ? "Ευχαριστούμε! Το μήνυμά σας εστάλη επιτυχώς." : "Thank you! Your message was sent successfully.";
-                            status.className = "mt-4 text-green-400 font-bold";
-                            form.reset();
-                        } else {
-                            status.innerHTML = currentLang === 'el' ? "Ωχ! Υπήρξε ένα πρόβλημα." : "Oops! There was a problem.";
-                            status.className = "mt-4 text-red-400 font-bold";
-                        }
-                    }).catch(error => {
-                        submitBtn.disabled = false; submitBtn.innerHTML = originalText;
-                        status.innerHTML = currentLang === 'el' ? "Ωχ! Υπήρξε ένα πρόβλημα." : "Oops! There was a problem.";
-                        status.className = "mt-4 text-red-400 font-bold";
-                    });
-                });
-            }
         }
 
         // --------------------------------------------------------
-        // 3. INITIALIZATION
+        // 3. LOGIC (Router, Modals)
         // --------------------------------------------------------
+        function closeMobileMenu() { document.getElementById('mobile-menu').style.maxHeight = '0px'; }
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.style.maxHeight && menu.style.maxHeight !== '0px') menu.style.maxHeight = '0px';
+            else menu.style.maxHeight = '500px';
+        }
+
+        function handleRoute() {
+            const hash = window.location.hash || '#/';
+            const views = document.querySelectorAll('.page-section');
+            views.forEach(v => v.classList.remove('active'));
+
+            let viewId = 'page-home';
+            if (hash.startsWith('#/kataskevi-istoselidas')) viewId = 'page-website';
+            else if (hash.startsWith('#/google-reviews-nfc')) viewId = 'page-nfc';
+            else if (hash.startsWith('#/diaxeirisi-social-media')) viewId = 'page-social';
+            else if (hash.startsWith('#/faq')) viewId = 'page-faq';
+            else if (hash.startsWith('#/blog')) viewId = 'page-blog';
+            else if (hash.startsWith('#/privacy-policy')) viewId = 'page-privacy';
+            else if (hash.startsWith('#/cookies-policy')) viewId = 'page-cookies';
+            else if (hash.startsWith('#/terms-of-use')) viewId = 'page-terms';
+            
+            document.getElementById(viewId).classList.add('active');
+            
+            if(viewId === 'page-website') updatePortfolioPagination();
+            
+            if (!hash.includes('#portfolio') && !hash.includes('#reviews') && !hash.includes('#contact')) {
+                window.scrollTo({top: 0, behavior: 'auto'});
+            }
+            closeMobileMenu();
+
+            setTimeout(() => {
+                if (hash.includes('#portfolio') && document.getElementById('portfolio')) {
+                    document.getElementById('portfolio').scrollIntoView({behavior: 'smooth', block: 'start'});
+                } else if (hash.includes('#reviews') && document.getElementById('reviews')) {
+                    document.getElementById('reviews').scrollIntoView({behavior: 'smooth', block: 'start'});
+                } else if (hash.includes('#contact')) {
+                    document.getElementById('contact').scrollIntoView({behavior: 'smooth', block: 'start'});
+                }
+            }, 100);
+        }
+
+        window.addEventListener('hashchange', handleRoute);
+        
+        function openBlog(id) {
+            document.getElementById('blog-modal-content').innerHTML = blogsContentData[currentLang][id];
+            document.getElementById('blog-modal').classList.remove('hidden');
+            document.getElementById('blog-modal').classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBlogModal() {
+            document.getElementById('blog-modal').classList.add('hidden');
+            document.getElementById('blog-modal').classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+                content.style.maxHeight = '0px';
+                icon.style.transform = 'rotate(0deg)';
+                button.classList.remove('text-electric-cyan');
+            } else {
+                content.style.maxHeight = content.scrollHeight + 'px';
+                icon.style.transform = 'rotate(180deg)';
+                button.classList.add('text-electric-cyan');
+            }
+        }
+
+        // Formspree Integration
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var form = event.target;
+            var status = document.getElementById("contact-form-status");
+            var submitBtn = form.querySelector('button[type="submit"]');
+            var originalText = submitBtn.innerHTML;
+            
+            submitBtn.disabled = true; 
+            submitBtn.innerHTML = currentLang === 'el' ? 'Αποστολή...' : 'Sending...';
+
+            fetch(form.action, {
+                method: form.method,
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                submitBtn.disabled = false; submitBtn.innerHTML = originalText;
+                if (response.ok) {
+                    status.innerHTML = currentLang === 'el' ? "Ευχαριστούμε! Το μήνυμά σας εστάλη επιτυχώς." : "Thank you! Your message was sent successfully.";
+                    status.className = "mt-4 text-green-400 font-bold";
+                    form.reset();
+                } else {
+                    status.innerHTML = currentLang === 'el' ? "Ωχ! Υπήρξε ένα πρόβλημα." : "Oops! There was a problem.";
+                    status.className = "mt-4 text-red-400 font-bold";
+                }
+            }).catch(error => {
+                submitBtn.disabled = false; submitBtn.innerHTML = originalText;
+                status.innerHTML = currentLang === 'el' ? "Ωχ! Υπήρξε ένα πρόβλημα." : "Oops! There was a problem.";
+                status.className = "mt-4 text-red-400 font-bold";
+            });
+        });
+
+        // Initialize Background Canvas
+        const canvas = document.getElementById('star-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, stars = [];
+
+        function initStars() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            stars = [];
+            for (let i = 0; Math.floor(width * height / 1500) > i; i++) {
+                stars.push({
+                    x: Math.random() * width, y: Math.random() * height,
+                    size: Math.random() * 2 + 0.5, opacity: Math.random(),
+                    speed: Math.random() * 0.05 + 0.01, twinkleSpeed: Math.random() * 0.02 + 0.005, twinkleDir: 1
+                });
+            }
+        }
+        function animateStars() {
+            ctx.clearRect(0, 0, width, height);
+            stars.forEach(star => {
+                star.opacity += star.twinkleSpeed * star.twinkleDir;
+                if (star.opacity > 1 || 0.2 > star.opacity) star.twinkleDir *= -1;
+                star.y -= star.speed;
+                if (0 > star.y) star.y = height;
+                ctx.fillStyle = `rgba(71, 200, 245, ${Math.abs(star.opacity) * 0.8})`; 
+                ctx.beginPath(); ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2); ctx.fill();
+            });
+            requestAnimationFrame(animateStars);
+        }
+        window.addEventListener('resize', initStars);
+
+        // Load Ext Scripts & initialize
         document.addEventListener('DOMContentLoaded', () => {
+            initStars(); 
+            animateStars();
             renderApp();
             handleRoute();
 
@@ -1067,7 +1147,6 @@
                 document.body.appendChild(script);
             }
         });
-
     </script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="el" class="scroll-smooth">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Κατασκευή Ιστοσελίδων στην Ελλάδα | Web Design & SEO - Advon Media</title>
     <meta name="description" content="Κορυφαία κατασκευή ιστοσελίδων στην Ελλάδα. Επαγγελματικό Web Design, ταχύτατη φόρτωση, Mobile Responsive και πλήρης SEO βελτιστοποίηση. Ανεβείτε στην 1η σελίδα της Google.">
     <meta name="keywords" content="κατασκευή ιστοσελίδων Ελλάδα, web design Ελλάδα, κατασκευή eshop, δημιουργία ιστοσελίδας, SEO ιστοσελίδων">
@@ -29,320 +29,94 @@
             animation: {
               'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
               'float': 'float 6s ease-in-out infinite',
-              'shimmer': 'shimmer 3s linear infinite',
-              'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
+              'shimmer': 'shimmer 4s linear infinite',
             },
             keyframes: {
               float: {
                 '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-20px)' },
+                '50%': { transform: 'translateY(-15px)' },
               },
               shimmer: {
                 '0%': { backgroundPosition: '-200% 0' },
                 '100%': { backgroundPosition: '200% 0' },
-              },
-              'glow-pulse': {
-                '0%, 100%': { opacity: 0.5, transform: 'scale(1)' },
-                '50%': { opacity: 1, transform: 'scale(1.2)' },
               }
             }
           }
         }
       }
     </script>
-
-    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
+      /* --- STRICT MOBILE RESPONSIVENESS FIXES --- */
+      html, body { 
+        max-width: 100vw; 
+        overflow-x: hidden; 
+        background-color: #050a0e; 
+        color: white; 
+        margin: 0; 
+        padding: 0; 
+        width: 100%;
+      }
+      * { box-sizing: border-box; }
+      img, section, div, main, header, footer { max-width: 100vw; }
+
       /* Custom Scrollbar */
       ::-webkit-scrollbar { width: 6px; }
       ::-webkit-scrollbar-track { background: #050a0e; }
       ::-webkit-scrollbar-thumb { background: rgba(71, 200, 245, 0.4); border-radius: 10px; }
       ::-webkit-scrollbar-thumb:hover { background: #47c8f5; box-shadow: 0 0 10px #47c8f5; }
       
-      body { background-color: #050a0e; color: white; overflow-x: hidden; cursor: default; }
-      
-      main { transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-
-      /* --- Animated Cyber Grid --- */
-      .cyber-grid {
-        position: absolute;
-        bottom: 0;
-        left: -50%;
-        width: 200%;
-        height: 100vh;
-        background-image: 
-          linear-gradient(to right, rgba(71, 200, 245, 0.05) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(71, 200, 245, 0.05) 1px, transparent 1px);
-        background-size: 60px 60px;
-        transform: perspective(600px) rotateX(60deg) translateY(0) translateZ(-200px);
-        animation: grid-scroll 20s linear infinite;
-        mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0) 80%);
-        -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0) 80%);
-        z-index: 1;
-        pointer-events: none;
-      }
-      @keyframes grid-scroll {
-        0% { transform: perspective(600px) rotateX(70deg) translateY(0) translateZ(-200px); }
-        100% { transform: perspective(600px) rotateX(70deg) translateY(60px) translateZ(-200px); }
-      }
-
-      /* --- Updated Laser Beam Animation --- */
-      .laser-beam-main {
-        position: absolute;
-        left: 50%;
-        top: 0;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 100%;
-        background: linear-gradient(180deg,
-          rgba(71, 200, 245, 0.1) 0%,
-          rgba(71, 200, 245, 0.4) 10%,
-          rgba(71, 200, 245, 0.9) 30%,
-          rgba(71, 200, 245, 1) 50%,
-          rgba(71, 200, 245, 0.9) 70%,
-          rgba(71, 200, 245, 0.4) 90%,
-          rgba(71, 200, 245, 0.1) 100%
-        );
-        box-shadow: 
-          0 0 30px rgba(71, 200, 245, 0.9),
-          0 0 60px rgba(71, 200, 245, 0.7);
-        animation: laser-pour 1.5s ease-in-out infinite, laser-glow 2s ease-in-out infinite;
-        border-radius: 10px;
-        will-change: transform, opacity;
-        z-index: 2;
-      }
-      
-      .laser-beam-main::before {
-        content: '';
-        position: absolute;
-        left: 50%;
-        top: 0;
-        transform: translateX(-50%);
-        width: 200px;
-        height: 100%;
-        background: linear-gradient(180deg,
-          transparent 0%,
-          rgba(71, 200, 245, 0.05) 20%,
-          rgba(71, 200, 245, 0.15) 50%,
-          rgba(71, 200, 245, 0.05) 80%,
-          transparent 100%
-        );
-        filter: blur(20px);
-      }
-      
-      /* Splash Effect at Bottom */
-      .laser-splash {
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 300px;
-        height: 150px;
-        background: radial-gradient(ellipse at center bottom,
-          rgba(71, 200, 245, 0.6) 0%,
-          rgba(71, 200, 245, 0.3) 30%,
-          rgba(71, 200, 245, 0.1) 60%,
-          transparent 100%
-        );
-        filter: blur(30px);
-        animation: splash-pulse 1.5s ease-in-out infinite;
-        will-change: transform, opacity;
-        z-index: 3;
-      }
-      
-      .laser-splash::before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 150px;
-        height: 80px;
-        background: radial-gradient(ellipse at center bottom,
-          rgba(71, 200, 245, 0.8) 0%,
-          rgba(71, 200, 245, 0.4) 40%,
-          transparent 100%
-        );
-        filter: blur(15px);
-        animation: splash-inner 1s ease-in-out infinite;
-      }
-      
-      /* Particle drops falling */
-      .laser-particles {
-        position: absolute;
-        left: 50%;
-        top: 0;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 100%;
-        overflow: hidden;
-        pointer-events: none;
-      }
-      
-      .mask-vertical {
-          -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
-          mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
-      }
-      @keyframes verticalScroll {
-          0% { transform: translateY(0); }
-          100% { transform: translateY(-50%); }
-      }
-      .animate-vertical-scroll {
-          animation: verticalScroll 50s linear infinite;
-      }
-      .animate-vertical-scroll:hover {
-          animation-play-state: paused;
-      }
-      
-      .glass-panel {
-          background: rgba(255, 255, 255, 0.04);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-      }
-      
-      .laser-particle {
-        position: absolute;
-        width: 4px;
-        height: 30px;
-        background: linear-gradient(180deg, transparent, rgba(71, 200, 245, 0.8), transparent);
-        border-radius: 2px;
-        animation: particle-fall 0.8s linear infinite;
-      }
-      
-      .laser-particle:nth-child(1) { left: 10%; animation-delay: 0s; }
-      .laser-particle:nth-child(2) { left: 30%; animation-delay: 0.2s; }
-      .laser-particle:nth-child(3) { left: 50%; animation-delay: 0.4s; }
-      .laser-particle:nth-child(4) { left: 70%; animation-delay: 0.6s; }
-      .laser-particle:nth-child(5) { left: 90%; animation-delay: 0.3s; }
-      
-      @keyframes particle-fall {
-        0% { top: -30px; opacity: 0; }
-        10% { opacity: 1; }
-        90% { opacity: 1; }
-        100% { top: 100%; opacity: 0; }
-      }
-      
-      @keyframes laser-pour {
-        0%, 100% { opacity: 0.8; transform: translateX(-50%) scaleY(1); }
-        25% { opacity: 1; transform: translateX(-50%) scaleY(1.02); }
-        50% { opacity: 0.9; transform: translateX(-50%) scaleY(0.98); }
-        75% { opacity: 1; transform: translateX(-50%) scaleY(1.01); }
-      }
-      
-      @keyframes laser-glow {
-        0%, 100% {
-          box-shadow: 0 0 30px rgba(71, 200, 245, 0.9), 0 0 60px rgba(71, 200, 245, 0.7);
-        }
-        50% {
-          box-shadow: 0 0 50px rgba(71, 200, 245, 1), 0 0 100px rgba(71, 200, 245, 0.8);
-        }
-      }
-      
-      @keyframes splash-pulse {
-        0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
-        50% { opacity: 1; transform: translateX(-50%) scale(1.2); }
-      }
-      
-      @keyframes splash-inner {
-        0%, 100% { opacity: 0.7; }
-        50% { opacity: 1; }
-      }
-      
-      /* Secondary beams */
-      .laser-beam-secondary {
-        position: absolute;
-        top: 0;
-        width: 3px;
-        height: 100%;
-        background: linear-gradient(180deg, transparent 0%, rgba(71, 200, 245, 0.1) 15%, rgba(71, 200, 245, 0.4) 40%, rgba(71, 200, 245, 0.5) 50%, rgba(71, 200, 245, 0.4) 60%, rgba(71, 200, 245, 0.1) 85%, transparent 100%);
-        box-shadow: 0 0 10px rgba(71, 200, 245, 0.5);
-        animation: laser-pour-secondary 2s ease-in-out infinite;
-        border-radius: 2px;
-        z-index: 1;
-      }
-      
-      @keyframes laser-pour-secondary { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.6; } }
-
-      #star-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-      
-      /* --- Custom Ambient Cursor --- */
-      #cursor-glow {
-        position: fixed;
-        top: 0; left: 0;
-        width: 400px; height: 400px;
-        background: radial-gradient(circle, rgba(71,200,245,0.15) 0%, transparent 70%);
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-        z-index: 9998;
-        transition: width 0.3s, height 0.3s;
-        will-change: transform;
-      }
-
-      .logo-glow { filter: drop-shadow(0 0 10px rgba(71, 200, 245, 0.5)); transition: filter 0.3s ease; }
-      .logo-glow:hover { filter: drop-shadow(0 0 25px rgba(71, 200, 245, 1)); }
-      .text-shimmer { background: linear-gradient(to right, #47c8f5 20%, #ffffff 50%, #47c8f5 80%); background-size: 200% auto; color: transparent; -webkit-background-clip: text; background-clip: text; animation: shimmer 4s linear infinite; }
-      
-      /* --- Enhanced Glass Panel & 3D Tilt --- */
-      .glass-panel { 
-        background: rgba(8, 18, 25, 0.5); 
-        backdrop-filter: blur(16px); 
-        -webkit-backdrop-filter: blur(16px); 
-        border: 1px solid rgba(71, 200, 245, 0.15); 
-        box-shadow: inset 0 0 20px rgba(71,200,245,0.05), 0 8px 32px rgba(0, 0, 0, 0.5); 
-        transition: border-color 0.4s ease, box-shadow 0.4s ease; 
-      }
-      .glass-panel:hover { 
-        border-color: rgba(71, 200, 245, 0.5); 
-        box-shadow: inset 0 0 20px rgba(71,200,245,0.1), 0 15px 40px rgba(71, 200, 245, 0.2); 
-      }
-
-      .service-list-item { transition: transform 0.2s ease-in-out, color 0.2s; }
-      .glass-panel:hover .service-list-item:hover { transform: translateX(8px); color: white; }
-      .service-check-icon { transition: all 0.3s ease; }
-      .glass-panel:hover .service-list-item:hover .service-check-icon { filter: drop-shadow(0 0 8px #47c8f5); transform: scale(1.2); }
-      
-      .trust-badge-shimmer { position: relative; overflow: hidden; }
-      .trust-badge-shimmer::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%); transform: skewX(-20deg) translateX(-150%); animation: badge-shimmer 3s infinite; }
-      @keyframes badge-shimmer { 0%, 80% { transform: skewX(-20deg) translateX(-150%); } 100% { transform: skewX(-20deg) translateX(150%); } }
-      
-      .reveal { opacity: 0; transform: translateY(40px) scale(0.95); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
-      .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
-      .modal-open { overflow: hidden; }
-      
-      /* Glowing Text Selection */
-      ::selection { background: rgba(71, 200, 245, 0.4); color: white; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
-      
-      @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-15px); }
-      }
-      .animate-float {
-        animation: float 6s ease-in-out infinite;
-      }
-      
-      @keyframes btn-shine {
-        0% { transform: translateX(-150%) skewX(-20deg); }
-        100% { transform: translateX(150%) skewX(-20deg); }
-      }
-      .btn-shine-effect {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 50%;
-        height: 100%;
-        background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
-        transform: translateX(-150%) skewX(-20deg);
-        animation: btn-shine 3s infinite;
-      }
-
       /* --- SPA Router Classes --- */
       .page-section { display: none; opacity: 0; animation: fadeIn 0.5s forwards; }
       .page-section.active { display: block; opacity: 1; }
       @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
+      /* --- Background Animations --- */
+      #star-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; }
+      
+      .laser-beam-main {
+        position: fixed; left: 50%; top: 0; transform: translateX(-50%);
+        width: 80px; height: 100vh;
+        background: linear-gradient(180deg, rgba(71, 200, 245, 0.1) 0%, rgba(71, 200, 245, 0.4) 10%, rgba(71, 200, 245, 0.9) 30%, rgba(71, 200, 245, 1) 50%, rgba(71, 200, 245, 0.9) 70%, rgba(71, 200, 245, 0.4) 90%, rgba(71, 200, 245, 0.1) 100%);
+        box-shadow: 0 0 30px rgba(71, 200, 245, 0.9), 0 0 60px rgba(71, 200, 245, 0.7);
+        animation: laser-pour 1.5s ease-in-out infinite; border-radius: 10px; z-index: 1; pointer-events: none;
+      }
+      .laser-beam-main::before {
+        content: ''; position: absolute; left: 50%; top: 0; transform: translateX(-50%); width: 200px; height: 100%;
+        background: linear-gradient(180deg, transparent 0%, rgba(71, 200, 245, 0.05) 20%, rgba(71, 200, 245, 0.15) 50%, rgba(71, 200, 245, 0.05) 80%, transparent 100%); filter: blur(20px);
+      }
+      .laser-splash {
+        position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 300px; height: 150px;
+        background: radial-gradient(ellipse at center bottom, rgba(71, 200, 245, 0.6) 0%, rgba(71, 200, 245, 0.3) 30%, rgba(71, 200, 245, 0.1) 60%, transparent 100%);
+        filter: blur(30px); animation: splash-pulse 1.5s ease-in-out infinite; z-index: 2; pointer-events: none;
+      }
+      .laser-splash::before {
+        content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 150px; height: 80px;
+        background: radial-gradient(ellipse at center bottom, rgba(71, 200, 245, 0.8) 0%, rgba(71, 200, 245, 0.4) 40%, transparent 100%);
+        filter: blur(15px); animation: splash-inner 1s ease-in-out infinite;
+      }
+      @keyframes laser-pour { 0%, 100% { opacity: 0.8; transform: translateX(-50%) scaleY(1); } 25% { opacity: 1; transform: translateX(-50%) scaleY(1.02); } 50% { opacity: 0.9; transform: translateX(-50%) scaleY(0.98); } 75% { opacity: 1; transform: translateX(-50%) scaleY(1.01); } }
+      @keyframes splash-pulse { 0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); } 50% { opacity: 1; transform: translateX(-50%) scale(1.2); } }
+      @keyframes splash-inner { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+
+      /* --- UI Elements --- */
+      .glass-panel { 
+        background: rgba(8, 18, 25, 0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); 
+        border: 1px solid rgba(71, 200, 245, 0.15); box-shadow: inset 0 0 20px rgba(71,200,245,0.05), 0 8px 32px rgba(0, 0, 0, 0.5); 
+        transition: all 0.3s ease;
+      }
+      .glass-panel:hover { border-color: rgba(71, 200, 245, 0.4); }
+      
+      .text-shimmer { background: linear-gradient(to right, #47c8f5 20%, #ffffff 50%, #47c8f5 80%); background-size: 200% auto; color: transparent; -webkit-background-clip: text; background-clip: text; animation: shimmer 4s linear infinite; }
+      
+      .btn-shine-effect {
+        position: absolute; top: 0; left: 0; width: 50%; height: 100%;
+        background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+        transform: translateX(-150%) skewX(-20deg); animation: btn-shine 3s infinite;
+      }
+      @keyframes btn-shine { 0% { transform: translateX(-150%) skewX(-20deg); } 100% { transform: translateX(150%) skewX(-20deg); } }
+      
       /* Dropdown Menu */
       .nav-dropdown { position: relative; display: inline-block; }
       .nav-dropdown-content { display: none; position: absolute; top: 100%; left: -20px; background-color: rgba(5, 10, 14, 0.95); min-width: 240px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.8); z-index: 100; border-radius: 12px; border: 1px solid rgba(71, 200, 245, 0.2); backdrop-filter: blur(10px); padding: 8px 0; }
@@ -350,6 +124,12 @@
       .nav-dropdown-content a { color: #d1d5db; padding: 12px 20px; text-decoration: none; display: block; font-size: 0.9rem; transition: all 0.2s; border-left: 2px solid transparent; }
       .nav-dropdown-content a:hover { background-color: rgba(71, 200, 245, 0.05); color: #47c8f5; border-left: 2px solid #47c8f5; }
       @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+      /* Reviews Scroll */
+      .mask-vertical { -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent); mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent); }
+      .animate-vertical-scroll { animation: verticalScroll 50s linear infinite; }
+      .animate-vertical-scroll:hover { animation-play-state: paused; }
+      @keyframes verticalScroll { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
 
       /* Legal Pages Formatting */
       .legal-format h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: white; margin-bottom: 2rem; line-height: 1.2; text-align: center; }
@@ -370,68 +150,29 @@
       body.lang-en .el-text { display: none !important; }
       body.lang-el .en-text { display: none !important; }
     </style>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Advon Media",
-  "url": "https://advonmedia.com/",
-  "logo": "https://assets.cdn.filesafe.space/NkFUgZER3rrdnofCwAIl/media/648dd017a1f733fa5b51e5e9.png",
-  "description": "Εταιρεία Digital Marketing και Κατασκευής Ιστοσελίδων στην Ελλάδα.",
-  "areaServed": {
-    "@type": "Country",
-    "name": "Greece"
-  },
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Υπηρεσίες Κατασκευής Ιστοσελίδων",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Κατασκευή Ιστοσελίδας"
-        }
-      }
-    ]
-  }
-}
-</script>
 </head>
 <body class="font-body antialiased relative lang-el">
 
-    <div id="cursor-glow"></div>
-
+    <!-- GLOBAL BACKGROUND -->
     <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#050a0e]">
-      <div class="absolute inset-0 bg-gradient-to-b from-[#050a0e] via-[#0a1418] to-[#0d1a20]"></div>
-      <canvas id="star-canvas"></canvas>
-      <div class="cyber-grid"></div>
-      
-      <div class="laser-beam-main">
-        <div class="laser-particles">
-          <div class="laser-particle"></div><div class="laser-particle"></div><div class="laser-particle"></div><div class="laser-particle"></div><div class="laser-particle"></div>
-        </div>
-      </div>
-      <div class="laser-splash"></div>
-      
-      <!-- Secondary beams for extra effect -->
-      <div class="laser-beam-secondary" style="left: 45%;"></div>
-      <div class="laser-beam-secondary" style="left: 55%;"></div>
-
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[900px] h-[60vh] bg-[rgba(71,200,245,0.08)] blur-[120px]"></div>
-      <div class="absolute bottom-1/3 left-0 w-1/2 h-1/2 bg-[rgba(71,200,245,0.04)] blur-[150px] rounded-full"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(5,10,15,0.85)_100%)]"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#050a0e] via-[#0a1418] to-[#0d1a20]"></div>
+        <canvas id="star-canvas"></canvas>
+        <div class="laser-beam-main"></div>
+        <div class="laser-splash"></div>
+        <!-- Ambient Glows -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[900px] h-[60vh] bg-[rgba(71,200,245,0.05)] blur-[120px]"></div>
+        <div class="absolute bottom-1/3 left-0 w-1/2 h-1/2 bg-[rgba(71,200,245,0.03)] blur-[150px] rounded-full"></div>
     </div>
 
-    <header class="fixed top-0 left-0 right-0 z-50 bg-[#050a0e]/70 backdrop-blur-xl border-b border-electric-cyan/10 transition-all duration-300 shadow-[0_4px_30px_rgba(0,0,0,0.5)]" id="main-header">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative z-10">
-            <a href="#/" class="flex items-center gap-3 group">
-                <img src="https://assets.cdn.filesafe.space/NkFUgZER3rrdnofCwAIl/media/648dd017a1f733fa5b51e5e9.png" alt="Advon Media" referrerPolicy="no-referrer" fetchpriority="high" width="40" height="40" class="h-10 w-auto logo-glow">
+    <!-- HEADER NAVIGATION -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#050a0e]/80 backdrop-blur-xl border-b border-electric-cyan/10">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#/" class="flex items-center gap-3">
+                <img src="https://assets.cdn.filesafe.space/NkFUgZER3rrdnofCwAIl/media/648dd017a1f733fa5b51e5e9.png" alt="Advon Media" class="h-10 w-auto filter drop-shadow-[0_0_8px_rgba(71,200,245,0.5)]">
             </a>
 
             <!-- Desktop Nav -->
-            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-electric-cyan tracking-wide">
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-electric-cyan">
                 <a href="#/" class="hover:text-white transition-colors relative group py-2">
                     <span class="el-text">Αρχική</span><span class="en-text">Home</span>
                     <span class="absolute bottom-0 left-0 w-full h-[2px] bg-electric-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300"></span>
@@ -444,12 +185,12 @@
                     </div>
                     <div class="nav-dropdown-content">
                         <a href="#/kataskevi-istoselidas"><span class="el-text">Κατασκευή Ιστοσελίδας</span><span class="en-text">Website Creation</span></a>
-                        <a href="#/google-reviews-nfc"><span class="el-text">Βάση Αξιολογήσεων</span><span class="en-text">Review Base</span></a>
+                        <a href="#/google-reviews-nfc"><span class="el-text">Ανέπαφες Αξιολογήσεις</span><span class="en-text">Contactless Reviews</span></a>
                         <a href="#/diaxeirisi-social-media"><span class="el-text">Διαχείριση Social Media</span><span class="en-text">Social Media Management</span></a>
                     </div>
                 </div>
 
-                <a href="#/#portfolio" class="hover:text-white transition-colors relative group py-2">
+                <a href="#/kataskevi-istoselidas#portfolio" class="hover:text-white transition-colors relative group py-2">
                     <span class="el-text">Πορτφόλιο</span><span class="en-text">Portfolio</span>
                     <span class="absolute bottom-0 left-0 w-full h-[2px] bg-electric-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300"></span>
                 </a>
@@ -469,33 +210,33 @@
                     <span class="el-text">Επικοινωνία</span><span class="en-text">Contact</span>
                 </a>
                 
-                <button onclick="toggleLanguage()" id="lang-btn" class="flex items-center justify-center gap-2 px-3 py-1.5 rounded-lg border border-electric-cyan/40 bg-electric-cyan/10 text-xs font-bold text-electric-cyan hover:bg-electric-cyan hover:text-[#050a0e] transition-all cursor-pointer">
+                <button onclick="toggleLanguage()" class="flex items-center justify-center gap-2 px-3 py-1.5 rounded-lg border border-electric-cyan/40 bg-electric-cyan/10 text-xs font-bold text-electric-cyan hover:bg-electric-cyan hover:text-[#050a0e] transition-all cursor-pointer">
                     <span class="el-text">🇬🇧 EN</span><span class="en-text">🇬🇷 EL</span>
                 </button>
             </nav>
 
             <!-- Mobile Nav Menu Toggle & Lang -->
             <div class="md:hidden flex items-center gap-3">
-                <button onclick="toggleLanguage()" id="mobile-lang-btn" class="flex items-center justify-center gap-2 px-2 py-1 rounded-lg border border-electric-cyan/40 bg-electric-cyan/10 text-xs font-bold text-electric-cyan hover:bg-electric-cyan hover:text-[#050a0e] transition-all cursor-pointer">
+                <button onclick="toggleLanguage()" class="flex items-center justify-center gap-2 px-2 py-1 rounded-lg border border-electric-cyan/40 bg-electric-cyan/10 text-xs font-bold text-electric-cyan hover:bg-electric-cyan hover:text-[#050a0e] transition-all cursor-pointer">
                     <span class="el-text">🇬🇧 EN</span><span class="en-text">🇬🇷 EL</span>
                 </button>
-                <button class="text-electric-cyan p-2 bg-electric-cyan/10 rounded-lg hover:bg-electric-cyan/20 transition-colors" onclick="toggleMobileMenu()">
+                <button class="text-electric-cyan p-2 bg-electric-cyan/10 rounded-lg" onclick="toggleMobileMenu()">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
         </div>
 
         <!-- Mobile Nav Menu -->
-        <div id="mobile-menu" class="md:hidden bg-[#050a0e]/95 backdrop-blur-xl border-b border-electric-cyan/20 overflow-hidden transition-all duration-300 max-h-0 relative z-0">
+        <div id="mobile-menu" class="md:hidden bg-[#050a0e]/95 backdrop-blur-xl border-b border-electric-cyan/20 overflow-hidden transition-all duration-300 max-h-0">
             <nav class="flex flex-col p-6 gap-4 text-lg font-medium text-electric-cyan">
                 <a href="#/" onclick="closeMobileMenu()"><span class="el-text">Αρχική</span><span class="en-text">Home</span></a>
                 <div class="pl-4 border-l border-electric-cyan/20 flex flex-col gap-3 my-1">
                     <span class="text-sm text-gray-500 uppercase font-bold tracking-widest"><span class="el-text">Υπηρεσιες</span><span class="en-text">Services</span></span>
                     <a href="#/kataskevi-istoselidas" class="text-white" onclick="closeMobileMenu()"><span class="el-text">Κατασκευή Ιστοσελίδας</span><span class="en-text">Website Creation</span></a>
-                    <a href="#/google-reviews-nfc" class="text-white" onclick="closeMobileMenu()"><span class="el-text">Βάση Αξιολογήσεων</span><span class="en-text">Review Base</span></a>
+                    <a href="#/google-reviews-nfc" class="text-white" onclick="closeMobileMenu()"><span class="el-text">Ανέπαφες Αξιολογήσεις</span><span class="en-text">Contactless Reviews</span></a>
                     <a href="#/diaxeirisi-social-media" class="text-white" onclick="closeMobileMenu()"><span class="el-text">Διαχείριση Social Media</span><span class="en-text">Social Media Management</span></a>
                 </div>
-                <a href="#/#portfolio" onclick="closeMobileMenu()"><span class="el-text">Πορτφόλιο</span><span class="en-text">Portfolio</span></a>
+                <a href="#/kataskevi-istoselidas#portfolio" onclick="closeMobileMenu()"><span class="el-text">Πορτφόλιο</span><span class="en-text">Portfolio</span></a>
                 <a href="#/#reviews" onclick="closeMobileMenu()"><span class="el-text">Αξιολογήσεις</span><span class="en-text">Reviews</span></a>
                 <a href="#/faq" onclick="closeMobileMenu()">FAQ</a>
                 <a href="#/blog" onclick="closeMobileMenu()">Blog</a>
@@ -504,6 +245,7 @@
         </div>
     </header>
 
+    <!-- ROUTER VIEWS -->
     <main class="relative z-10 pt-20" id="router-container">
 
         <!-- ============================== -->
@@ -511,211 +253,182 @@
         <!-- ============================== -->
         <div id="page-home" class="page-section">
             
+            <!-- Hero -->
             <section class="relative min-h-[90vh] flex items-center justify-center py-20 overflow-hidden">
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-electric-cyan/20 rounded-full blur-[150px] pointer-events-none animate-pulse"></div>
-                <div class="absolute top-1/3 left-1/3 w-[400px] h-[400px] bg-blue-500/20 rounded-full blur-[120px] pointer-events-none mix-blend-screen"></div>
-                
-                <div class="container max-w-7xl mx-auto px-6 text-center z-10 animate-float" id="hero-content">
-                    <div class="reveal inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-electric-cyan/50 bg-electric-cyan/10 mb-8 shadow-[0_0_30px_rgba(71,200,245,0.4)] backdrop-blur-sm">
-                        <span class="w-2.5 h-2.5 rounded-full bg-electric-cyan animate-pulse shadow-[0_0_20px_#47c8f5]"></span>
-                        <span class="text-xs font-black tracking-[0.25em] text-white uppercase text-shadow-sm">ADVON MEDIA</span>
+                <div class="container max-w-7xl mx-auto px-6 text-center z-10 animate-float">
+                    <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-electric-cyan/50 bg-electric-cyan/10 mb-8 shadow-[0_0_30px_rgba(71,200,245,0.2)] backdrop-blur-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-electric-cyan animate-pulse shadow-[0_0_15px_#47c8f5]"></span>
+                        <span class="text-xs font-black tracking-[0.25em] text-white uppercase">ADVON MEDIA</span>
                     </div>
-                    <h1 class="reveal text-5xl md:text-7xl lg:text-8xl font-black font-display mb-8 leading-[1.05] tracking-tight drop-shadow-[0_0_40px_rgba(71,200,245,0.3)]">
-                        <span class="el-text">Επαγγελματική<br/></span>
-                        <span class="en-text">Professional<br/></span>
-                        <span class="bg-clip-text text-transparent bg-gradient-to-br from-white via-gray-100 to-gray-400 drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)]"><span class="el-text">Κατασκευή</span><span class="en-text">Website</span></span> 
-                        <span class="el-text">Ιστοσελίδων στην</span><span class="en-text">Creation in</span> 
-                        <span class="text-shimmer drop-shadow-[0_0_50px_rgba(71,200,245,0.9)]"><span class="el-text">Ελλάδα</span><span class="en-text">Greece</span></span>
+
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-black font-display mb-8 leading-[1.05] tracking-tight drop-shadow-[0_15px_40px_rgba(0,0,0,0.9)]">
+                        <span class="el-text">Μετατρέπουμε<br/></span>
+                        <span class="en-text">We Turn<br/></span>
+                        <span class="bg-clip-text text-transparent bg-gradient-to-br from-white via-gray-300 to-gray-600"><span class="el-text">Επισκέπτες</span><span class="en-text">Visitors</span></span> 
+                        <span class="el-text">σε</span><span class="en-text">Into</span> 
+                        <span class="text-shimmer drop-shadow-[0_0_40px_rgba(71,200,245,0.7)]"><span class="el-text">Πελάτες</span><span class="en-text">Customers</span></span>
                     </h1>
-                    <p class="reveal text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed drop-shadow-[0_5px_15px_rgba(0,0,0,1)] font-medium">
-                        <span class="el-text">Αυξήστε τις πωλήσεις σας με premium Web Design και στοχευμένες στρατηγικές <a href="#services" style="color: inherit; text-decoration: underline;">Digital Marketing</a>. Δημιουργούμε ταχύτατα, ασφαλή και SEO-βελτιστοποιημένα websites για επιχειρήσεις σε όλη την Ελλάδα.</span>
-                        <span class="en-text">Increase your sales with premium Web Design and targeted <a href="#services" style="color: inherit; text-decoration: underline;">Digital Marketing</a> strategies. We build blazing fast, secure, and SEO-optimized websites for businesses all across Greece.</span>
+
+                    <p class="text-lg md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed drop-shadow-[0_5px_15px_rgba(0,0,0,1)] font-medium">
+                        <span class="el-text">Οι πιο αποτελεσματικές λύσεις marketing για τοπικές επιχειρήσεις και ελεύθερους επαγγελματίες. Ανεβείτε στην κορυφή των αποτελεσμάτων χωρίς ρίσκο.</span>
+                        <span class="en-text">The most effective marketing solutions for local businesses and freelancers. Reach the top of search results without risk.</span>
                     </p>
-                    <div class="reveal flex flex-wrap items-center justify-center gap-6">
-                        <a href="#services" class="group relative overflow-hidden px-10 py-5 bg-electric-cyan text-[#050a0e] font-black text-lg uppercase tracking-[0.1em] rounded-xl shadow-[0_0_30px_rgba(71,200,245,0.5)] hover:scale-105 hover:shadow-[0_0_50px_rgba(71,200,245,0.8)] transition-all flex items-center gap-3">
+
+                    <div class="flex flex-wrap items-center justify-center gap-6">
+                        <a href="#/kataskevi-istoselidas" class="group relative overflow-hidden px-10 py-5 bg-electric-cyan text-[#050a0e] font-black text-lg uppercase tracking-[0.1em] rounded-xl shadow-[0_0_30px_rgba(71,200,245,0.5)] hover:scale-105 transition-all flex items-center gap-3">
                             <div class="btn-shine-effect"></div>
                             <span class="relative z-10 flex items-center gap-3">
                                 <span class="el-text">ΥΠΗΡΕΣΙΕΣ</span><span class="en-text">SERVICES</span>
                                 <i data-lucide="arrow-right" class="w-6 h-6 group-hover:translate-x-2 transition-transform"></i>
                             </span>
                         </a>
-                        <a href="#/#portfolio" class="group px-10 py-5 bg-transparent border-2 border-electric-cyan text-electric-cyan font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-electric-cyan hover:text-[#050a0e] hover:shadow-[0_0_40px_rgba(71,200,245,0.6)] transition-all flex items-center gap-3 backdrop-blur-md shadow-[0_0_15px_rgba(71,200,245,0.2)]">
-                            <i data-lucide="play" class="w-6 h-6 fill-current"></i>
-                            <span class="el-text">ΠΟΡΤΦΟΛΙΟ</span><span class="en-text">PORTFOLIO</span>
+                        <a href="#/kataskevi-istoselidas#portfolio" class="group px-10 py-5 bg-transparent border-2 border-electric-cyan text-electric-cyan font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-electric-cyan hover:text-[#050a0e] transition-all flex items-center gap-3 backdrop-blur-md">
+                            <i data-lucide="play" class="w-6 h-6 fill-current"></i> <span class="el-text">ΠΟΡΤΦΟΛΙΟ</span><span class="en-text">PORTFOLIO</span>
                         </a>
-                        <!-- Explicit CTA added here as requested to sit next to the others -->
-                        <a href="#contact" class="group px-10 py-5 bg-white text-[#050a0e] font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-gray-200 hover:shadow-[0_0_40px_rgba(255,255,255,0.6)] transition-all flex items-center gap-3 backdrop-blur-md shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-                            <i data-lucide="phone-call" class="w-6 h-6"></i>
+                        <!-- Clear Contact CTA Added as Requested -->
+                        <a href="#contact" class="group px-10 py-5 bg-white text-[#050a0e] font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-gray-200 transition-all flex items-center gap-3 backdrop-blur-md shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                            <i data-lucide="calendar" class="w-6 h-6"></i> 
                             <span class="el-text">ΕΠΙΚΟΙΝΩΝΙΑ</span><span class="en-text">CONTACT</span>
                         </a>
                     </div>
                 </div>
             </section>
 
-            <section class="py-20 border-y border-electric-cyan/20 bg-[#0a1418]/60 backdrop-blur-md shadow-[inset_0_0_80px_rgba(0,0,0,0.8)] relative">
-                <div class="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(71,200,245,0.03)_50%,transparent_100%)] pointer-events-none"></div>
-                <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 relative z-10">
-                    <div class="text-center relative group" style="transition-delay: 0ms">
-                        <div class="absolute inset-0 bg-electric-cyan/5 blur-2xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-500"></div>
-                        <div class="text-5xl md:text-7xl font-black font-display text-electric-cyan mb-2 drop-shadow-[0_0_20px_rgba(71,200,245,0.3)] relative z-10">3+</div>
-                        <div class="text-xs font-bold tracking-[0.25em] text-gray-400 uppercase relative z-10 group-hover:text-white transition-colors"><span class="el-text">ΧΡΟΝΙΑ ΕΜΠΕΙΡΙΑΣ</span><span class="en-text">YEARS EXPERIENCE</span></div>
+            <!-- Stats -->
+            <section class="py-20 border-y border-electric-cyan/10 bg-[#0a1418]/50 backdrop-blur-sm">
+                <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div>
+                        <div class="text-4xl md:text-6xl font-black font-display text-electric-cyan mb-2 drop-shadow-[0_0_20px_rgba(71,200,245,0.3)]">3+</div>
+                        <div class="text-xs font-bold tracking-[0.2em] text-gray-500 uppercase"><span class="el-text">ΧΡΟΝΙΑ ΕΜΠΕΙΡΙΑΣ</span><span class="en-text">YEARS EXPERIENCE</span></div>
                     </div>
-                    <div class="text-center relative group" style="transition-delay: 100ms">
-                        <div class="absolute inset-0 bg-electric-cyan/5 blur-2xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-500"></div>
-                        <div class="text-5xl md:text-7xl font-black font-display text-electric-cyan mb-2 drop-shadow-[0_0_20px_rgba(71,200,245,0.3)] relative z-10">120+</div>
-                        <div class="text-xs font-bold tracking-[0.25em] text-gray-400 uppercase relative z-10 group-hover:text-white transition-colors"><span class="el-text">ΙΚΑΝΟΠΟΙΗΜΕΝΟΙ ΠΕΛΑΤΕΣ</span><span class="en-text">SATISFIED CLIENTS</span></div>
+                    <div>
+                        <div class="text-4xl md:text-6xl font-black font-display text-electric-cyan mb-2 drop-shadow-[0_0_20px_rgba(71,200,245,0.3)]">120+</div>
+                        <div class="text-xs font-bold tracking-[0.2em] text-gray-500 uppercase"><span class="el-text">ΠΕΛΑΤΕΣ</span><span class="en-text">CLIENTS</span></div>
                     </div>
-                    <div class="text-center relative group" style="transition-delay: 200ms">
-                        <div class="absolute inset-0 bg-electric-cyan/5 blur-2xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-500"></div>
-                        <div class="text-5xl md:text-7xl font-black font-display text-electric-cyan mb-2 drop-shadow-[0_0_20px_rgba(71,200,245,0.3)] relative z-10">100%</div>
-                        <div class="text-xs font-bold tracking-[0.25em] text-gray-400 uppercase relative z-10 group-hover:text-white transition-colors"><span class="el-text">ΕΠΙΤΥΧΙΑ</span><span class="en-text">SUCCESS</span></div>
+                    <div>
+                        <div class="text-4xl md:text-6xl font-black font-display text-electric-cyan mb-2 drop-shadow-[0_0_20px_rgba(71,200,245,0.3)]">100%</div>
+                        <div class="text-xs font-bold tracking-[0.2em] text-gray-500 uppercase"><span class="el-text">ΕΠΙΤΥΧΙΑ</span><span class="en-text">SUCCESS</span></div>
                     </div>
-                    <div class="text-center relative group" style="transition-delay: 300ms">
-                        <div class="absolute inset-0 bg-electric-cyan/5 blur-2xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-500"></div>
-                        <div class="text-5xl md:text-7xl font-black font-display text-electric-cyan mb-2 drop-shadow-[0_0_20px_rgba(71,200,245,0.3)] relative z-10">75+</div>
-                        <div class="text-xs font-bold tracking-[0.25em] text-gray-400 uppercase relative z-10 group-hover:text-white transition-colors"><span class="el-text">5-STAR REVIEWS</span><span class="en-text">5-STAR REVIEWS</span></div>
+                    <div>
+                        <div class="text-4xl md:text-6xl font-black font-display text-electric-cyan mb-2 drop-shadow-[0_0_20px_rgba(71,200,245,0.3)]">75+</div>
+                        <div class="text-xs font-bold tracking-[0.2em] text-gray-500 uppercase"><span class="el-text">5-STAR REVIEWS</span><span class="en-text">5-STAR REVIEWS</span></div>
                     </div>
                 </div>
             </section>
 
-            <section id="services" class="py-32 relative">
-                <div class="max-w-7xl mx-auto px-6 relative z-10">
-                    <div class="reveal text-center mb-20">
-                        <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]"><span class="el-text">ΥΠΗΡΕΣΙΕΣ</span><span class="en-text">SERVICES</span></span>
-                        <h2 class="text-4xl md:text-6xl font-black font-display mb-4 text-white drop-shadow-xl"><span class="el-text">Λύσεις που Αποδίδουν</span><span class="en-text">Solutions That Deliver</span></h2>
+            <!-- Services Summary -->
+            <section class="py-32 relative">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="text-center mb-20">
+                        <span class="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block"><span class="el-text">Υπηρεσίες</span><span class="en-text">Services</span></span>
+                        <h2 class="text-4xl md:text-5xl font-black font-display mb-4"><span class="el-text">Λύσεις που Αποδίδουν</span><span class="en-text">Solutions That Deliver</span></h2>
                     </div>
 
                     <div class="grid md:grid-cols-3 gap-8">
-                        <div class="reveal glass-panel rounded-3xl p-8 group flex flex-col h-full" style="transition-delay: 0ms">
-                            <div class="w-16 h-16 rounded-2xl bg-electric-cyan/10 flex items-center justify-center mb-8 group-hover:bg-electric-cyan group-hover:text-[#050a0e] text-electric-cyan transition-all duration-300 shadow-[0_0_30px_rgba(71,200,245,0.15)] group-hover:shadow-[0_0_40px_rgba(71,200,245,0.8)]">
-                                <i data-lucide="globe" class="w-8 h-8"></i>
+                        <!-- Website -->
+                        <div class="glass-panel rounded-2xl p-8 transition-colors duration-300 flex flex-col h-full hover:border-electric-cyan/50">
+                            <div class="w-14 h-14 rounded-2xl bg-electric-cyan/10 flex items-center justify-center mb-6 text-electric-cyan">
+                                <i data-lucide="globe" class="w-7 h-7"></i>
                             </div>
-                            <div class="flex items-baseline gap-2 mb-6">
-                                <span class="text-4xl font-black text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"><span class="el-text">ΔΩΡΕΑΝ</span><span class="en-text">FREE</span></span>
-                                <span class="text-sm text-electric-cyan/80 font-medium"><span class="el-text">(10.83€/μήνα hosting + δώρο domain)</span><span class="en-text">(10.83€/mo hosting + free domain)</span></span>
+                            <div class="flex items-baseline gap-2 mb-4">
+                                <span class="text-3xl font-bold bg-gradient-to-br from-electric-cyan to-[#c9ff00] text-transparent bg-clip-text"><span class="el-text">ΔΩΡΕΑΝ</span><span class="en-text">FREE</span></span>
+                                <span class="text-sm text-gray-400"><span class="el-text">(10.83€/μήνα hosting)</span><span class="en-text">(10.83€/mo hosting)</span></span>
                             </div>
-                            <h3 class="text-2xl font-black mb-4 font-display text-white tracking-wide"><span class="el-text">Κατασκευή Ιστοσελίδας</span><span class="en-text">Website Creation</span></h3>
-                            <p class="text-gray-400 mb-8 leading-relaxed flex-grow text-lg"><span class="el-text">Επαγγελματική ιστοσελίδα που κατακτά υψηλές θέσεις στη Google.</span><span class="en-text">Professional website that ranks high on Google.</span></p>
-                            <ul class="space-y-4 mb-10">
-                                <li class="service-list-item flex items-center gap-4 text-sm font-medium text-gray-300"><div class="p-1 rounded-full bg-electric-cyan/10 group-hover:bg-electric-cyan/20"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i></div><span class="el-text">Custom Σχεδιασμός UI/UX για μέγιστες μετατροπές</span><span class="en-text">Custom UI/UX Design for maximum conversions</span></li>
-                                <li class="service-list-item flex items-center gap-4 text-sm font-medium text-gray-300"><div class="p-1 rounded-full bg-electric-cyan/10 group-hover:bg-electric-cyan/20"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i></div><span class="el-text">On-Page SEO Βελτιστοποίηση για την 1η σελίδα της Google</span><span class="en-text">On-Page SEO Optimization for Google 1st page</span></li>
-                                <li class="service-list-item flex items-center gap-4 text-sm font-medium text-gray-300"><div class="p-1 rounded-full bg-electric-cyan/10 group-hover:bg-electric-cyan/20"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i></div><span class="el-text">100% Mobile Responsive & Core Web Vitals optimized</span><span class="en-text">100% Mobile Responsive & Core Web Vitals optimized</span></li>
-                                <li class="service-list-item flex items-center gap-4 text-sm font-medium text-gray-300"><div class="p-1 rounded-full bg-electric-cyan/10 group-hover:bg-electric-cyan/20"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i></div><span class="el-text">Γρήγορη παράδοση σε 5-10 ημέρες</span><span class="en-text">Fast delivery in 5-10 days</span></li>
+                            <h3 class="text-xl font-bold mb-4 font-display"><span class="el-text">Κατασκευή Ιστοσελίδας</span><span class="en-text">Website Creation</span></h3>
+                            <p class="text-gray-400 mb-6 leading-relaxed flex-grow"><span class="el-text">Επαγγελματική ιστοσελίδα που κατακτά υψηλές θέσεις στη Google.</span><span class="en-text">Professional website that conquers high rankings on Google.</span></p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i> <span class="el-text">Επαγγελματικός σχεδιασμός</span><span class="en-text">Professional design</span></li>
+                                <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i> <span class="el-text">SEO βελτιστοποίηση</span><span class="en-text">SEO optimization</span></li>
+                                <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i> <span class="el-text">Mobile responsive</span><span class="en-text">Mobile responsive</span></li>
+                                <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i> <span class="el-text">Παράδοση σε 5-10 ημέρες</span><span class="en-text">Delivery in 5-10 days</span></li>
                             </ul>
-                            <div class="mt-auto space-y-4">
-                                <a href="#/kataskevi-istoselidas" class="flex items-center justify-center gap-2 w-full py-4 bg-white/5 border border-white/10 text-white font-bold rounded-xl group-hover:bg-electric-cyan group-hover:text-[#050a0e] group-hover:border-electric-cyan transition-all uppercase tracking-widest text-sm shadow-lg"><span class="el-text">ΔΩΡΕΑΝ ΚΑΤΑΣΚΕΥΗ</span><span class="en-text">GET STARTED FREE</span> <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
-                            </div>
+                            <a href="#/kataskevi-istoselidas" class="flex items-center justify-center gap-2 w-full py-3 bg-electric-cyan text-[#050a0e] font-bold rounded-xl hover:bg-white transition-colors uppercase text-sm"><span class="el-text">ΠΕΡΙΣΣΟΤΕΡΕΣ ΠΛΗΡΟΦΟΡΙΕΣ</span><span class="en-text">LEARN MORE</span></a>
                         </div>
 
-                        <div class="reveal glass-panel rounded-3xl p-8 group flex flex-col h-full" style="transition-delay: 100ms">
-                            <div class="w-16 h-16 rounded-2xl bg-electric-cyan/10 flex items-center justify-center mb-8 group-hover:bg-electric-cyan group-hover:text-[#050a0e] text-electric-cyan transition-all duration-300 shadow-[0_0_30px_rgba(71,200,245,0.15)] group-hover:shadow-[0_0_40px_rgba(71,200,245,0.8)]">
-                                <i data-lucide="star" class="w-8 h-8"></i>
+                        <!-- NFC -->
+                        <div class="glass-panel rounded-2xl p-8 transition-colors duration-300 flex flex-col h-full hover:border-electric-cyan/50">
+                            <div class="w-14 h-14 rounded-2xl bg-electric-cyan/10 flex items-center justify-center mb-6 text-electric-cyan">
+                                <i data-lucide="star" class="w-7 h-7"></i>
                             </div>
-                            <div class="flex items-baseline gap-2 mb-6">
-                                <span class="text-4xl font-black text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">25€</span>
-                                <span class="text-sm text-electric-cyan/80 font-medium"><span class="el-text">εφάπαξ</span><span class="en-text">one-time</span></span>
+                            <div class="flex items-baseline gap-2 mb-4">
+                                <span class="text-3xl font-bold bg-gradient-to-br from-electric-cyan to-[#c9ff00] text-transparent bg-clip-text">25€</span>
+                                <span class="text-sm text-gray-400"><span class="el-text">εφάπαξ</span><span class="en-text">one-time</span></span>
                             </div>
-                            <h3 class="text-2xl font-black mb-4 font-display text-white tracking-wide"><span class="el-text">Βάση Αξιολογήσεων</span><span class="en-text">Review Base</span></h3>
-                            <p class="text-gray-400 mb-8 leading-relaxed flex-grow text-lg"><span class="el-text">50+ νέες αξιολογήσεις κάθε μήνα. Ανεβείτε στην κορυφή της Google σε 3 μήνες.</span><span class="en-text">50+ new reviews monthly. Reach the top of Google in 3 months.</span></p>
-                            <ul class="space-y-4 mb-10">
-                                <li class="service-list-item flex items-center gap-4 text-sm font-medium text-gray-300"><div class="p-1 rounded-full bg-electric-cyan/10 group-hover:bg-electric-cyan/20"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i></div><span class="el-text">Αύξηση κριτικών Google</span><span class="en-text">Increase Google Reviews</span></li>
-                                <li class="service-list-item flex items-center gap-4 text-sm font-medium text-gray-300"><div class="p-1 rounded-full bg-electric-cyan/10 group-hover:bg-electric-cyan/20"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i></div><span class="el-text">Βελτίωση τοπικού SEO</span><span class="en-text">Improve Local SEO</span></li>
-                                <li class="service-list-item flex items-center gap-4 text-sm font-medium text-gray-300"><div class="p-1 rounded-full bg-electric-cyan/10 group-hover:bg-electric-cyan/20"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i></div><span class="el-text">Εύκολη χρήση (NFC)</span><span class="en-text">Easy to use (NFC)</span></li>
-                                <li class="service-list-item flex items-center gap-4 text-sm font-medium text-gray-300"><div class="p-1 rounded-full bg-electric-cyan/10 group-hover:bg-electric-cyan/20"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i></div><span class="el-text">Χωρίς μηνιαία συνδρομή</span><span class="en-text">No monthly fee</span></li>
+                            <h3 class="text-xl font-bold mb-4 font-display"><span class="el-text">Ανέπαφη Βάση Αξιολογήσεων</span><span class="en-text">Contactless Reviews Base</span></h3>
+                            <p class="text-gray-400 mb-6 leading-relaxed flex-grow"><span class="el-text">50+ νέες αξιολογήσεις κάθε μήνα. Ανεβείτε στην κορυφή της Google σε 3 μήνες.</span><span class="en-text">50+ new reviews every month. Reach the top of Google in 3 months.</span></p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i> <span class="el-text">Αύξηση κριτικών Google</span><span class="en-text">Increase Google reviews</span></li>
+                                <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i> <span class="el-text">Βελτίωση τοπικού SEO</span><span class="en-text">Improve Local SEO</span></li>
+                                <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i> <span class="el-text">Εύκολη χρήση (NFC)</span><span class="en-text">Easy to use (NFC)</span></li>
+                                <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i> <span class="el-text">Χωρίς μηνιαία συνδρομή</span><span class="en-text">No monthly subscription</span></li>
                             </ul>
-                            <div class="mt-auto space-y-4">
-                                <a href="#/google-reviews-nfc" class="flex items-center justify-center gap-2 w-full py-4 bg-white/5 border border-white/10 text-white font-bold rounded-xl group-hover:bg-electric-cyan group-hover:text-[#050a0e] group-hover:border-electric-cyan transition-all uppercase tracking-widest text-sm shadow-lg"><span class="el-text">ΠΕΡΙΣΣΟΤΕΡΕΣ ΠΛΗΡΟΦΟΡΙΕΣ</span><span class="en-text">LEARN MORE</span> <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
-                            </div>
+                            <a href="#/google-reviews-nfc" class="flex items-center justify-center gap-2 w-full py-3 bg-electric-cyan text-[#050a0e] font-bold rounded-xl hover:bg-white transition-colors uppercase text-sm"><span class="el-text">ΠΕΡΙΣΣΟΤΕΡΕΣ ΠΛΗΡΟΦΟΡΙΕΣ</span><span class="en-text">LEARN MORE</span></a>
                         </div>
 
-                        <div class="reveal glass-panel rounded-3xl p-8 group flex flex-col h-full" style="transition-delay: 200ms">
-                            <div class="w-16 h-16 rounded-2xl bg-electric-cyan/10 flex items-center justify-center mb-8 group-hover:bg-electric-cyan group-hover:text-[#050a0e] text-electric-cyan transition-all duration-300 shadow-[0_0_30px_rgba(71,200,245,0.15)] group-hover:shadow-[0_0_40px_rgba(71,200,245,0.8)]">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                        <!-- Social -->
+                        <div class="glass-panel rounded-2xl p-8 transition-colors duration-300 flex flex-col h-full hover:border-electric-cyan/50">
+                            <div class="w-14 h-14 rounded-2xl bg-electric-cyan/10 flex items-center justify-center mb-6 text-electric-cyan">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
                             </div>
-                            <div class="flex items-baseline gap-2 mb-6">
-                                <span class="text-4xl font-black text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">87€</span>
-                                <span class="text-sm text-electric-cyan/80 font-medium"><span class="el-text">/μήνα</span><span class="en-text">/mo</span></span>
+                            <div class="flex items-baseline gap-2 mb-4">
+                                <span class="text-3xl font-bold bg-gradient-to-br from-electric-cyan to-[#c9ff00] text-transparent bg-clip-text">87€</span>
+                                <span class="text-sm text-gray-400"><span class="el-text">/μήνα</span><span class="en-text">/month</span></span>
                             </div>
-                            <h3 class="text-2xl font-black mb-4 font-display text-white tracking-wide"><span class="el-text">Διαχείριση Social Media</span><span class="en-text">Social Media Management</span></h3>
-                            <p class="text-gray-400 mb-8 leading-relaxed flex-grow text-lg"><span class="el-text">Επαγγελματικά posts, hashtag research, copywriting. 7 ημέρες δωρεάν δοκιμή.</span><span class="en-text">Professional posts, hashtag research, copywriting. 7-day free trial.</span></p>
-                            <ul class="space-y-4 mb-10">
-                                <li class="service-list-item flex items-center gap-4 text-sm font-medium text-gray-300"><div class="p-1 rounded-full bg-electric-cyan/10 group-hover:bg-electric-cyan/20"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i></div><span class="el-text">3 posts/εβδομάδα</span><span class="en-text">3 posts/week</span></li>
-                                <li class="service-list-item flex items-center gap-4 text-sm font-medium text-gray-300"><div class="p-1 rounded-full bg-electric-cyan/10 group-hover:bg-electric-cyan/20"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i></div><span class="el-text">Hashtag research</span><span class="en-text">Hashtag research</span></li>
-                                <li class="service-list-item flex items-center gap-4 text-sm font-medium text-gray-300"><div class="p-1 rounded-full bg-electric-cyan/10 group-hover:bg-electric-cyan/20"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i></div><span class="el-text">Copywriting</span><span class="en-text">Copywriting</span></li>
-                                <li class="service-list-item flex items-center gap-4 text-sm font-medium text-gray-300"><div class="p-1 rounded-full bg-electric-cyan/10 group-hover:bg-electric-cyan/20"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i></div><span class="el-text">Μηνιαία αναφορά</span><span class="en-text">Monthly Report</span></li>
+                            <h3 class="text-xl font-bold mb-4 font-display"><span class="el-text">Διαχείριση Social Media</span><span class="en-text">Social Media Management</span></h3>
+                            <p class="text-gray-400 mb-6 leading-relaxed flex-grow"><span class="el-text">Επαγγελματικά posts, hashtag research, copywriting. 7 ημέρες δωρεάν δοκιμή.</span><span class="en-text">Professional posts, hashtag research, copywriting. 7 day free trial.</span></p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i> <span class="el-text">3 posts/εβδομάδα</span><span class="en-text">3 posts/week</span></li>
+                                <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i> <span class="el-text">Hashtag research</span><span class="en-text">Hashtag research</span></li>
+                                <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i> <span class="el-text">Copywriting</span><span class="en-text">Copywriting</span></li>
+                                <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i> <span class="el-text">Μηνιαία αναφορά</span><span class="en-text">Monthly report</span></li>
                             </ul>
-                            <div class="mt-auto space-y-4">
-                                <a href="#/diaxeirisi-social-media" class="flex items-center justify-center gap-2 w-full py-4 bg-white/5 border border-white/10 text-white font-bold rounded-xl group-hover:bg-electric-cyan group-hover:text-[#050a0e] group-hover:border-electric-cyan transition-all uppercase tracking-widest text-sm shadow-lg"><span class="el-text">ΠΕΡΙΣΣΟΤΕΡΕΣ ΠΛΗΡΟΦΟΡΙΕΣ</span><span class="en-text">LEARN MORE</span> <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
-                            </div>
+                            <a href="#/diaxeirisi-social-media" class="flex items-center justify-center gap-2 w-full py-3 bg-electric-cyan text-[#050a0e] font-bold rounded-xl hover:bg-white transition-colors uppercase text-sm"><span class="el-text">ΠΕΡΙΣΣΟΤΕΡΕΣ ΠΛΗΡΟΦΟΡΙΕΣ</span><span class="en-text">LEARN MORE</span></a>
                         </div>
                     </div>
 
-                    <div class="reveal mt-16 text-center">
-                        <span class="trust-badge-shimmer inline-flex items-center gap-3 px-8 py-4 rounded-full border border-electric-cyan/40 bg-[#0a1418]/80 backdrop-blur-md text-sm font-bold text-white shadow-[0_0_30px_rgba(71,200,245,0.15)] cursor-default tracking-wide">
-                            <div class="p-1 rounded-full bg-electric-cyan/20 animate-pulse"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i></div>
-                            <span class="el-text">Χωρίς δεσμεύσεις - Cancel Anytime</span><span class="en-text">No commitment - Cancel Anytime</span>
+                    <div class="mt-16 text-center">
+                        <span class="trust-badge-shimmer inline-flex items-center gap-2 px-6 py-3 rounded-full border border-electric-cyan/30 bg-electric-cyan/5 text-sm font-medium text-white cursor-default">
+                            <i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i> <span class="el-text">Χωρίς δεσμεύσεις - Cancel Anytime</span><span class="en-text">No commitments - Cancel Anytime</span>
                         </span>
                     </div>
                 </div>
             </section>
 
-            <section id="portfolio" class="py-32 relative">
-                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a1418] to-transparent z-0 pointer-events-none"></div>
-                <div class="max-w-7xl mx-auto px-6 relative z-10">
-                    <div class="reveal text-center mb-20">
-                        <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]"><span class="el-text">ΠΟΡΤΦΟΛΙΟ</span><span class="en-text">PORTFOLIO</span></span>
-                        <h2 class="text-4xl md:text-6xl font-black font-display mb-4 text-white drop-shadow-xl"><span class="el-text">Δείτε μερικές από τις Δουλειές μας</span><span class="en-text">See Some of Our Work</span></h2>
-                    </div>
-
-                    <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 min-h-[400px]">
-                        <!-- Injected via JS -->
-                    </div>
-
-                    <div class="reveal flex justify-center items-center gap-6">
-                        <button id="prev-btn" class="p-3 rounded-full border border-electric-cyan/40 bg-[#050a0e] hover:bg-electric-cyan hover:text-[#050a0e] transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-[#050a0e] disabled:hover:text-electric-cyan shadow-[0_0_15px_rgba(71,200,245,0.1)]">
-                            <i data-lucide="chevron-left" class="w-6 h-6"></i>
-                        </button>
-                        <div id="pagination-dots" class="flex gap-2">
-                            <!-- Injected via JS -->
-                        </div>
-                        <button id="next-btn" class="p-3 rounded-full border border-electric-cyan/40 bg-[#050a0e] hover:bg-electric-cyan hover:text-[#050a0e] transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-[#050a0e] disabled:hover:text-electric-cyan shadow-[0_0_15px_rgba(71,200,245,0.1)]">
-                            <i data-lucide="chevron-right" class="w-6 h-6"></i>
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-            <section id="reviews" class="py-32 relative overflow-hidden bg-[#050a0e]">
-                 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[80%] bg-electric-cyan/5 blur-[150px] rounded-full pointer-events-none z-0"></div>
+            <!-- Reviews Section -->
+            <section id="reviews" class="py-32 relative overflow-hidden">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[60%] bg-electric-cyan/5 blur-[120px] rounded-full pointer-events-none"></div>
 
                 <div class="max-w-7xl mx-auto px-6 relative z-10">
+                    <div class="text-center mb-20">
+                        <span class="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block"><span class="el-text">Αξιολογήσεις</span><span class="en-text">Reviews</span></span>
+                        <h2 class="text-4xl md:text-5xl font-black font-display mb-4"><span class="el-text">Τι λένε οι πελάτες μας</span><span class="en-text">What our clients say</span></h2>
+                    </div>
+
                     <div class="grid lg:grid-cols-12 gap-12 items-start">
-                        <div class="lg:col-span-5 lg:sticky lg:top-[30%] pt-12 lg:pt-24 flex flex-col items-center lg:items-start text-center lg:text-left reveal">
-                            <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]"><span class="el-text">ΑΞΙΟΛΟΓΗΣΕΙΣ</span><span class="en-text">REVIEWS</span></span>
-                            <h2 class="text-4xl md:text-6xl font-black font-display mb-6 text-white drop-shadow-xl"><span class="el-text">Τι λένε οι πελάτες μας</span><span class="en-text">What Our Clients Say</span></h2>
-                            
-                            <div class="flex items-center gap-2 mb-8 mt-2 justify-center lg:justify-start">
-                                <div class="flex gap-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-yellow-400"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" /></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-yellow-400"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" /></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-yellow-400"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" /></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-yellow-400"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" /></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-yellow-400"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" /></svg>
+                        <!-- Lowered left column per instructions -->
+                        <div class="lg:col-span-5 lg:sticky lg:top-[30%] pt-12 lg:pt-24 flex flex-col items-center lg:items-start text-center lg:text-left">
+                            <div class="flex items-center gap-2 mb-8 justify-center lg:justify-start">
+                                <div class="flex gap-1 text-[#FBBC05]">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                                 </div>
                                 <span class="text-xl font-bold text-white flex items-center gap-2">5.0 <span class="text-gray-400 font-medium text-sm">(75+)</span></span>
                             </div>
-                            <p class="text-gray-400 text-lg mb-8 leading-relaxed max-w-md">
+                            <p class="text-gray-300 text-lg mb-8 leading-relaxed max-w-md">
                                 <span class="el-text">Δείτε τι λένε οι πελάτες μας για τις ψηφιακές λύσεις που προσφέρουμε. Η ικανοποίησή σας είναι η μεγαλύτερη ανταμοιβή μας.</span>
-                                <span class="en-text">See what our clients say about the digital solutions we provide. Your satisfaction is our greatest reward.</span>
+                                <span class="en-text">See what our clients have to say about the digital solutions we offer. Your satisfaction is our greatest reward.</span>
                             </p>
-                            <a href="https://share.google/zWUQyGTmywjaljaMW" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-4 border border-electric-cyan/40 bg-electric-cyan/10 text-electric-cyan rounded-xl hover:bg-electric-cyan hover:text-[#050a0e] transition-all font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(71,200,245,0.15)] hover:shadow-[0_0_40px_rgba(71,200,245,0.4)] group mt-4">
-                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"></path><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"></path><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"></path><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"></path></svg>
-                                <span class="el-text">ΔΕΙΤΕ ΟΛΕΣ ΤΙΣ ΑΞΙΟΛΟΓΗΣΕΙΣ</span><span class="en-text">SEE ALL REVIEWS</span>
-                                <i data-lucide="external-link" class="w-4 h-4"></i>
-                            </a>
+                            <div>
+                                <a href="https://share.google/zWUQyGTmywjaljaMW" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 border border-electric-cyan text-electric-cyan rounded-xl hover:bg-electric-cyan hover:text-[#050a0e] transition-all font-bold uppercase tracking-wide">
+                                    <span class="el-text">ΔΕΙΤΕ ΟΛΕΣ ΤΙΣ ΑΞΙΟΛΟΓΗΣΕΙΣ</span><span class="en-text">SEE ALL REVIEWS</span> <i data-lucide="external-link" class="w-5 h-5"></i>
+                                </a>
+                            </div>
                         </div>
-                        <div class="lg:col-span-7 h-[700px] overflow-hidden mask-vertical reveal relative" style="transition-delay: 200ms;">
-                            <div class="flex flex-col gap-6 animate-vertical-scroll hover:[animation-play-state:paused] py-4" id="reviews-list">
+                        <div class="lg:col-span-7 h-[600px] overflow-hidden mask-vertical relative">
+                            <div class="flex flex-col gap-6 animate-vertical-scroll py-4" id="reviews-list">
                                 <!-- Injected via JS -->
                             </div>
                         </div>
@@ -728,170 +441,122 @@
         <!-- PAGE 2: ΚΑΤΑΣΚΕΥΗ ΙΣΤΟΣΕΛΙΔΑΣ                -->
         <!-- ============================================== -->
         <div id="page-website" class="page-section">
-            <section class="py-32 pt-40 max-w-6xl mx-auto px-6">
-                <!-- Header -->
-                <div class="text-center mb-16">
-                     <span class="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block"><span class="el-text">Υπηρεσία</span><span class="en-text">Service</span></span>
-                     <h1 class="text-4xl md:text-6xl font-black font-display mb-8 text-white"><span class="el-text">Κατασκευή Ιστοσελίδας</span><span class="en-text">Website Creation</span></h1>
-                     
-                     <div class="inline-flex flex-col md:flex-row items-center gap-4 px-8 py-4 rounded-full bg-electric-cyan/10 border border-electric-cyan/30 shadow-[0_0_40px_rgba(71,200,245,0.25)]">
-                         <span class="text-3xl md:text-4xl font-black text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"><span class="el-text">ΔΩΡΕΑΝ</span><span class="en-text">FREE</span></span>
-                         <div class="h-2 w-2 rounded-full bg-electric-cyan hidden md:block"></div>
-                         <span class="text-electric-cyan font-bold text-sm md:text-lg">
-                             <span class="el-text">(10.83€/μήνα hosting - Το Domain Name περιλαμβάνεται!)</span>
-                             <span class="en-text">(10.83€/mo hosting - Domain Name is included!)</span>
-                         </span>
-                     </div>
+            <section class="py-32 pt-40 max-w-5xl mx-auto px-6">
+                <span class="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block text-center"><span class="el-text">Υπηρεσία</span><span class="en-text">Service</span></span>
+                <h1 class="text-4xl md:text-5xl font-black font-display mb-12 text-center text-white"><span class="el-text">Κατασκευή Ιστοσελίδας</span><span class="en-text">Website Creation</span></h1>
+                
+                <div class="glass-panel p-8 md:p-12 rounded-3xl text-gray-300 leading-relaxed font-body text-lg mb-20 shadow-[0_0_50px_rgba(71,200,245,0.1)]">
+                    <div class="flex flex-col md:flex-row md:items-end gap-4 mb-8 pb-8 border-b border-white/10">
+                        <span class="text-5xl font-black text-white tracking-tight drop-shadow-md"><span class="el-text">ΔΩΡΕΑΝ</span><span class="en-text">FREE</span></span>
+                        <span class="text-electric-cyan font-bold mb-1"><span class="el-text">(μόνο 10.83€/μήνα hosting)</span><span class="en-text">(only 10.83€/mo hosting)</span></span>
+                    </div>
+
+                    <div class="space-y-6">
+                        <p class="el-text">Δεν είναι κάποιο μάρκετινγκ τρικ, όντως η κατασκευή που κοστίζει κανονικά 700-2000€+, είναι εντελώς δωρεάν.</p>
+                        <p class="en-text">This is not a marketing trick; the construction that normally costs €700-2000+ is genuinely completely free.</p>
+
+                        <p class="el-text">Το μόνο κόστος για εσάς που δεν μπορούμε να καλύψουμε έιναι η φιλοξενία της ιστοσελίδας σε σέρβερ στο διαδίκτυο (γνωστό και ως hosting) και το domain name (το www.παράδειγμα.gr). Τα αναλαμβάνουμε και τα 2 σαν διαδικασίες εμείς!</p>
+                        <p class="en-text">The only cost for you that we cannot cover is the hosting of the website on an internet server and the domain name (e.g. www.example.com). We handle both processes for you!</p>
+
+                        <p class="el-text">Το κάνουμε αυτό γιατί θέλουμε να προσθέσουμε όσες περισσότερες ιστοσελίδες γίνεται στο πορτφόλιο μας για να μπορούμε στο μέλλον και εμείς να έχουμε υψηλές τιμές και κέρδη.</p>
+                        <p class="en-text">We do this because we want to add as many websites as possible to our portfolio so that we too can command higher prices and profits in the future.</p>
+
+                        <p class="el-text">Συνολικά είναι μόνο 10.83€/μήνα (που θα πληρώνατε όπως και να έχει, όπου και αν κατασκευάζατε μια ιστοσελίδα, όπως πληρώνουν και όλοι που ήδη έχουν).</p>
+                        <p class="en-text">In total, it is only €10.83/month (which you would pay anyway, wherever you built a website, just as everyone who already has one pays).</p>
+
+                        <p class="text-white font-semibold">
+                            <span class="el-text">Aναβαθμίστε την επαγγελματική σας παρουσία στο διαδίκτυο και μετατρέψτε τους επισκέπτες της ιστοσελίδας σας σε αφοσιωμένους πελάτες!</span>
+                            <span class="en-text">Upgrade your professional online presence and turn your website visitors into dedicated customers!</span>
+                        </p>
+
+                        <p class="el-text">Το 2025, η κατοχή μιας επαγγελματικής ιστοσελίδας δεν είναι απλώς ένα επιπλέον εργαλείο — είναι μια αναγκαιότητα για κάθε ελεύθερο επαγγελματία και επιχείρηση που θέλει να ξεχωρίσει στον ψηφιακό κόσμο.</p>
+                        <p class="en-text">In 2025, having a professional website is not just an extra tool — it is a necessity for every freelancer and business wanting to stand out in the digital world.</p>
+
+                        <p class="el-text">Μια καλά σχεδιασμένη ιστοσελίδα σας βοηθά να κατακτήσετε υψηλότερες θέσεις στις μηχανές αναζήτησης, καθώς η Google αξιολογεί τις ιστοσελίδες ως πιο αξιόπιστες και με πιο ολοκληρωμένο προφίλ.</p>
+                        <p class="en-text">A well-designed website helps you achieve higher positions in search engines, as Google evaluates websites as more trustworthy and with a more comprehensive profile.</p>
+
+                        <p class="el-text">Η ιστοσελίδα σας λειτουργεί ως η ψηφιακή σας βιτρίνα, ενισχύοντας την επαγγελματική σας εικόνα και προβάλλοντας την επιχείρησή σας ως σοβαρή και αξιόπιστη στους επισκέπτες. Επιπλέον, προσφέρει στους χρήστες εύκολη πρόσβαση σε όλες τις απαραίτητες πληροφορίες, καθιστώντας την εμπειρία τους πιο άνετη και άμεση.</p>
+                        <p class="en-text">Your website acts as your digital storefront, enhancing your professional image and showcasing your business as serious and reliable to visitors. Furthermore, it offers users easy access to all necessary information, making their experience more comfortable and direct.</p>
+                        
+                        <div class="mt-10 p-8 rounded-2xl bg-white/5 border border-white/10">
+                            <h3 class="text-2xl font-bold text-white mb-6 font-display"><span class="el-text">Πανεύκολη Διαδικασία Κατασκευής:</span><span class="en-text">Super Easy Creation Process:</span></h3>
+                            <p class="mb-4"><span class="el-text">Για να μειώσουμε τον χρόνο επένδυσης σας στην κατασκευή χρειαζόμαστε από εσάς μόνο:</span><span class="en-text">To minimize your time investment in the creation process, we only need from you:</span></p>
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex gap-3"><i data-lucide="check" class="text-electric-cyan w-5 h-5 shrink-0 mt-0.5"></i> <span class="el-text">1) Τις φωτογραφίες που θέλετε να περιλαμβάνει η ιστοσελίδα σας (δική σας επαγγελματική, του χώρου ή/και του προσωπικού)</span><span class="en-text">1) The photos you want your website to include (your own professional photo, your space, and/or staff)</span></li>
+                                <li class="flex gap-3"><i data-lucide="check" class="text-electric-cyan w-5 h-5 shrink-0 mt-0.5"></i> <span class="el-text">2) Κάποια βασικά κείμενα για εσάς ή την επιχείρηση σας (μπορεί να είναι και πολύ μικρά, αναλμβάνουμε εμείς την κειμενογραφία)</span><span class="en-text">2) Some basic texts about you or your business (they can be very short, we handle the copywriting)</span></li>
+                                <li class="flex gap-3"><i data-lucide="check" class="text-electric-cyan w-5 h-5 shrink-0 mt-0.5"></i> <span class="el-text">3) Τις υπηρεσίες σας μονολεκτικά</span><span class="en-text">3) Your services (bullet points are fine)</span></li>
+                                <li class="flex gap-3"><i data-lucide="check" class="text-electric-cyan w-5 h-5 shrink-0 mt-0.5"></i> <span class="el-text">4) Τα στοιχεία επικοινωνίας σας (τηλέφωνο, email, διεύθυνση, ωράριο λειτουργίας)</span><span class="en-text">4) Your contact details (phone, email, address, operating hours)</span></li>
+                                <li class="flex gap-3"><i data-lucide="check" class="text-electric-cyan w-5 h-5 shrink-0 mt-0.5"></i> <span class="el-text">5) Ένα λογότυπο αν έχετε, αλλιώς σας φτιάχνουμε ένα εμείς</span><span class="en-text">5) A logo if you have one, otherwise we will make one for you</span></li>
+                            </ul>
+                            <p><span class="el-text">Όλα τα υπόλοιπα τα αναλαμβάνουμε εμείς (χρώματα design,κείμενα κλπ) και εννοείται μετά κάνουμε όσες αλλαγές επιθυμείτε.</span><span class="en-text">We handle everything else (design colors, copywriting, etc.) and of course we make any changes you wish afterwards.</span></p>
+                            <p class="mt-4"><span class="el-text">Εννοείται πως μπορείτε να μας στείλετε οτιδήποτε θα θέλατε να υπάρχει στην ιστοσελίδα σας. Τα παραπάνω είναι απλώς τα βασικά που χρειαζόμαστε και αρκούν για ένα εξαιρετικό και επαγγελματικό αποτέλεσμα.</span><span class="en-text">Naturally, you can send us anything you would like to be on your website. The above are just the basics we need and are sufficient for an excellent and professional result.</span></p>
+                        </div>
+                        
+                        <p class="text-electric-cyan font-bold text-center text-xl mt-8"><span class="el-text">Διασφαλίστε ότι η επιχείρησή σας παραμένει μπροστά από τον ανταγωνισμό με μια ισχυρή, επαγγελματική παρουσία στο διαδίκτυο που κερδίζει την εμπιστοσύνη τόσο των επισκεπτών σας όσο και των μηχανών αναζήτησης.</span><span class="en-text">Ensure your business stays ahead of the competition with a strong, professional online presence that earns the trust of both your visitors and search engines.</span></p>
+                    </div>
                 </div>
+            </section>
 
-                <!-- Intro text grid -->
-                <div class="grid md:grid-cols-2 gap-8 mb-20">
-                    <div class="glass-panel p-10 rounded-3xl border-white/10 hover:border-electric-cyan/40 flex flex-col justify-center">
-                        <div class="w-14 h-14 rounded-2xl bg-electric-cyan/10 flex items-center justify-center text-electric-cyan mb-6 shadow-[0_0_20px_rgba(71,200,245,0.2)]">
-                            <i data-lucide="rocket" class="w-7 h-7"></i>
-                        </div>
-                        <h3 class="text-2xl font-black text-white mb-4"><span class="el-text">Όχι Απλά Ένα Marketing Τρικ</span><span class="en-text">Not Just a Marketing Trick</span></h3>
-                        <p class="text-gray-300 leading-relaxed text-lg mb-4">
-                            <span class="el-text">Η κατασκευή που κοστίζει κανονικά 700-2000€+, είναι εντελώς δωρεάν. Το κάνουμε αυτό γιατί θέλουμε να προσθέσουμε όσες περισσότερες ιστοσελίδες γίνεται στο πορτφόλιο μας.</span>
-                            <span class="en-text">The construction that normally costs 700-2000€+ is completely free. We do this because we want to add as many websites as possible to our portfolio.</span>
-                        </p>
-                        <p class="text-gray-400 leading-relaxed">
-                            <span class="el-text">Το μόνο κόστος για εσάς είναι η φιλοξενία (hosting) 10.83€/μήνα, και <strong>σας κάνουμε δώρο το Domain Name!</strong></span>
-                            <span class="en-text">Your only cost is the hosting (10.83€/mo), and <strong>the Domain Name is included as a gift!</strong></span>
-                        </p>
+            <!-- PORTFOLIO SECTION -->
+            <section id="portfolio" class="py-24 bg-[#0a1418] border-t border-electric-cyan/10">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="text-center mb-20">
+                        <span class="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block"><span class="el-text">Πορτφόλιο</span><span class="en-text">Portfolio</span></span>
+                        <h2 class="text-4xl md:text-5xl font-black font-display mb-4"><span class="el-text">Δείτε μερικές από τις Δουλειές μας</span><span class="en-text">Check Out Some Of Our Work</span></h2>
                     </div>
 
-                    <div class="glass-panel p-10 rounded-3xl border-white/10 hover:border-electric-cyan/40 flex flex-col justify-center">
-                        <div class="w-14 h-14 rounded-2xl bg-electric-cyan/10 flex items-center justify-center text-electric-cyan mb-6 shadow-[0_0_20px_rgba(71,200,245,0.2)]">
-                            <i data-lucide="trending-up" class="w-7 h-7"></i>
-                        </div>
-                        <h3 class="text-2xl font-black text-white mb-4"><span class="el-text">Η Ψηφιακή σας Βιτρίνα</span><span class="en-text">Your Digital Storefront</span></h3>
-                        <p class="text-gray-300 leading-relaxed text-lg mb-4">
-                            <span class="el-text">Το 2026, η κατοχή μιας επαγγελματικής ιστοσελίδας δεν είναι απλώς ένα επιπλέον εργαλείο — είναι αναγκαιότητα.</span>
-                            <span class="en-text">In 2026, having a professional website is not just an extra tool — it is a necessity.</span>
-                        </p>
-                        <p class="text-gray-400 leading-relaxed">
-                            <span class="el-text">Μια καλά σχεδιασμένη ιστοσελίδα σας βοηθά να κατακτήσετε υψηλότερες θέσεις στις μηχανές αναζήτησης και προβάλλει την επιχείρησή σας ως σοβαρή και αξιόπιστη.</span>
-                            <span class="en-text">A well-designed website helps you conquer higher positions on search engines and projects your business as serious and reliable.</span>
-                        </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16" id="portfolio-grid">
+                        <!-- JS renders items here -->
                     </div>
-                </div>
 
-                <!-- Process Steps -->
-                <div class="text-center mb-12">
-                    <h3 class="text-3xl md:text-4xl font-display font-black text-white mb-4 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-                        <span class="el-text">Πανεύκολη Διαδικασία</span><span class="en-text">Super Easy Process</span>
-                    </h3>
-                    <p class="text-gray-400 text-lg"><span class="el-text">Για να μειώσουμε τον χρόνο σας, χρειαζόμαστε μόνο τα βασικά. Όλα τα υπόλοιπα τα αναλαμβάνουμε εμείς!</span><span class="en-text">To save your time, we only need the basics. We handle the rest!</span></p>
-                </div>
-
-                <div class="grid md:grid-cols-5 gap-4">
-                    <div class="glass-panel p-6 rounded-2xl flex flex-col items-center text-center group hover:-translate-y-2 transition-transform">
-                        <div class="w-12 h-12 rounded-full bg-electric-cyan/20 border border-electric-cyan/50 flex items-center justify-center text-electric-cyan mb-4 group-hover:scale-110 transition-transform">
-                            <i data-lucide="image" class="w-5 h-5"></i>
-                        </div>
-                        <h4 class="text-white font-bold text-sm mb-2"><span class="el-text">Φωτογραφίες</span><span class="en-text">Photos</span></h4>
-                        <p class="text-gray-500 text-xs"><span class="el-text">Επαγγελματικές ή του χώρου σας</span><span class="en-text">Professional or venue photos</span></p>
-                    </div>
-                    <div class="glass-panel p-6 rounded-2xl flex flex-col items-center text-center group hover:-translate-y-2 transition-transform delay-75">
-                        <div class="w-12 h-12 rounded-full bg-electric-cyan/20 border border-electric-cyan/50 flex items-center justify-center text-electric-cyan mb-4 group-hover:scale-110 transition-transform">
-                            <i data-lucide="file-text" class="w-5 h-5"></i>
-                        </div>
-                        <h4 class="text-white font-bold text-sm mb-2"><span class="el-text">Κείμενα</span><span class="en-text">Texts</span></h4>
-                        <p class="text-gray-500 text-xs"><span class="el-text">Βασικές πληροφορίες για εσάς</span><span class="en-text">Basic info about you</span></p>
-                    </div>
-                    <div class="glass-panel p-6 rounded-2xl flex flex-col items-center text-center group hover:-translate-y-2 transition-transform delay-100">
-                        <div class="w-12 h-12 rounded-full bg-electric-cyan/20 border border-electric-cyan/50 flex items-center justify-center text-electric-cyan mb-4 group-hover:scale-110 transition-transform">
-                            <i data-lucide="list-checks" class="w-5 h-5"></i>
-                        </div>
-                        <h4 class="text-white font-bold text-sm mb-2"><span class="el-text">Υπηρεσίες</span><span class="en-text">Services</span></h4>
-                        <p class="text-gray-500 text-xs"><span class="el-text">Μονολεκτικά ή σε λίστα</span><span class="en-text">In a brief list</span></p>
-                    </div>
-                    <div class="glass-panel p-6 rounded-2xl flex flex-col items-center text-center group hover:-translate-y-2 transition-transform delay-150">
-                        <div class="w-12 h-12 rounded-full bg-electric-cyan/20 border border-electric-cyan/50 flex items-center justify-center text-electric-cyan mb-4 group-hover:scale-110 transition-transform">
-                            <i data-lucide="phone-call" class="w-5 h-5"></i>
-                        </div>
-                        <h4 class="text-white font-bold text-sm mb-2"><span class="el-text">Επικοινωνία</span><span class="en-text">Contact Info</span></h4>
-                        <p class="text-gray-500 text-xs"><span class="el-text">Τηλέφωνο, Email, Διεύθυνση</span><span class="en-text">Phone, Email, Address</span></p>
-                    </div>
-                    <div class="glass-panel p-6 rounded-2xl flex flex-col items-center text-center group hover:-translate-y-2 transition-transform delay-200">
-                        <div class="w-12 h-12 rounded-full bg-electric-cyan/20 border border-electric-cyan/50 flex items-center justify-center text-electric-cyan mb-4 group-hover:scale-110 transition-transform">
-                            <i data-lucide="star" class="w-5 h-5"></i>
-                        </div>
-                        <h4 class="text-white font-bold text-sm mb-2"><span class="el-text">Λογότυπο</span><span class="en-text">Logo</span></h4>
-                        <p class="text-gray-500 text-xs"><span class="el-text">Αν έχετε (αλλιώς το φτιάχνουμε)</span><span class="en-text">If you have one (or we build it)</span></p>
+                    <div class="flex justify-center items-center gap-6">
+                        <button id="port-prev" class="p-3 rounded-full border border-electric-cyan/30 hover:bg-electric-cyan/10 transition-colors disabled:opacity-30 disabled:cursor-not-allowed text-electric-cyan"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
+                        <div class="flex gap-2" id="port-dots"></div>
+                        <button id="port-next" class="p-3 rounded-full border border-electric-cyan/30 hover:bg-electric-cyan/10 transition-colors disabled:opacity-30 disabled:cursor-not-allowed text-electric-cyan"><i data-lucide="chevron-right" class="w-6 h-6"></i></button>
                     </div>
                 </div>
             </section>
         </div>
 
         <!-- ============================================== -->
-        <!-- PAGE 3: ΒΑΣΗ ΑΞΙΟΛΟΓΗΣΕΩΝ (NFC)                -->
+        <!-- PAGE 3: ΑΝΕΠΑΦΕΣ ΑΞΙΟΛΟΓΗΣΕΙΣ (NFC)            -->
         <!-- ============================================== -->
         <div id="page-nfc" class="page-section">
-            <section class="py-32 pt-40 max-w-6xl mx-auto px-6">
-                <div class="text-center mb-16">
-                     <span class="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block"><span class="el-text">Υπηρεσία</span><span class="en-text">Service</span></span>
-                     <h1 class="text-4xl md:text-6xl font-black font-display mb-6 text-white"><span class="el-text">Βάση Αξιολογήσεων</span><span class="en-text">Review Base</span></h1>
-                     <div class="inline-flex items-center gap-4 px-8 py-4 rounded-full bg-electric-cyan/10 border border-electric-cyan/30 shadow-[0_0_40px_rgba(71,200,245,0.25)]">
-                         <span class="text-3xl font-black text-white">25€</span>
-                         <span class="text-electric-cyan font-bold text-lg"><span class="el-text">Εφάπαξ (Χωρίς Συνδρομή)</span><span class="en-text">One-time (No Subscription)</span></span>
-                     </div>
-                 </div>
-                 
-                 <!-- Layout -->
-                 <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
-                     <!-- Image side -->
-                     <div class="relative group mx-auto">
-                         <div class="absolute inset-0 bg-electric-cyan/20 blur-3xl rounded-[3rem] scale-90 group-hover:scale-100 transition-transform duration-700"></div>
-                         <img src="https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6724bf7a4eb48eb705a7b389.gif" class="relative z-10 w-full max-w-[400px] object-cover rounded-[3rem] border-2 border-electric-cyan/30 shadow-[0_0_50px_rgba(71,200,245,0.3)]">
-                     </div>
-                     <!-- Text side -->
-                     <div class="space-y-6">
-                         <h3 class="text-3xl font-black text-white font-display leading-snug">
-                             <span class="el-text">Ανεβείτε στη κορυφή της Google με 150+ νέες αξιολογήσεις!</span>
-                             <span class="en-text">Reach the top of Google with 150+ new reviews!</span>
-                         </h3>
-                         <p class="text-gray-400 text-lg leading-relaxed">
-                             <span class="el-text">Το πρώτο πράγμα που κάνει κάποιος όταν αναζητεί μια επιχείρηση είναι να δει τις κριτικές της. Η Google δίνει κύρια σημασία στις αξιολογήσεις για να ανεβάσει το προφίλ σας στην 1η σελίδα.</span>
-                             <span class="en-text">The first thing someone does when looking for a business is to check its reviews. Google gives primary importance to reviews to rank your profile on the 1st page.</span>
-                         </p>
-                         <div class="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/10">
-                             <div class="p-3 rounded-full bg-electric-cyan/20 text-electric-cyan shrink-0">
-                                 <i data-lucide="smartphone" class="w-6 h-6"></i>
-                             </div>
-                             <p class="text-gray-300 text-sm font-medium">
-                                 <span class="el-text">Όταν το ζητάτε από τους πελάτες σας, συνήθως το ξεχνάνε. Με την Ανέπαφη Βάση, το κάνουν με ένα απλό "tap" στο κινητό τους!</span>
-                                 <span class="en-text">When you ask your customers, they usually forget. With the Contactless Base, they do it with a simple "tap" on their phone!</span>
-                             </p>
-                         </div>
-                     </div>
-                 </div>
+            <section class="py-32 pt-40 max-w-5xl mx-auto px-6">
+                <span class="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block text-center"><span class="el-text">Υπηρεσία</span><span class="en-text">Service</span></span>
+                <h1 class="text-4xl md:text-5xl font-black font-display mb-12 text-center text-white"><span class="el-text">Ανέπαφη Βάση Αξιολογήσεων</span><span class="en-text">Contactless Reviews Base</span></h1>
+                
+                <div class="glass-panel p-8 md:p-12 rounded-3xl text-gray-300 leading-relaxed font-body text-lg mb-20 shadow-[0_0_50px_rgba(71,200,245,0.1)]">
+                    <div class="flex flex-col md:flex-row md:items-end gap-4 mb-8 pb-8 border-b border-white/10">
+                        <span class="text-5xl font-black text-white tracking-tight drop-shadow-md">25€</span>
+                        <span class="text-electric-cyan font-bold mb-1"><span class="el-text">εφάπαξ</span><span class="en-text">one-time</span></span>
+                    </div>
 
-                 <!-- Benefits Grid -->
-                 <div class="grid md:grid-cols-3 gap-6">
-                     <div class="glass-panel p-8 rounded-3xl text-center group hover:border-electric-cyan/50 hover:-translate-y-2 transition-all">
-                         <div class="w-14 h-14 mx-auto rounded-full bg-electric-cyan/10 flex items-center justify-center text-electric-cyan mb-6 shadow-[0_0_20px_rgba(71,200,245,0.2)] group-hover:scale-110 transition-transform">
-                             <i data-lucide="nfc" class="w-6 h-6"></i>
-                         </div>
-                         <h4 class="text-white font-bold text-lg mb-2"><span class="el-text">Τεχνολογία NFC</span><span class="en-text">NFC Technology</span></h4>
-                         <p class="text-gray-500 text-sm"><span class="el-text">Ανοίγει αυτόματα τη φόρμα 5-αστέρων στο κινητό τους.</span><span class="en-text">Automatically opens the 5-star form on their mobile.</span></p>
-                     </div>
-                     <div class="glass-panel p-8 rounded-3xl text-center group hover:border-electric-cyan/50 hover:-translate-y-2 transition-all">
-                         <div class="w-14 h-14 mx-auto rounded-full bg-electric-cyan/10 flex items-center justify-center text-electric-cyan mb-6 shadow-[0_0_20px_rgba(71,200,245,0.2)] group-hover:scale-110 transition-transform">
-                             <i data-lucide="trending-up" class="w-6 h-6"></i>
-                         </div>
-                         <h4 class="text-white font-bold text-lg mb-2"><span class="el-text">Αύξηση Τοπικού SEO</span><span class="en-text">Boost Local SEO</span></h4>
-                         <p class="text-gray-500 text-sm"><span class="el-text">Η Google αγαπά τα συνεχή reviews και σας ανεβάζει στον χάρτη.</span><span class="en-text">Google loves continuous reviews and boosts you on the map.</span></p>
-                     </div>
-                     <div class="glass-panel p-8 rounded-3xl text-center group hover:border-electric-cyan/50 hover:-translate-y-2 transition-all">
-                         <div class="w-14 h-14 mx-auto rounded-full bg-electric-cyan/10 flex items-center justify-center text-electric-cyan mb-6 shadow-[0_0_20px_rgba(71,200,245,0.2)] group-hover:scale-110 transition-transform">
-                             <i data-lucide="user-check" class="w-6 h-6"></i>
-                         </div>
-                         <h4 class="text-white font-bold text-lg mb-2"><span class="el-text">Κοινωνική Εμπιστοσύνη</span><span class="en-text">Social Trust</span></h4>
-                         <p class="text-gray-500 text-sm"><span class="el-text">Περισσότερα αστεράκια = περισσότεροι νέοι πελάτες.</span><span class="en-text">More stars = more new customers.</span></p>
-                     </div>
-                 </div>
+                    <div class="mb-10 text-center">
+                        <img src="https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6724bf7a4eb48eb705a7b389.gif" alt="NFC Tech" class="w-full max-w-md mx-auto rounded-2xl border border-electric-cyan/20 shadow-[0_0_30px_rgba(71,200,245,0.2)]">
+                    </div>
+
+                    <div class="space-y-6">
+                        <p class="text-xl text-white font-bold"><span class="el-text">Ανεβείτε στη κορυφή της Google και αποκτήστε 150 νέες αξιολογήσεις σε λιγότερο απο 3 μήνες.</span><span class="en-text">Reach the top of Google and gain 150 new reviews in less than 3 months.</span></p>
+                        <p class="el-text">Το πρώτο που κάνει κάποιος όταν αναζητεί μια επιχείρηση είναι να δει τις κριτικές της.</p>
+                        <p class="en-text">The first thing someone does when looking for a business is to check its reviews.</p>
+
+                        <p class="el-text">Αν έχετε ελάχιστες είναι πολύ πιθανό να χάσετε πελάτες από τον ανταγωνισμό.</p>
+                        <p class="en-text">If you have very few, it is highly likely you will lose customers to your competitors.</p>
+
+                        <p class="el-text">Αλλά δεν είναι μόνο οι πελάτες που επηρεάζονται!</p>
+                        <p class="en-text">But it's not just the customers who are affected!</p>
+
+                        <p class="el-text">Η Google, ως μηχανή αναζήτησης, θέλει να παρέχει τα πιο στοχευμένα αλλά και έγκυρα αποτελέσματα δίνοντας έτσι κύρια σημασία στις αξιολογήσεις.</p>
+                        <p class="en-text">Google, as a search engine, wants to provide the most targeted and valid results, thus prioritizing reviews.</p>
+
+                        <p class="el-text">Όταν το ζητάτε από τους πελάτες σας συνήθως το ξεχνάνε ή δεν επενδύουν τον χρόνο να ψάξουν.</p>
+                        <p class="en-text">When you ask your customers, they usually forget or don't invest the time to search for your profile.</p>
+
+                        <p class="text-electric-cyan font-bold text-xl mt-8"><span class="el-text">Με την ανέπαφη βάση αξιολογήσεων μας μπορείτε να αποκτάτε τούλαχιστον 50 νέες κριτικές κάθε μήνα έυκολα και γρήγορα!</span><span class="en-text">With our contactless review stand, you can easily and quickly acquire at least 50 new reviews every month!</span></p>
+                        <p class="text-sm opacity-80 italic"><span class="el-text">Υπολογίστε και μόνοι σας (πχ 8 πελάτες ανά ημέρα, 20 εργάσιμες = 160 πελάτες τον μήνα. Αν λιγότεροι από τους μισόυς, οι 50, σας αφήσουν μια αξιολόγηση, έχετε 150 νέες σε 3 μήνες).</span><span class="en-text">Do the math yourself (e.g. 8 customers per day, 20 working days = 160 customers a month. If fewer than half, say 50, leave a review, you have 150 new ones in 3 months).</span></p>
+                    </div>
+                </div>
             </section>
         </div>
 
@@ -899,95 +564,55 @@
         <!-- PAGE 4: SOCIAL MEDIA                           -->
         <!-- ============================================== -->
         <div id="page-social" class="page-section">
-            <section class="py-32 pt-40 max-w-6xl mx-auto px-6">
-                <!-- Header -->
-                <div class="text-center mb-16">
-                     <span class="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block"><span class="el-text">Υπηρεσία</span><span class="en-text">Service</span></span>
-                     <h1 class="text-4xl md:text-6xl font-black font-display mb-6 text-white"><span class="el-text">Διαχείριση Social Media</span><span class="en-text">Social Media Management</span></h1>
-                     <div class="inline-flex items-center gap-4 px-8 py-4 rounded-full bg-electric-cyan/10 border border-electric-cyan/30 shadow-[0_0_40px_rgba(71,200,245,0.25)]">
-                         <span class="text-3xl font-black text-white">87€</span>
-                         <span class="text-electric-cyan font-bold text-lg"><span class="el-text">/ Μήνα</span><span class="en-text">/ Month</span></span>
-                     </div>
-                </div>
+            <section class="py-32 pt-40 max-w-5xl mx-auto px-6">
+                <span class="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block text-center"><span class="el-text">Υπηρεσία</span><span class="en-text">Service</span></span>
+                <h1 class="text-4xl md:text-5xl font-black font-display mb-12 text-center text-white"><span class="el-text">Διαχείριση Social Media</span><span class="en-text">Social Media Management</span></h1>
+                
+                <div class="glass-panel p-8 md:p-12 rounded-3xl text-gray-300 leading-relaxed font-body text-lg mb-20 shadow-[0_0_50px_rgba(71,200,245,0.1)]">
+                    <div class="flex flex-col md:flex-row md:items-end gap-4 mb-8 pb-8 border-b border-white/10">
+                        <span class="text-5xl font-black text-white tracking-tight drop-shadow-md">87€</span>
+                        <span class="text-electric-cyan font-bold mb-1"><span class="el-text">/μήνα</span><span class="en-text">/month</span></span>
+                    </div>
 
-                <div class="text-center max-w-3xl mx-auto mb-16">
-                    <p class="text-gray-300 text-xl leading-relaxed">
-                        <span class="el-text">Η πιο αποτελεσματική στρατηγική κοινωνικών δικτύων, σχεδιασμένη αποκλειστικά για την ανάπτυξη τοπικών επιχειρήσεων, χωρίς καμία προσπάθεια από εσάς.</span>
-                        <span class="en-text">The most effective social media strategy, designed exclusively for the growth of local businesses, with zero effort from you.</span>
-                    </p>
-                </div>
+                    <div class="space-y-6">
+                        <p class="text-white font-bold text-2xl mb-6"><span class="el-text">ΕΠΑΓΓΕΛΜΑΤΙΚΗ ΔΙΑΧΕΙΡΙΣΗ SOCIAL MEDIA</span><span class="en-text">PROFESSIONAL SOCIAL MEDIA MANAGEMENT</span></p>
+                        <ul class="space-y-4">
+                            <li class="flex gap-4"><i data-lucide="check-circle" class="w-6 h-6 text-electric-cyan shrink-0 mt-1"></i> <span><strong><span class="el-text">Επαγγελματικά Επεξεργασμένα Posts:</span><span class="en-text">Professionally Edited Posts:</span></strong> <span class="el-text">Δημοσιεύουμε αναρτήσεις που τραβούν την προσοχή των πελατών σας, χρησιμοποιώντας προγράμματα επεξεργασίας συνδυαστικής αξίας 300+ευρώ τον μήνα, όπως Adscreative.io, Photoroom, Photoshop, Adobe Premium, Canvas Pro, Picsart Pro και άλλα.</span><span class="en-text">We publish posts that catch your customers' attention, using editing software with a combined value of €300+/month, like Adscreative.io, Photoroom, Photoshop, Adobe Premium, Canva Pro, Picsart Pro and more.</span></span></li>
+                            <li class="flex gap-4"><i data-lucide="check-circle" class="w-6 h-6 text-electric-cyan shrink-0 mt-1"></i> <span><strong><span class="el-text">Έρευνα Hashtags:</span><span class="en-text">Hashtag Research:</span></strong> <span class="el-text">Χρησιμοποιούμε τα καλύτερα hashtags ανάλογα με την επιχείρηση, τις υπηρεσίες, το κοινό και την τοποθεσία για να ενισχύσουμε την απήχησή σας και να σας φέρουμε μπροστά σε νέο κοινό.</span><span class="en-text">We use the best hashtags depending on the business, services, audience, and location to boost your reach and bring you in front of a new audience.</span></span></li>
+                            <li class="flex gap-4"><i data-lucide="check-circle" class="w-6 h-6 text-electric-cyan shrink-0 mt-1"></i> <span><strong><span class="el-text">Επαγγελματική Κειμενογραφία:</span><span class="en-text">Professional Copywriting:</span></strong> <span class="el-text">για κάθε ανάρτηση που οδηγούν τον αναγνώστη σε μια επιθυμητή ενέργεια (πχ να κλείσει ραντεβού κλπ).</span><span class="en-text">for each post, driving the reader to a desired action (e.g. booking an appointment, etc.).</span></span></li>
+                            <li class="flex gap-4"><i data-lucide="check-circle" class="w-6 h-6 text-electric-cyan shrink-0 mt-1"></i> <span><strong><span class="el-text">Επεξεργασία - Δημιουργία:</span><span class="en-text">Profile Optimization:</span></strong> <span class="el-text">επαγγελματικού βιογραφικού για το προφιλ σας.</span><span class="en-text">creating a professional bio/description for your profile.</span></span></li>
+                            <li class="flex gap-4"><i data-lucide="check-circle" class="w-6 h-6 text-electric-cyan shrink-0 mt-1"></i> <span><strong><span class="el-text">Αναφορές Προόδου:</span><span class="en-text">Progress Reports:</span></strong> <span class="el-text">Παρέχουμε μηνιαία ανάλυση της ανάπτυξης των ακολούθων και της αλληλεπίδρασης με τις δημοσιεύσεις σας.</span><span class="en-text">We provide a monthly analysis of follower growth and engagement with your posts.</span></span></li>
+                            <li class="flex gap-4"><i data-lucide="check-circle" class="w-6 h-6 text-electric-cyan shrink-0 mt-1"></i> <span><strong><span class="el-text">Ευκολία & Άνεση:</span><span class="en-text">Convenience & Ease:</span></strong> <span class="el-text">Το μόνο που χρειάζεται να κάνετε είναι να μας στείλετε φωτογραφίες της επιχείρησής σας μέσω WeTransfer, και εμείς θα αναλάβουμε τα υπόλοιπα. Αν δεν έχετε μπορούμε να δημιουργούμε εμείς δικά μας designs, χωρίς καμία επένδυση χρόνου από εσάς!</span><span class="en-text">All you have to do is send us photos of your business via WeTransfer, and we'll handle the rest. If you don't have any, we can create our own designs with zero time investment from you!</span></span></li>
+                        </ul>
 
-                <!-- Deliverables Grid -->
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
-                    <div class="glass-panel p-8 rounded-3xl group hover:border-electric-cyan/50 hover:-translate-y-2 transition-all duration-300">
-                        <div class="w-12 h-12 rounded-xl bg-electric-cyan/10 flex items-center justify-center text-electric-cyan mb-6">
-                            <i data-lucide="image" class="w-6 h-6"></i>
+                        <div class="flex flex-wrap gap-4 mt-8 mb-8">
+                            <span class="bg-electric-cyan/20 text-electric-cyan font-bold px-4 py-2 rounded-lg inline-flex items-center gap-2"><i data-lucide="gift" class="w-5 h-5"></i> <span class="el-text">Δωρεάν Δοκιμή 7 Ημερών</span><span class="en-text">7-Day Free Trial</span></span>
+                            <span class="bg-white/10 text-white font-bold px-4 py-2 rounded-lg inline-flex items-center gap-2"><i data-lucide="shield-check" class="w-5 h-5 text-green-400"></i> No contracts - cancel anytime</span>
                         </div>
-                        <h4 class="text-white font-bold text-lg mb-3"><span class="el-text">Επαγγελματικά Posts</span><span class="en-text">Professional Posts</span></h4>
-                        <p class="text-gray-500 text-sm leading-relaxed"><span class="el-text">3 posts την εβδομάδα με κορυφαία εργαλεία design (Photoshop, Canva Pro).</span><span class="en-text">3 posts per week using premium design tools (Photoshop, Canva Pro).</span></p>
-                    </div>
 
-                    <div class="glass-panel p-8 rounded-3xl group hover:border-electric-cyan/50 hover:-translate-y-2 transition-all duration-300 delay-75">
-                        <div class="w-12 h-12 rounded-xl bg-electric-cyan/10 flex items-center justify-center text-electric-cyan mb-6">
-                            <i data-lucide="hash" class="w-6 h-6"></i>
+                        <hr class="border-white/10 my-8">
+                        
+                        <h3 class="text-2xl font-bold text-white mb-6 font-display"><span class="el-text">Γιατί να Μας Επιλέξετε:</span><span class="en-text">Why Choose Us:</span></h3>
+                        <div class="space-y-4">
+                            <p><strong><span class="el-text">Οικονομικό πακέτο & Χωρίς Ρίσκο:</span><span class="en-text">Economical & Risk-Free:</span></strong> <span class="el-text">Με μόνο 87 ευρώ τον μήνα και εγγύηση επιστροφής χρημάτων, αφαιρούμε κάθε ρίσκο από την απόφασή σας. Αν δεν είστε απόλυτα ικανοποιημένοι, σας επιστρέφουμε τα χρήματά σας – χωρίς ερωτήσεις.</span><span class="en-text">For only €87/month and a money-back guarantee, we remove all risk from your decision. If you aren't completely satisfied, we refund your money - no questions asked.</span></p>
+                            <p><strong><span class="el-text">Προσωποποιημένη Υπηρεσία:</span><span class="en-text">Personalized Service:</span></strong> <span class="el-text">Προσαρμόζουμε το περιεχόμενο σύμφωνα με τις ανάγκες της επιχείρησής σας, ώστε να αντανακλά την ταυτότητα και το στυλ σας.</span><span class="en-text">We adapt the content to the needs of your business so that it reflects your identity and style.</span></p>
+                            <p><strong><span class="el-text">Άμεση Έναρξη:</span><span class="en-text">Immediate Start:</span></strong> <span class="el-text">Κλείστε τη θέση σας τώρα – διαθέτουμε μόνο λίγες θέσεις για νέους πελάτες κάθε μήνα, ώστε να διατηρήσουμε την ποιότητα της υπηρεσίας μας.</span><span class="en-text">Book your spot now – we only open a few slots for new clients each month to maintain the high quality of our service.</span></p>
+                            <p><strong><span class="el-text">Καμία Δέσμευση:</span><span class="en-text">No Commitment:</span></strong> <span class="el-text">Μπορείτε να σταματήσετε οποιαδήποτε στιγμή χωρίς μακροχρόνια συμβόλαια.</span><span class="en-text">You can cancel at any time without any long-term contracts.</span></p>
                         </div>
-                        <h4 class="text-white font-bold text-lg mb-3"><span class="el-text">Στοχευμένα Hashtags</span><span class="en-text">Targeted Hashtags</span></h4>
-                        <p class="text-gray-500 text-sm leading-relaxed"><span class="el-text">Έρευνα για τα ιδανικά hashtags που θα φέρουν οργανική τοπική κίνηση.</span><span class="en-text">Research for the ideal hashtags that will bring organic local traffic.</span></p>
-                    </div>
 
-                    <div class="glass-panel p-8 rounded-3xl group hover:border-electric-cyan/50 hover:-translate-y-2 transition-all duration-300 delay-100">
-                        <div class="w-12 h-12 rounded-xl bg-electric-cyan/10 flex items-center justify-center text-electric-cyan mb-6">
-                            <i data-lucide="pen-tool" class="w-6 h-6"></i>
+                        <div class="mt-10 p-8 rounded-2xl bg-electric-cyan/5 border border-electric-cyan/30 text-center">
+                            <h3 class="text-xl font-black text-white mb-4"><span class="el-text">Αποτέλεσμα: Περισσότεροι Πελάτες & Επαγγελματική Παρουσία</span><span class="en-text">Result: More Clients & Professional Presence</span></h3>
+                            <p class="mb-6"><span class="el-text">Με τη σωστή διαχείριση του Instagram, θα δείτε αυξημένη αλληλεπίδραση, μεγαλύτερη βάση πελατών, και ένα προφίλ που προσελκύει την προσοχή και δημιουργεί εμπιστοσύνη.</span><span class="en-text">With the right Instagram management, you will see increased engagement, a larger client base, and a profile that attracts attention and builds trust.</span></p>
+                            <p class="text-electric-cyan font-bold"><span class="el-text">Εγγραφείτε σήμερα και εξασφαλίστε την ειδική τιμή των 87€ μήνα. Στείλτε μας email στο angelos@advonmedia.com για περαιτέρω επικοινωνία.</span><span class="en-text">Subscribe today and secure the special price of 87€/month. Email us at angelos@advonmedia.com to get started.</span></p>
                         </div>
-                        <h4 class="text-white font-bold text-lg mb-3"><span class="el-text">Έξυπνο Copywriting</span><span class="en-text">Smart Copywriting</span></h4>
-                        <p class="text-gray-500 text-sm leading-relaxed"><span class="el-text">Κείμενα που πείθουν τον χρήστη να αλληλεπιδράσει και να κλείσει ραντεβού.</span><span class="en-text">Texts that persuade the user to interact and book an appointment.</span></p>
                     </div>
-
-                    <div class="glass-panel p-8 rounded-3xl group hover:border-electric-cyan/50 hover:-translate-y-2 transition-all duration-300 delay-150">
-                        <div class="w-12 h-12 rounded-xl bg-electric-cyan/10 flex items-center justify-center text-electric-cyan mb-6">
-                            <i data-lucide="user-check" class="w-6 h-6"></i>
-                        </div>
-                        <h4 class="text-white font-bold text-lg mb-3"><span class="el-text">Βελτιστοποίηση Προφίλ</span><span class="en-text">Profile Optimization</span></h4>
-                        <p class="text-gray-500 text-sm leading-relaxed"><span class="el-text">Δημιουργία επαγγελματικού Bio και σωστό στήσιμο της σελίδας σας.</span><span class="en-text">Creation of a professional Bio and correct setup of your page.</span></p>
-                    </div>
-
-                    <div class="glass-panel p-8 rounded-3xl group hover:border-electric-cyan/50 hover:-translate-y-2 transition-all duration-300 delay-200">
-                        <div class="w-12 h-12 rounded-xl bg-electric-cyan/10 flex items-center justify-center text-electric-cyan mb-6">
-                            <i data-lucide="bar-chart" class="w-6 h-6"></i>
-                        </div>
-                        <h4 class="text-white font-bold text-lg mb-3"><span class="el-text">Μηνιαίες Αναφορές</span><span class="en-text">Monthly Reports</span></h4>
-                        <p class="text-gray-500 text-sm leading-relaxed"><span class="el-text">Ανάλυση της ανάπτυξης και των αλληλεπιδράσεων του λογαριασμού σας.</span><span class="en-text">Analysis of your account's growth and interactions.</span></p>
-                    </div>
-
-                    <div class="glass-panel p-8 rounded-3xl group hover:border-electric-cyan/50 hover:-translate-y-2 transition-all duration-300 delay-300">
-                        <div class="w-12 h-12 rounded-xl bg-electric-cyan/10 flex items-center justify-center text-electric-cyan mb-6">
-                            <i data-lucide="coffee" class="w-6 h-6"></i>
-                        </div>
-                        <h4 class="text-white font-bold text-lg mb-3"><span class="el-text">Καμία Προσπάθεια</span><span class="en-text">Zero Effort</span></h4>
-                        <p class="text-gray-500 text-sm leading-relaxed"><span class="el-text">Στείλτε μας απλά φωτογραφίες. Εμείς αναλαμβάνουμε όλα τα υπόλοιπα.</span><span class="en-text">Just send us photos. We take care of absolutely everything else.</span></p>
-                    </div>
-                </div>
-
-                <!-- Banner "Free Trial" -->
-                <div class="bg-gradient-to-r from-electric-cyan/10 to-transparent border border-electric-cyan/40 p-10 rounded-[2rem] flex flex-col md:flex-row items-center justify-between gap-8 shadow-[0_0_50px_rgba(71,200,245,0.15)] relative overflow-hidden">
-                    <div class="absolute right-0 top-0 w-64 h-64 bg-electric-cyan/20 blur-[100px] rounded-full"></div>
-                    <div class="relative z-10 text-center md:text-left">
-                        <h3 class="text-2xl md:text-3xl font-black text-white font-display mb-3">
-                            <span class="el-text">Ξεκινήστε με 7 Ημέρες Δωρεάν Δοκιμή!</span>
-                            <span class="en-text">Start with a 7-Day Free Trial!</span>
-                        </h3>
-                        <p class="text-electric-cyan font-bold">
-                            <span class="el-text">Χωρίς συμβόλαια. Χωρίς δεσμεύσεις. Ακυρώστε οποιαδήποτε στιγμή.</span>
-                            <span class="en-text">No contracts. No commitments. Cancel anytime.</span>
-                        </p>
-                    </div>
-                    <a href="#contact" class="relative z-10 shrink-0 px-8 py-4 bg-electric-cyan text-[#050a0e] font-black uppercase tracking-wider rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(71,200,245,0.4)]">
-                        <span class="el-text">ΞΕΚΙΝΗΣΤΕ ΤΩΡΑ</span><span class="en-text">START NOW</span>
-                    </a>
                 </div>
             </section>
         </div>
 
+        <!-- ============================================== -->
+        <!-- PAGE 5: FAQ                                    -->
+        <!-- ============================================== -->
         <div id="page-faq" class="page-section">
             <section class="py-32 pt-40">
                 <div class="max-w-3xl mx-auto px-6">
@@ -1017,8 +642,8 @@
                             </button>
                             <div class="max-h-0 overflow-hidden transition-all duration-300">
                                 <div class="px-6 pb-6 text-gray-400 leading-relaxed text-md">
-                                    <span class="el-text">Προσφέρουμε τρεις βασικές υπηρεσίες:<br><br>1. <strong>Κατασκευή Ιστοσελίδας</strong> — Επαγγελματική, SEO-βελτιστοποιημένη ιστοσελίδα.<br>2. <strong>Βάση Αξιολογήσεων (NFC)</strong> — Σύστημα που βοηθά την επιχείρησή σου να συλλέγει 50+ νέες αξιολογήσεις Google κάθε μήνα.<br>3. <strong>Διαχείριση Social Media</strong> — Επαγγελματικά posts, έρευνα hashtag, copywriting και μηνιαίες αναφορές.</span>
-                                    <span class="en-text">We offer three core services:<br><br>1. <strong>Website Creation</strong> — Professional, SEO-optimized website.<br>2. <strong>Review Base (NFC)</strong> — System helping your business collect 50+ new Google reviews monthly.<br>3. <strong>Social Media Management</strong> — Professional posts, hashtag research, copywriting, and monthly reports.</span>
+                                    <span class="el-text">Προσφέρουμε τρεις βασικές υπηρεσίες:<br><br>1. <strong>Κατασκευή Ιστοσελίδας</strong> — Επαγγελματική, SEO-βελτιστοποιημένη ιστοσελίδα.<br>2. <strong>Ανέπαφη Βάση Αξιολογήσεων (NFC)</strong> — Σύστημα που βοηθά την επιχείρησή σου να συλλέγει 50+ νέες αξιολογήσεις Google κάθε μήνα.<br>3. <strong>Διαχείριση Social Media</strong> — Επαγγελματικά posts, έρευνα hashtag, copywriting και μηνιαίες αναφορές.</span>
+                                    <span class="en-text">We offer three core services:<br><br>1. <strong>Website Creation</strong> — Professional, SEO-optimized website.<br>2. <strong>Contactless Review Stand (NFC)</strong> — System helping your business collect 50+ new Google reviews monthly.<br>3. <strong>Social Media Management</strong> — Professional posts, hashtag research, copywriting, and monthly reports.</span>
                                 </div>
                             </div>
                         </div>
@@ -1079,6 +704,9 @@
             </section>
         </div>
 
+        <!-- ============================================== -->
+        <!-- PAGE 6: BLOG GRID (/blog)                      -->
+        <!-- ============================================== -->
         <div id="page-blog" class="page-section">
             <section class="py-32 pt-40 bg-[#050a0e]">
                 <div class="max-w-7xl mx-auto px-6">
@@ -1089,36 +717,42 @@
                     </div>
 
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Post 1 -->
                         <div class="glass-panel p-8 rounded-3xl cursor-pointer hover:-translate-y-2 transition-all flex flex-col h-full" onclick="openBlog(1)">
                             <div class="text-sm text-electric-cyan font-bold mb-4"><span class="el-text">14 Φεβρουαρίου 2025</span><span class="en-text">February 14, 2025</span></div>
                             <h2 class="text-2xl font-bold font-display text-white mb-4 line-clamp-3"><span class="el-text">Η Ιστοσελίδα σου Κερδίζει Πελάτες — ή τους Χάνει; Η Αλήθεια που Κανείς δεν σου Λέει</span><span class="en-text">Your Website Wins Clients — Or Loses Them? The Truth No One Tells You</span></h2>
                             <p class="text-gray-400 line-clamp-3 flex-grow"><span class="el-text">Αν η επιχείρησή σου δεν έχει επαγγελματική ιστοσελίδα — ή αν αυτή που έχεις φαίνεται σαν να φτιάχτηκε το 2012 — αυτοί οι πελάτες πάνε κατευθείαν στον ανταγωνιστή σου.</span><span class="en-text">If your business doesn't have a professional website — or if the one you have looks like it was built in 2012 — those clients go straight to your competitor.</span></p>
                             <span class="mt-6 flex items-center gap-2 text-electric-cyan font-bold text-sm uppercase tracking-wide"><span class="el-text">ΔΙΑΒΑΣΤΕ ΤΟ ΑΡΘΡΟ</span><span class="en-text">READ ARTICLE</span> <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
                         </div>
+                        <!-- Post 2 -->
                         <div class="glass-panel p-8 rounded-3xl cursor-pointer hover:-translate-y-2 transition-all flex flex-col h-full" onclick="openBlog(2)">
                             <div class="text-sm text-electric-cyan font-bold mb-4"><span class="el-text">3 Απριλίου 2025</span><span class="en-text">April 3, 2025</span></div>
                             <h2 class="text-2xl font-bold font-display text-white mb-4 line-clamp-3"><span class="el-text">Google Reviews το 2025: Το Νόμισμα της Τοπικής Επιχείρησης που Δεν Μπορείς να Αγνοείς</span><span class="en-text">Google Reviews in 2025: The Currency of Local Business You Can't Ignore</span></h2>
                             <p class="text-gray-400 line-clamp-3 flex-grow"><span class="el-text">Οι αξιολογήσεις σου στη Google είναι η φήμη σου. Και η φήμη σου τώρα ζει δημόσια, στο διαδίκτυο, διαθέσιμη σε οποιονδήποτε.</span><span class="en-text">Your Google reviews are your reputation. And your reputation now lives publicly on the internet, available to anyone.</span></p>
                             <span class="mt-6 flex items-center gap-2 text-electric-cyan font-bold text-sm uppercase tracking-wide"><span class="el-text">ΔΙΑΒΑΣΤΕ ΤΟ ΑΡΘΡΟ</span><span class="en-text">READ ARTICLE</span> <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
                         </div>
+                        <!-- Post 3 -->
                         <div class="glass-panel p-8 rounded-3xl cursor-pointer hover:-translate-y-2 transition-all flex flex-col h-full" onclick="openBlog(3)">
                             <div class="text-sm text-electric-cyan font-bold mb-4"><span class="el-text">19 Ιουνίου 2025</span><span class="en-text">June 19, 2025</span></div>
                             <h2 class="text-2xl font-bold font-display text-white mb-4 line-clamp-3"><span class="el-text">Social Media για Τοπικές Επιχειρήσεις: Τι Λειτουργεί Πραγματικά (και Τι Χάνει τον Χρόνο σου)</span><span class="en-text">Social Media for Local Businesses: What Really Works (And What Wastes Your Time)</span></h2>
                             <p class="text-gray-400 line-clamp-3 flex-grow"><span class="el-text">Τα social media, σωστά διαχειρισμένα, είναι ένα από τα πιο cost-effective κανάλια marketing. Η λέξη-κλειδί είναι «σωστά».</span><span class="en-text">Social media, managed properly, is one of the most cost-effective marketing channels. The key word is "properly".</span></p>
                             <span class="mt-6 flex items-center gap-2 text-electric-cyan font-bold text-sm uppercase tracking-wide"><span class="el-text">ΔΙΑΒΑΣΤΕ ΤΟ ΑΡΘΡΟ</span><span class="en-text">READ ARTICLE</span> <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
                         </div>
+                        <!-- Post 4 -->
                         <div class="glass-panel p-8 rounded-3xl cursor-pointer hover:-translate-y-2 transition-all flex flex-col h-full" onclick="openBlog(4)">
                             <div class="text-sm text-electric-cyan font-bold mb-4"><span class="el-text">8 Σεπτεμβρίου 2025</span><span class="en-text">September 8, 2025</span></div>
                             <h2 class="text-2xl font-bold font-display text-white mb-4 line-clamp-3"><span class="el-text">Ο Κανόνας των 5 Δευτερολέπτων: Γιατί η Πρώτη Εντύπωση της Ιστοσελίδας σου Καθορίζει Τα Πάντα</span><span class="en-text">The 5-Second Rule: Why Your Website's First Impression Determines Everything</span></h2>
                             <p class="text-gray-400 line-clamp-3 flex-grow"><span class="el-text">Αν ένας επισκέπτης δεν καταλάβει ξεκάθαρα τι προσφέρεις μέσα σε 5 δευτερόλεπτα, φεύγει. Μάθε την αρχιτεκτονική μετατροπής.</span><span class="en-text">If a visitor doesn't clearly understand what you offer within 5 seconds, they leave. Learn the architecture of conversion.</span></p>
                             <span class="mt-6 flex items-center gap-2 text-electric-cyan font-bold text-sm uppercase tracking-wide"><span class="el-text">ΔΙΑΒΑΣΤΕ ΤΟ ΑΡΘΡΟ</span><span class="en-text">READ ARTICLE</span> <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
                         </div>
+                        <!-- Post 5 -->
                         <div class="glass-panel p-8 rounded-3xl cursor-pointer hover:-translate-y-2 transition-all flex flex-col h-full" onclick="openBlog(5)">
                             <div class="text-sm text-electric-cyan font-bold mb-4"><span class="el-text">27 Νοεμβρίου 2025</span><span class="en-text">November 27, 2025</span></div>
                             <h2 class="text-2xl font-bold font-display text-white mb-4 line-clamp-3"><span class="el-text">Πώς να Ανέβεις στην Κορυφή της Google (Χωρίς να Ξοδέψεις Μια Περιουσία σε Διαφημίσεις)</span><span class="en-text">How to Reach the Top of Google (Without Spending a Fortune on Ads)</span></h2>
                             <p class="text-gray-400 line-clamp-3 flex-grow"><span class="el-text">Το οργανικό τοπικό SEO προσφέρει ένα πιο βιώσιμο και αποδοτικό μονοπάτι προς την κορυφή από τα πληρωμένα Google Ads.</span><span class="en-text">Organic local SEO offers a more sustainable and efficient path to the top than paid Google Ads.</span></p>
                             <span class="mt-6 flex items-center gap-2 text-electric-cyan font-bold text-sm uppercase tracking-wide"><span class="el-text">ΔΙΑΒΑΣΤΕ ΤΟ ΑΡΘΡΟ</span><span class="en-text">READ ARTICLE</span> <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
                         </div>
+                        <!-- Post 6 -->
                         <div class="glass-panel p-8 rounded-3xl cursor-pointer hover:-translate-y-2 transition-all flex flex-col h-full" onclick="openBlog(6)">
                             <div class="text-sm text-electric-cyan font-bold mb-4"><span class="el-text">12 Μαρτίου 2026</span><span class="en-text">March 12, 2026</span></div>
                             <h2 class="text-2xl font-bold font-display text-white mb-4 line-clamp-3"><span class="el-text">Το Ψηφιακό Marketing Stack που Χρειάζεται Κάθε Ελεύθερος Επαγγελματίας το 2026</span><span class="en-text">The Digital Marketing Stack Every Freelancer Needs in 2026</span></h2>
@@ -1130,6 +764,9 @@
             </section>
         </div>
 
+        <!-- ============================================== -->
+        <!-- LEGAL PAGES (Privacy, Cookies, Terms)          -->
+        <!-- ============================================== -->
         <div id="page-privacy" class="page-section">
             <section class="py-32 pt-40">
                 <div class="max-w-4xl mx-auto px-6 legal-format glass-panel p-10 rounded-3xl">
@@ -1255,7 +892,7 @@
                         <p>Η χρήση της ιστοσελίδας της Advon Media συνεπάγεται την πλήρη και ανεπιφύλακτη αποδοχή των παρακάτω όρων χρήσης. Εάν δεν συμφωνείτε με αυτούς τους όρους, παρακαλούμε να μην χρησιμοποιείτε την ιστοσελίδα μας. Η επιχείρηση με την επωνυμία "Advon Media" εδρεύει στo [Συμπληρώστε Διεύθυνση / Πόλη] με ΑΦΜ [Συμπληρώστε ΑΦΜ] / ΔΟΥ [Συμπληρώστε ΔΟΥ].</p>
                         
                         <h2>Παρεχόμενες Υπηρεσίες & Πληροφορίες</h2>
-                        <p>Οι πληροφορίες που παρουσιάζονται στην ιστοσελίδα σχετικά με τις υπηρεσίες μας (Κατασκευή ιστοσελίδων, SEO, Διαχείριση Social Media, Βάση Αξιολογήσεων κ.λπ.) είναι ακριβείς και ενημερωμένες. Ωστόσο, η Advon Media διατηρεί το δικαίωμα να τροποποιεί τις υπηρεσίες και τις τιμές (όπου αναγράφονται) χωρίς προειδοποίηση.</p>
+                        <p>Οι πληροφορίες που παρουσιάζονται στην ιστοσελίδα σχετικά με τις υπηρεσίες μας (Κατασκευή ιστοσελίδων, SEO, Διαχείριση Social Media, Ανέπαφη Βάση Αξιολογήσεων κ.λπ.) είναι ακριβείς και ενημερωμένες. Ωστόσο, η Advon Media διατηρεί το δικαίωμα να τροποποιεί τις υπηρεσίες και τις τιμές (όπου αναγράφονται) χωρίς προειδοποίηση.</p>
 
                         <h2>Πνευματική Ιδιοκτησία</h2>
                         <p>Όλο το περιεχόμενο της ιστοσελίδας, συμπεριλαμβανομένων κειμένων, γραφικών, λογοτύπων, φωτογραφιών (και του παρουσιαζόμενου Πορτφόλιο) αποτελεί πνευματική ιδιοκτησία της Advon Media και προστατεύεται από την ελληνική και διεθνή νομοθεσία περί πνευματικών δικαιωμάτων. Απαγορεύεται η αντιγραφή, αναπαραγωγή ή αναδημοσίευση χωρίς την έγγραφη άδειά μας.</p>
@@ -1275,7 +912,7 @@
                         <p>The use of the Advon Media website implies full and unconditional acceptance of the following terms of use. If you do not agree with these terms, please do not use our website. The business under the name "Advon Media" is based in [Fill Address / City] with VAT [Fill VAT] / Tax Office [Fill Tax Office].</p>
                         
                         <h2>Services Provided & Information</h2>
-                        <p>The information presented on the website regarding our services (Website Development, SEO, Social Media Management, Review Base, etc.) is accurate and up-to-date. However, Advon Media reserves the right to modify services and prices (where listed) without prior notice.</p>
+                        <p>The information presented on the website regarding our services (Website Development, SEO, Social Media Management, Contactless Review Stands, etc.) is accurate and up-to-date. However, Advon Media reserves the right to modify services and prices (where listed) without prior notice.</p>
 
                         <h2>Intellectual Property</h2>
                         <p>All content on the website, including text, graphics, logos, photos (and the presented Portfolio) is the intellectual property of Advon Media and is protected by Greek and international copyright laws. Copying, reproduction, or republication without our written permission is prohibited.</p>
@@ -1294,6 +931,9 @@
         </div>
     </main>
 
+    <!-- ============================================== -->
+    <!-- GLOBAL CONTACT SECTION (Always at bottom)      -->
+    <!-- ============================================== -->
     <section id="contact" class="py-32 relative border-t border-electric-cyan/10 bg-gradient-to-b from-[#050a0e] to-[#0a1418] z-20">
         <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
             <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]"><span class="el-text">ΕΠΙΚΟΙΝΩΝΙΑ</span><span class="en-text">CONTACT</span></span>
@@ -1485,14 +1125,11 @@
             }
         };
 
-        // Portfolio Pagination Logic
-        let currentPage = 0;
-        const itemsPerPage = 6; 
-        const totalPages = Math.ceil(portfolioData.length / itemsPerPage);
-
+        // --------------------------------------------------------
+        // 2. RENDER FUNCTIONS
+        // --------------------------------------------------------
         function renderPortfolio(items) {
             const grid = document.getElementById('portfolio-grid');
-            if(!grid) return;
             grid.innerHTML = items.map(item => {
                 const displayName = (document.body.classList.contains('lang-en') && item.nameEn) ? item.nameEn : item.name;
                 return `
@@ -1508,16 +1145,242 @@
                     </div>
                 </a>
             `}).join('');
-            if(window.lucide) lucide.createIcons();
+            lucide.createIcons();
         }
+
+        // Portfolio Pagination Logic
+        let currentPage = 0;
+        const itemsPerPage = 6; // Keeping it clean
+        const totalPages = Math.ceil(portfolioData.length / itemsPerPage);
 
         function updatePortfolioPagination() {
             const start = currentPage * itemsPerPage;
             const items = portfolioData.slice(start, start + itemsPerPage);
             renderPortfolio(items);
 
-            const prevBtn = document.getElementById('prev-btn');
-            const nextBtn = document.getElementById('next-btn');
-            const dots = document.getElementById('pagination-dots');
+            document.getElementById('port-prev').disabled = currentPage === 0;
+            document.getElementById('port-next').disabled = currentPage === totalPages - 1;
 
-            if(prevBtn) prevBtn.disabled = currentPage === 0;I'm having a hard time fulfilling your request. Can I help you with something else instead?
+            document.getElementById('port-dots').innerHTML = Array.from({length: totalPages}).map((_, i) => `
+                <div class="h-2 rounded-full transition-all duration-300 ${i === currentPage ? 'w-8 bg-electric-cyan shadow-[0_0_10px_#47c8f5]' : 'w-2 bg-white/20'}"></div>
+            `).join('');
+        }
+
+        document.getElementById('port-prev').addEventListener('click', () => { if(currentPage > 0) { currentPage--; updatePortfolioPagination(); }});
+        document.getElementById('port-next').addEventListener('click', () => { if(currentPage < totalPages - 1) { currentPage++; updatePortfolioPagination(); }});
+
+        function renderReviews() {
+            const renderArray = [...reviewsData, ...reviewsData, ...reviewsData];
+            const isEn = document.body.classList.contains('lang-en');
+            document.getElementById('reviews-list').innerHTML = renderArray.map(r => {
+                const textToShow = isEn && r.textEn ? r.textEn : r.text;
+                return `
+                <div class="glass-panel p-6 rounded-2xl flex flex-col gap-4 border border-white/5">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-electric-cyan/20 border border-electric-cyan/50 flex items-center justify-center text-xl font-bold text-electric-cyan uppercase shrink-0">${r.name.charAt(0)}</div>
+                            <div>
+                                <h4 class="font-bold text-white tracking-wide text-sm">${r.name}</h4>
+                                <div class="flex items-center gap-1 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3 text-green-500"><path d="M20 6 9 17l-5-5"/></svg>
+                                    <span class="text-[0.6rem] tracking-[0.2em] text-green-500 uppercase font-black">VERIFIED</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-white p-1.5 flex items-center justify-center border border-white/20">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-full h-full"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"></path><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"></path><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"></path><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"></path></svg>
+                        </div>
+                    </div>
+                    <div class="flex gap-1 text-[#FBBC05]">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-3 h-3"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-3 h-3"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-3 h-3"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-3 h-3"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-3 h-3"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="text-gray-300 text-sm font-medium leading-relaxed">"${textToShow}"</p>
+                </div>
+            `}).join('');
+        }
+
+        // --------------------------------------------------------
+        // 3. LOGIC (Router, Modals, Forms, Animation, Translation)
+        // --------------------------------------------------------
+        function toggleLanguage() {
+            if (document.body.classList.contains('lang-el')) {
+                document.body.classList.remove('lang-el');
+                document.body.classList.add('lang-en');
+                document.documentElement.lang = 'en';
+            } else {
+                document.body.classList.remove('lang-en');
+                document.body.classList.add('lang-el');
+                document.documentElement.lang = 'el';
+            }
+            updatePortfolioPagination(); 
+            renderReviews();
+        }
+
+        function closeMobileMenu() {
+            document.getElementById('mobile-menu').style.maxHeight = '0px';
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.style.maxHeight && menu.style.maxHeight !== '0px') {
+                menu.style.maxHeight = '0px';
+            } else {
+                menu.style.maxHeight = '500px';
+            }
+        }
+
+        function handleRoute() {
+            const hash = window.location.hash || '#/';
+            const views = document.querySelectorAll('.page-section');
+            views.forEach(v => v.classList.remove('active'));
+
+            let viewId = 'page-home';
+            if (hash.startsWith('#/kataskevi-istoselidas')) viewId = 'page-website';
+            else if (hash.startsWith('#/google-reviews-nfc')) viewId = 'page-nfc';
+            else if (hash.startsWith('#/diaxeirisi-social-media')) viewId = 'page-social';
+            else if (hash.startsWith('#/faq')) viewId = 'page-faq';
+            else if (hash.startsWith('#/blog')) viewId = 'page-blog';
+            else if (hash.startsWith('#/privacy-policy')) viewId = 'page-privacy';
+            else if (hash.startsWith('#/cookies-policy')) viewId = 'page-cookies';
+            else if (hash.startsWith('#/terms-of-use')) viewId = 'page-terms';
+            
+            document.getElementById(viewId).classList.add('active');
+            
+            if(viewId === 'page-website') updatePortfolioPagination();
+            
+            if (!hash.includes('#portfolio') && !hash.includes('#reviews') && !hash.includes('#contact')) {
+                window.scrollTo({top: 0, behavior: 'auto'});
+            }
+
+            closeMobileMenu();
+
+            setTimeout(() => {
+                if (hash.includes('#portfolio') && document.getElementById('portfolio')) {
+                    document.getElementById('portfolio').scrollIntoView({behavior: 'smooth', block: 'start'});
+                } else if (hash.includes('#reviews') && document.getElementById('reviews')) {
+                    document.getElementById('reviews').scrollIntoView({behavior: 'smooth', block: 'start'});
+                } else if (hash.includes('#contact')) {
+                    document.getElementById('contact').scrollIntoView({behavior: 'smooth', block: 'start'});
+                }
+            }, 100);
+        }
+
+        window.addEventListener('hashchange', handleRoute);
+        
+        function openBlog(id) {
+            const lang = document.body.classList.contains('lang-en') ? 'en' : 'el';
+            document.getElementById('blog-modal-content').innerHTML = blogsData[id][lang];
+            document.getElementById('blog-modal').classList.remove('hidden');
+            document.getElementById('blog-modal').classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBlogModal() {
+            document.getElementById('blog-modal').classList.add('hidden');
+            document.getElementById('blog-modal').classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+                content.style.maxHeight = '0px';
+                icon.style.transform = 'rotate(0deg)';
+                button.classList.remove('text-electric-cyan');
+            } else {
+                content.style.maxHeight = content.scrollHeight + 'px';
+                icon.style.transform = 'rotate(180deg)';
+                button.classList.add('text-electric-cyan');
+            }
+        }
+
+        // Formspree Integration
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var form = event.target;
+            var status = document.getElementById("contact-form-status");
+            var submitBtn = form.querySelector('button[type="submit"]');
+            var originalText = submitBtn.innerHTML;
+            
+            submitBtn.disabled = true; 
+            submitBtn.innerHTML = document.body.classList.contains('lang-en') ? 'Sending...' : 'Αποστολή...';
+
+            fetch(form.action, {
+                method: form.method,
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                submitBtn.disabled = false; submitBtn.innerHTML = originalText;
+                if (response.ok) {
+                    status.innerHTML = document.body.classList.contains('lang-en') ? "Thank you! Your message has been sent successfully." : "Ευχαριστούμε! Το μήνυμά σας εστάλη επιτυχώς.";
+                    status.className = "mt-4 text-green-400 font-bold";
+                    form.reset();
+                } else {
+                    status.innerHTML = document.body.classList.contains('lang-en') ? "Oops! There was a problem." : "Ωχ! Υπήρξε ένα πρόβλημα κατά την αποστολή.";
+                    status.className = "mt-4 text-red-400 font-bold";
+                }
+            }).catch(error => {
+                submitBtn.disabled = false; submitBtn.innerHTML = originalText;
+                status.innerHTML = document.body.classList.contains('lang-en') ? "Oops! There was a problem." : "Ωχ! Υπήρξε ένα πρόβλημα κατά την αποστολή.";
+                status.className = "mt-4 text-red-400 font-bold";
+            });
+        });
+
+        // Initialize Background Canvas
+        const canvas = document.getElementById('star-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, stars = [];
+
+        function initStars() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            stars = [];
+            for (let i = 0; Math.floor(width * height / 1500) > i; i++) {
+                stars.push({
+                    x: Math.random() * width, y: Math.random() * height,
+                    size: Math.random() * 2 + 0.5, opacity: Math.random(),
+                    speed: Math.random() * 0.05 + 0.01, twinkleSpeed: Math.random() * 0.02 + 0.005, twinkleDir: 1
+                });
+            }
+        }
+        function animateStars() {
+            ctx.clearRect(0, 0, width, height);
+            stars.forEach(star => {
+                star.opacity += star.twinkleSpeed * star.twinkleDir;
+                if (star.opacity > 1 || 0.2 > star.opacity) star.twinkleDir *= -1;
+                star.y -= star.speed;
+                if (0 > star.y) star.y = height;
+                ctx.fillStyle = `rgba(71, 200, 245, ${Math.abs(star.opacity) * 0.8})`; 
+                ctx.beginPath(); ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2); ctx.fill();
+            });
+            requestAnimationFrame(animateStars);
+        }
+        window.addEventListener('resize', initStars);
+
+        // Load Ext Scripts & initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initStars(); 
+            animateStars();
+            updatePortfolioPagination();
+            renderReviews();
+            lucide.createIcons();
+            handleRoute(); // Set initial route
+
+            if (!document.getElementById('trafft-script')) {
+                const script = document.createElement('script');
+                script.id = 'trafft-script';
+                script.src = 'https://advonmedia.trafft.com/embed.js';
+                script.async = true;
+                document.body.appendChild(script);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -8,7 +8,7 @@
     <meta name="keywords" content="κατασκευή ιστοσελίδων Ελλάδα, web design Ελλάδα, κατασκευή eshop, δημιουργία ιστοσελίδας, SEO ιστοσελίδων">
     <link rel="icon" href="https://assets.cdn.filesafe.space/NkFUgZER3rrdnofCwAIl/media/648dd017a1f733fa5b51e5e9.png" />
     
-    <!-- Preload critical assets -->
+    <!-- Preload critical assets for LCP -->
     <link rel="preload" href="https://assets.cdn.filesafe.space/NkFUgZER3rrdnofCwAIl/media/648dd017a1f733fa5b51e5e9.png" as="image" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -75,12 +75,17 @@
       .page-section.active { display: block; opacity: 1; }
       @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-      /* --- Performance: Hardware Acceleration Classes --- */
+      /* --- Performance Optimizations --- */
       .gpu-accelerate {
         transform: translateZ(0);
         backface-visibility: hidden;
         perspective: 1000px;
-        will-change: transform, opacity, filter;
+        will-change: transform, opacity;
+      }
+      /* content-visibility skips rendering offscreen elements entirely, destroying lag/blanks */
+      .render-lazy {
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 1000px;
       }
 
       /* --- Background Animations --- */
@@ -140,7 +145,7 @@
 
       /* Reviews Scroll */
       .mask-vertical { -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent); mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent); }
-      .animate-vertical-scroll { animation: verticalScroll 50s linear infinite; will-change: transform; }
+      .animate-vertical-scroll { animation: verticalScroll 50s linear infinite; will-change: transform; transform: translateZ(0); }
       .animate-vertical-scroll:hover { animation-play-state: paused; }
       @keyframes verticalScroll { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
 
@@ -307,7 +312,7 @@
             </section>
 
             <!-- Stats -->
-            <section class="py-20 border-y border-electric-cyan/10 bg-[#0a1418]/50 backdrop-blur-sm">
+            <section class="py-20 border-y border-electric-cyan/10 bg-[#0a1418]/50 backdrop-blur-sm render-lazy">
                 <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                     <div>
                         <div class="text-4xl md:text-6xl font-black font-display text-electric-cyan mb-2 drop-shadow-[0_0_20px_rgba(71,200,245,0.3)]">3+</div>
@@ -329,7 +334,7 @@
             </section>
 
             <!-- Services Summary -->
-            <section class="py-32 relative">
+            <section class="py-32 relative render-lazy">
                 <div class="max-w-7xl mx-auto px-6">
                     <div class="text-center mb-20">
                         <span class="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block"><span class="el-text">Υπηρεσίες</span><span class="en-text">Services</span></span>
@@ -407,7 +412,7 @@
             </section>
 
             <!-- Reviews Section -->
-            <section id="reviews" class="py-32 relative overflow-hidden">
+            <section id="reviews" class="py-32 relative overflow-hidden render-lazy">
                 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[60%] bg-electric-cyan/5 blur-[120px] rounded-full pointer-events-none gpu-accelerate"></div>
 
                 <div class="max-w-7xl mx-auto px-6 relative z-10">
@@ -451,7 +456,7 @@
         <!-- ============================================== -->
         <!-- PAGE 2: ΚΑΤΑΣΚΕΥΗ ΙΣΤΟΣΕΛΙΔΑΣ                -->
         <!-- ============================================== -->
-        <div id="page-website" class="page-section">
+        <div id="page-website" class="page-section render-lazy">
             <section class="py-32 pt-40 max-w-6xl mx-auto px-6">
                 <div class="text-center mb-16">
                     <span class="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block"><span class="el-text">Υπηρεσία</span><span class="en-text">Service</span></span>
@@ -588,7 +593,7 @@
         <!-- ============================================== -->
         <!-- PAGE 3: ΒΑΣΗ ΑΞΙΟΛΟΓΗΣΕΩΝ (NFC)                -->
         <!-- ============================================== -->
-        <div id="page-nfc" class="page-section">
+        <div id="page-nfc" class="page-section render-lazy">
             <section class="py-32 pt-40 max-w-6xl mx-auto px-6">
                 <div class="text-center mb-16">
                     <span class="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block"><span class="el-text">Υπηρεσία</span><span class="en-text">Service</span></span>
@@ -662,7 +667,7 @@
         <!-- ============================================== -->
         <!-- PAGE 4: SOCIAL MEDIA                           -->
         <!-- ============================================== -->
-        <div id="page-social" class="page-section">
+        <div id="page-social" class="page-section render-lazy">
             <section class="py-32 pt-40 max-w-7xl mx-auto px-6">
                 <div class="text-center mb-16">
                     <span class="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block"><span class="el-text">Υπηρεσία</span><span class="en-text">Service</span></span>
@@ -774,7 +779,7 @@
         <!-- ============================================== -->
         <!-- PAGE 5: FAQ                                    -->
         <!-- ============================================== -->
-        <div id="page-faq" class="page-section">
+        <div id="page-faq" class="page-section render-lazy">
             <section class="py-32 pt-40">
                 <div class="max-w-3xl mx-auto px-6">
                     <div class="text-center mb-16">
@@ -868,7 +873,7 @@
         <!-- ============================================== -->
         <!-- PAGE 6: BLOG GRID (/blog)                      -->
         <!-- ============================================== -->
-        <div id="page-blog" class="page-section">
+        <div id="page-blog" class="page-section render-lazy">
             <section class="py-32 pt-40 bg-[#050a0e]">
                 <div class="max-w-7xl mx-auto px-6">
                     <div class="text-center mb-20">
@@ -928,7 +933,7 @@
         <!-- ============================================== -->
         <!-- LEGAL PAGES (Privacy, Cookies, Terms)          -->
         <!-- ============================================== -->
-        <div id="page-privacy" class="page-section">
+        <div id="page-privacy" class="page-section render-lazy">
             <section class="py-32 pt-40">
                 <div class="max-w-4xl mx-auto px-6 legal-format glass-panel p-10 rounded-3xl">
                     <h1 class="el-text">Πολιτική Απορρήτου & Προστασίας Προσωπικών Δεδομένων</h1>
@@ -1003,7 +1008,7 @@
             </section>
         </div>
 
-        <div id="page-cookies" class="page-section">
+        <div id="page-cookies" class="page-section render-lazy">
             <section class="py-32 pt-40">
                 <div class="max-w-4xl mx-auto px-6 legal-format glass-panel p-10 rounded-3xl">
                     <h1 class="el-text">Πολιτική Cookies</h1>
@@ -1042,7 +1047,7 @@
             </section>
         </div>
 
-        <div id="page-terms" class="page-section">
+        <div id="page-terms" class="page-section render-lazy">
             <section class="py-32 pt-40">
                 <div class="max-w-4xl mx-auto px-6 legal-format glass-panel p-10 rounded-3xl">
                     <h1 class="el-text">Όροι Χρήσης</h1>
@@ -1095,7 +1100,7 @@
     <!-- ============================================== -->
     <!-- GLOBAL CONTACT SECTION (Always at bottom)      -->
     <!-- ============================================== -->
-    <section id="contact" class="py-32 relative border-t border-electric-cyan/10 bg-gradient-to-b from-[#050a0e] to-[#0a1418] z-20">
+    <section id="contact" class="py-32 relative border-t border-electric-cyan/10 bg-gradient-to-b from-[#050a0e] to-[#0a1418] z-20 render-lazy">
         <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
             <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]"><span class="el-text">ΕΠΙΚΟΙΝΩΝΙΑ</span><span class="en-text">CONTACT</span></span>
             <h2 class="text-4xl md:text-6xl font-black font-display mb-16 text-white"><span class="el-text">Ας Συνεργαστούμε</span><span class="en-text">Let's Collaborate</span></h2>
@@ -1136,6 +1141,7 @@
                      <h3 class="text-2xl md:text-3xl font-black mb-6 text-white font-display"><span class="el-text">Κλείστε Ραντεβού</span><span class="en-text">Book Appointment</span></h3>
                      <p class="text-gray-400 mb-8"><span class="el-text">Επιλέξτε την ημέρα και ώρα που σας εξυπηρετεί για μια δωρεάν συμβουλευτική κλήση.</span><span class="en-text">Choose the day and time that suits you for a free consultation call.</span></p>
                      <div class="w-full flex-grow rounded-xl bg-white relative" style="min-height: 500px;">
+                        <!-- The script is removed from here and added dynamically on scroll for performance -->
                         <div class="embedded-booking absolute inset-0 w-full h-full" data-url="https://advonmedia.trafft.com" data-query="&t=s&uuid=1003c403-d56e-439b-876a-c563b3127470" data-employee="aggelos-metrides" data-lang="el" data-autoresize="1" data-showsidebar="0" data-showservices="0" style="width: 100%; height: 100%;"></div>
                      </div>
                 </div>
